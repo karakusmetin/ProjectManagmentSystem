@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kaoWQpO0iJK7ZDNcF1Xkos2KNrcB3nhQSL2/WUzCaCoTBySdM8JNpxvh3CT4u+0BZVsO5ScQZnebtO4LwcyCvg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\PMS-WebUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fener\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512"
+  ],
+  "logs": []
+}
