@@ -4,7 +4,7 @@ namespace PMS.CoreLayer.Entities
 {
 	public abstract class BaseEntityWithId :IBaseEntityWithId
 	{
-		public virtual Guid Id { get; set; } = Guid.NewGuid();
+		public virtual Guid Id { get; set; }= Guid.NewGuid();
 		public virtual string InsertedBy { get; set; }
 		public virtual DateTime InsertDate { get; set; }= DateTime.Now;
 		public virtual string? UpdatedBy { get; set; }

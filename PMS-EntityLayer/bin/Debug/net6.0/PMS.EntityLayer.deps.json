@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "PMS.EntityLayer/1.0.0": {
+        "dependencies": {
+          "PMS.CoreLayer": "1.0.0"
+        },
+        "runtime": {
+          "PMS.EntityLayer.dll": {}
+        }
+      },
+      "PMS.CoreLayer/1.0.0": {
+        "runtime": {
+          "PMS.CoreLayer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PMS.EntityLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PMS.CoreLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

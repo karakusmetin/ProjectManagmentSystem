@@ -1,4 +1,4 @@
-﻿namespace PMS_EntityLayer.Enums
+﻿namespace PMS.EntityLayer.Enums
 {
 	public enum PriorityLevel
 	{

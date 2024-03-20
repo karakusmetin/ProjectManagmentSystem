@@ -1,10 +1,13 @@
 ﻿using PMS.CoreLayer.Entities;
+using System;
 
 namespace PMS.EntityLayer.Concrete
 {
-	public class ProjectManager : IBaseEntityWithId
+	public class ProjectManager : BaseEntityWithId
 	{
-		public User UserId { get; set; }
+		public Guid UserId { get; set; }
+		public User User { get; set; }
+
         public bool EditerOrNot { get; set; }
     }
 }

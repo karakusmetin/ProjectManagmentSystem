@@ -1,13 +1,15 @@
 ﻿using PMS.CoreLayer.Entities;
-using PMS_EntityLayer.Enums;
+using PMS.EntityLayer.Enums;
 using System;
 
 namespace PMS.EntityLayer.Concrete
 {
-	public class ProjectUpdate : IBaseEntityWithId
+	public class ProjectUpdate : BaseEntityWithId
 	{
-        public Project ProjectId { get; set; }
-        public User UpdatedUserId { get; set; }
+        public Guid ProjectId { get; set; }
+        public Project Project { get; set; }
+        public Guid UpdatedUserId { get; set; }
+        public User User { get; set; }
         public DateTime UpdateDate { get; set; } = DateTime.Now;
         public string Content { get; set; }
         public UpdateType Type { get; set; }

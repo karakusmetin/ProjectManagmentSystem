@@ -1,10 +1,10 @@
 ﻿using PMS.CoreLayer.Entities;
-using PMS_EntityLayer.Enums;
+using PMS.EntityLayer.Enums;
 using System;
 
 namespace PMS.EntityLayer.Concrete
 {
-	public class Project : IBaseEntityWithId
+	public class Project : BaseEntityWithId
 	{
 		public string ProjectName { get; set; }
 		public string Description { get; set; }

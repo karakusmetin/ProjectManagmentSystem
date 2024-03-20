@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "PMS.ServiceLayer/1.0.0": {
+        "runtime": {
+          "PMS.ServiceLayer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PMS.ServiceLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

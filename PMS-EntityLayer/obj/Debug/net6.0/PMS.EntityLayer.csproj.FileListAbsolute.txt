@@ -1,0 +1,15 @@
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\PMS.EntityLayer.csproj.AssemblyReference.cache
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\PMS.EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\PMS.EntityLayer.AssemblyInfoInputs.cache
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\PMS.EntityLayer.AssemblyInfo.cs
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\PMS.EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\bin\Debug\net6.0\PMS.EntityLayer.deps.json
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\bin\Debug\net6.0\PMS.EntityLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\bin\Debug\net6.0\PMS.EntityLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\bin\Debug\net6.0\PMS.CoreLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\bin\Debug\net6.0\PMS.CoreLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\PMS.Enti.B76C1588.Up2Date
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\PMS.EntityLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\refint\PMS.EntityLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\PMS.EntityLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net6.0\ref\PMS.EntityLayer.dll

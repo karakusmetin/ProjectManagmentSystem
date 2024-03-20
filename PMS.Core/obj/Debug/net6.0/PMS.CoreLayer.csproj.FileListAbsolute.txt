@@ -1,0 +1,11 @@
+C:\Users\fener\Desktop\Deeneme\PMS.Core\bin\Debug\net6.0\PMS.CoreLayer.deps.json
+C:\Users\fener\Desktop\Deeneme\PMS.Core\bin\Debug\net6.0\PMS.CoreLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.Core\bin\Debug\net6.0\PMS.CoreLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS.Core\obj\Debug\net6.0\PMS.CoreLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fener\Desktop\Deeneme\PMS.Core\obj\Debug\net6.0\PMS.CoreLayer.AssemblyInfoInputs.cache
+C:\Users\fener\Desktop\Deeneme\PMS.Core\obj\Debug\net6.0\PMS.CoreLayer.AssemblyInfo.cs
+C:\Users\fener\Desktop\Deeneme\PMS.Core\obj\Debug\net6.0\PMS.CoreLayer.csproj.CoreCompileInputs.cache
+C:\Users\fener\Desktop\Deeneme\PMS.Core\obj\Debug\net6.0\PMS.CoreLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.Core\obj\Debug\net6.0\refint\PMS.CoreLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.Core\obj\Debug\net6.0\PMS.CoreLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS.Core\obj\Debug\net6.0\ref\PMS.CoreLayer.dll
