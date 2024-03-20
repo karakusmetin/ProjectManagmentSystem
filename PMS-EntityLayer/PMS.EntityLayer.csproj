@@ -6,4 +6,8 @@
     <RootNamespace>PMS_EntityLayer</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PMS.Core\PMS.CoreLayer.csproj" />
+  </ItemGroup>
+
 </Project>

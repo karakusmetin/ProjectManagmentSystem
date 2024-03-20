@@ -1,8 +1,9 @@
-﻿namespace PMS.EntityLayer.Concrete
+﻿using PMS.CoreLayer.Entities;
+
+namespace PMS.EntityLayer.Concrete
 {
-	public class ProjectCategories
+	public class ProjectCategories : IBaseEntityWithId
 	{
-        public int Id { get; set; }
 		public string CategoryName { get; set; }
     }
 }

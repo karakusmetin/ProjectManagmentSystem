@@ -1,8 +1,9 @@
-﻿namespace PMS.EntityLayer.Concrete
+﻿using PMS.CoreLayer.Entities;
+
+namespace PMS.EntityLayer.Concrete
 {
-	public class ProjectManager
+	public class ProjectManager : IBaseEntityWithId
 	{
-        public int Id { get; set; }
 		public User UserId { get; set; }
         public bool EditerOrNot { get; set; }
     }
