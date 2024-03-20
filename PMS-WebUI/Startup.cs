@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using PMS.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using PMS.CoreLayer.Entities;
+using PMS.DataLayer.Extensions;
 
 namespace PMS_WebUI
 {
@@ -23,7 +24,8 @@ namespace PMS_WebUI
 		{
 			services.AddControllersWithViews();
 			services.AddDbContext<PMSDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-			
+
+			services.LoadDataExtension(Configuration);
 			
 		}
 
