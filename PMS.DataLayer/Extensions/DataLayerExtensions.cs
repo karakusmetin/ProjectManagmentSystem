@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PMS.DataLayer.Context;
 using PMS.DataLayer.Repositories.Abstracts;
 using PMS.DataLayer.Repositories.Concretes;
+using PMS.DataLayer.UnitOfWorks;
 
 namespace PMS.DataLayer.Extensions
 {
@@ -13,6 +14,7 @@ namespace PMS.DataLayer.Extensions
 		{
 			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 			services.AddDbContext<PMSDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			return services;
 		}
 	}
