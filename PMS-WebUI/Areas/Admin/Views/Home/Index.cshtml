@@ -1,0 +1,15 @@
+﻿@model List<Project>
+<h1>Admin Area</h1>
+<br />
+<br />
+@foreach (var project in Model)
+{
+    <h1>@project.ProjectName</h1>
+    <br />
+    <h1>@project.InsertedBy</h1>
+    <br />
+    <h3>@project.Description</h3>
+    <br />
+    <br />
+    <br />
+}

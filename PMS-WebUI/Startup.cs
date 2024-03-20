@@ -20,7 +20,7 @@ namespace PMS_WebUI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllersWithViews();
+			services.AddControllersWithViews().AddRazorRuntimeCompilation();
 			services.LoadDataLayerExtension(Configuration);
 			services.LoadServiceLayerExtension();
 
@@ -49,12 +49,20 @@ namespace PMS_WebUI
 
 			app.UseAuthorization();
 
-			app.UseEndpoints(endpoints =>
+            
+            app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapControllerRoute(
-					name: "default",
-					pattern: "{controller=Home}/{action=Index}/{id?}");
+				endpoints.MapAreaControllerRoute(
+					name: "Admin",
+					areaName: "Admin",
+					pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
+				endpoints.MapDefaultControllerRoute();
+
 			});
+
+            
+
 		}
 	}
 }
