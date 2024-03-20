@@ -9,3 +9,11 @@ C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\obj\Debug\net6.0\PMS.ServiceLaye
 C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\obj\Debug\net6.0\refint\PMS.ServiceLayer.dll
 C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\obj\Debug\net6.0\PMS.ServiceLayer.pdb
 C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\obj\Debug\net6.0\ref\PMS.ServiceLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\bin\Debug\net6.0\PMS.CoreLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\bin\Debug\net6.0\PMS.DataLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\bin\Debug\net6.0\PMS.EntityLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\bin\Debug\net6.0\PMS.EntityLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\bin\Debug\net6.0\PMS.DataLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\bin\Debug\net6.0\PMS.CoreLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\obj\Debug\net6.0\PMS.ServiceLayer.csproj.AssemblyReference.cache
+C:\Users\fener\Desktop\Deeneme\PMS.ServiceLayer\obj\Debug\net6.0\PMS.Serv.C66A74EB.Up2Date

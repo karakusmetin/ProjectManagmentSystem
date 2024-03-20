@@ -1,26 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PMS.ServiceLayer.Services.Abstract;
 using PMS_WebUI.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace PMS_WebUI.Controllers
 {
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
+		private readonly IProjectService projectService;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ILogger<HomeController> logger, IProjectService projectService)
 		{
 			_logger = logger;
+			this.projectService = projectService;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
+			var projects = await projectService.GetListArticleAsync();
+			return View(projects);
 		}
 
 		public IActionResult Privacy()

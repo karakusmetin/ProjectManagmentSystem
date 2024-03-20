@@ -10,7 +10,7 @@ namespace PMS.DataLayer.Extensions
 {
 	public static class DataLayerExtensions
 	{
-		public static IServiceCollection LoadDataExtension(this IServiceCollection services,IConfiguration config) 
+		public static IServiceCollection LoadDataLayerExtension(this IServiceCollection services,IConfiguration config) 
 		{
 			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 			services.AddDbContext<PMSDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("DefaultConnection")));

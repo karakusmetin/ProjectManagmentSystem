@@ -4,4 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PMS-EntityLayer\PMS.EntityLayer.csproj" />
+    <ProjectReference Include="..\PMS.DataLayer\PMS.DataLayer.csproj" />
+  </ItemGroup>
+
 </Project>

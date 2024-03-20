@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PMS.DataLayer\PMS.DataLayer.csproj" />
+    <ProjectReference Include="..\PMS.ServiceLayer\PMS.ServiceLayer.csproj" />
   </ItemGroup>
 
 </Project>

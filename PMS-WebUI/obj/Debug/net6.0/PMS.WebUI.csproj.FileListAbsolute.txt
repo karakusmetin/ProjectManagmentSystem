@@ -70,3 +70,5 @@ C:\Users\fener\Desktop\Deeneme\PMS-WebUI\obj\Debug\net6.0\PMS.WebUI.genruntimeco
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\obj\Debug\net6.0\ref\PMS.WebUI.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\Humanizer.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\PMS.ServiceLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\PMS.ServiceLayer.pdb

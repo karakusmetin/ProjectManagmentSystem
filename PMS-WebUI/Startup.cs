@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PMS.DataLayer.Extensions;
+using PMS.ServiceLayer.Extensions;
 
 namespace PMS_WebUI
 {
@@ -20,9 +21,11 @@ namespace PMS_WebUI
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
-			services.LoadDataExtension(Configuration);
-			
-		}
+			services.LoadDataLayerExtension(Configuration);
+			services.LoadServiceLayerExtension();
+
+
+        }
 
 		
 

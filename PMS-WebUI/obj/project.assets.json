@@ -815,6 +815,20 @@
         "runtime": {
           "bin/placeholder/PMS.EntityLayer.dll": {}
         }
+      },
+      "PMS.ServiceLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "PMS.DataLayer": "1.0.0",
+          "PMS.EntityLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PMS.ServiceLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PMS.ServiceLayer.dll": {}
+        }
       }
     }
   },
@@ -2105,13 +2119,19 @@
       "type": "project",
       "path": "../PMS-EntityLayer/PMS.EntityLayer.csproj",
       "msbuildProject": "../PMS-EntityLayer/PMS.EntityLayer.csproj"
+    },
+    "PMS.ServiceLayer/1.0.0": {
+      "type": "project",
+      "path": "../PMS.ServiceLayer/PMS.ServiceLayer.csproj",
+      "msbuildProject": "../PMS.ServiceLayer/PMS.ServiceLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore.Design >= 6.0.28",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.19.6",
-      "PMS.DataLayer >= 1.0.0"
+      "PMS.DataLayer >= 1.0.0",
+      "PMS.ServiceLayer >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2143,6 +2163,9 @@
           "projectReferences": {
             "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\PMS.DataLayer.csproj": {
               "projectPath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\PMS.DataLayer.csproj"
+            },
+            "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj": {
+              "projectPath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj"
             }
           }
         }
