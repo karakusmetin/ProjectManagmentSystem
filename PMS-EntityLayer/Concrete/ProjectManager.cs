@@ -1,4 +1,4 @@
-﻿namespace PMS_EntityLayer.Concrete
+﻿namespace PMS.EntityLayer.Concrete
 {
 	public class ProjectManager
 	{

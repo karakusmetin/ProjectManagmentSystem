@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\PMS-EntityLayer.csproj",
-      "projectName": "PMS-EntityLayer",
-      "projectPath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\PMS-EntityLayer.csproj",
+      "projectUniqueName": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\PMS.EntityLayer.csproj",
+      "projectName": "PMS.EntityLayer",
+      "projectPath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\PMS.EntityLayer.csproj",
       "packagesPath": "C:\\Users\\fener\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\obj\\",
       "projectStyle": "PackageReference",

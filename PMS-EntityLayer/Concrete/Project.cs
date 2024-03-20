@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PMS_EntityLayer.Concrete
+namespace PMS.EntityLayer.Concrete
 {
 	public class Project
 	{

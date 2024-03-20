@@ -1,0 +1,4 @@
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net5.0\PMS.EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net5.0\PMS.EntityLayer.AssemblyInfoInputs.cache
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net5.0\PMS.EntityLayer.AssemblyInfo.cs
+C:\Users\fener\Desktop\Deeneme\PMS-EntityLayer\obj\Debug\net5.0\PMS.EntityLayer.csproj.CoreCompileInputs.cache

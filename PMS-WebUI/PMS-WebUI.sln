@@ -5,7 +5,13 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMS-WebUI", "PMS-WebUI.csproj", "{561B6645-F0F4-464E-BA91-B127E49F45AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS-EntityLayer", "..\PMS-EntityLayer\PMS-EntityLayer.csproj", "{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMS.EntityLayer", "..\PMS-EntityLayer\PMS.EntityLayer.csproj", "{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.CoreLayer", "..\PMS.Core\PMS.CoreLayer.csproj", "{F12F938B-6FB0-4B7F-A923-74E79585908B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.DataLayer", "..\PMS.DataLayer\PMS.DataLayer.csproj", "{66860842-369E-4FA0-B477-D4D1C99BBA4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.ServiceLayer", "..\PMS.ServiceLayer\PMS.ServiceLayer.csproj", "{887601CF-9AB8-494D-9EA1-6661F0E61EB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12F938B-6FB0-4B7F-A923-74E79585908B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12F938B-6FB0-4B7F-A923-74E79585908B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12F938B-6FB0-4B7F-A923-74E79585908B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12F938B-6FB0-4B7F-A923-74E79585908B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66860842-369E-4FA0-B477-D4D1C99BBA4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66860842-369E-4FA0-B477-D4D1C99BBA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66860842-369E-4FA0-B477-D4D1C99BBA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66860842-369E-4FA0-B477-D4D1C99BBA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887601CF-9AB8-494D-9EA1-6661F0E61EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887601CF-9AB8-494D-9EA1-6661F0E61EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887601CF-9AB8-494D-9EA1-6661F0E61EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887601CF-9AB8-494D-9EA1-6661F0E61EB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

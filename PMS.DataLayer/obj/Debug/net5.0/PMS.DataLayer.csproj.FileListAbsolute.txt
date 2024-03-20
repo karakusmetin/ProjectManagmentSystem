@@ -1,0 +1,11 @@
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\bin\Debug\net5.0\PMS.DataLayer.deps.json
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\bin\Debug\net5.0\PMS.DataLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\bin\Debug\net5.0\PMS.DataLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\obj\Debug\net5.0\PMS.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\obj\Debug\net5.0\PMS.DataLayer.AssemblyInfoInputs.cache
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\obj\Debug\net5.0\PMS.DataLayer.AssemblyInfo.cs
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\obj\Debug\net5.0\PMS.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\obj\Debug\net5.0\PMS.DataLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\obj\Debug\net5.0\refint\PMS.DataLayer.dll
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\obj\Debug\net5.0\PMS.DataLayer.pdb
+C:\Users\fener\Desktop\Deeneme\PMS.DataLayer\obj\Debug\net5.0\ref\PMS.DataLayer.dll
