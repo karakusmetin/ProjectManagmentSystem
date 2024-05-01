@@ -1,48 +1,156 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PMS_WebUI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje Yönetim Sistemi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #fff; /* Koyu mor arka plan rengi */
+            font-family: Arial, sans-serif;
+            color: #333; /* Metin rengi */
+            margin: 0;
+            padding-bottom:80px;
+        }
+        .navbar-custom {
+            background-color: #3e2481 !important; /* Navbar arka plan rengi */
+            border-bottom: 1px solid #fff; /* Navbar alt kenar çizgisi */
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff !important; /* Navbar metin rengi */
+            font-weight: bold; /* Navbar metin kalınlığı */
+            
+        }
+        .navbar-custom .navbar-brand:hover,
+        .navbar-custom .navbar-nav .nav-link:hover {
+            color: #f8f9fa !important; /* Navbar üzerine gelindiğinde metin rengi */
+        }
+        .navbar-custom .navbar-toggler-icon {
+            background-color: #fff; /* Navbar açılır menü simgesi rengi */
+        }
+        .navbar-custom .navbar-toggler {
+            border-color: #fff; /* Navbar açılır menü düğmesi rengi */
+        }
+        .navbar-custom .navbar-toggler:focus,
+        .navbar-custom .navbar-toggler:hover {
+            background-color: #fff; /* Navbar açılır menü düğmesi üzerine gelindiğinde arka plan rengi */
+        }
+        .navbar-custom .navbar-collapse {
+            background-color: #3e2481; /* Navbar açılır menü arka plan rengi */
+
+        }
+        .navbar-custom .navbar-nav .dropdown-menu {
+            background-color: #3e2481; /* Navbar dropdown menü arka plan rengi */
+        }
+        .navbar-custom .navbar-nav .dropdown-item {
+            color: #fff; /* Navbar dropdown menü metin rengi */
+            margin-top: 200px;
+
+        }
+        .navbar-custom .navbar-nav .dropdown-item:hover {
+            background-color: #343a40; /* Navbar dropdown menü üzerine gelindiğinde arka plan rengi */
+        }
+
+        .card {
+            transition: transform 0.3s;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            background-color: #fff; /* Kart arka plan rengi */
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Kart gölgelendirme */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 1rem;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+        }
+        .footer {
+            background-color: #3e2481; /* Üst ve alt bilgi arka plan rengi */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .footer p {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PMS_WebUI</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+    <!-- Üstbilgi -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
         <div class="container">
-            &copy; 2024 - PMS_WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <a class="navbar-brand" href="#">Proje Yönetim Sistemi</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Giriş Yap</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- İçerik -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">Proje Özetleri</h2>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                for (int i = 1; i <= 19; i++)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Proje Adı @i</h5>
+                                <p class="card-text">Proje Açıklaması @i</p>
+                                <p class="card-text">Önemli Not: Proje ile ilgili...</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-primary">Projeyi Görüntüle</a>
+                                <a href="#" class="btn btn-secondary">Düzenle</a>
+                                <a href="#" class="btn btn-danger">Sil</a>
+                            </div>
+                        </div>
+                    </div>
+                    // Her altı projeden sonra yeni bir satır başlatmak için kontrol yapalım
+                    if (i % 6 == 0 && i != 9)
+                    {
+                        @:</div><div class="row">
+                    }
+                }
+            }
+        </div>
+    </div>
+    @RenderBody()
+    <!-- Altbilgi -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Proje Yönetim Sistemi</p>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

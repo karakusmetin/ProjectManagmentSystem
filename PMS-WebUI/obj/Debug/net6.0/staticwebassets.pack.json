@@ -1,6 +1,26 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\index.html",
+      "PackagePath": "staticwebassets\\AdminPanel\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\package-lock.json",
+      "PackagePath": "staticwebassets\\AdminPanel\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\package.json",
+      "PackagePath": "staticwebassets\\AdminPanel\\package.json"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\script.js",
+      "PackagePath": "staticwebassets\\AdminPanel\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\style.css",
+      "PackagePath": "staticwebassets\\AdminPanel\\style.css"
+    },
+    {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

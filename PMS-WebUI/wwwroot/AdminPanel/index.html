@@ -1,162 +1,73 @@
+@{
+    Layout = null; // Bu dosyanın bir layout kullanmadığını belirtiyoruz.
+}
+
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, inital-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-                integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-                
-
-        <title>Bootstrap 5 Admin Dashboard</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="wrapp">
-            <aside id="sidebar">
-                <div class="d-flex">
-                    <button id="toggle-btn" type="button">
-                        <i class="bi bi-columns-gap"></i>
-                    </button>
-                    <div class="sidebar-logo">
-                        <a href="#">AdminPanel</a>
-                    </div>
-                </div>
-                <ul class="sidebar-nav">
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="bi bi-person-circle"></i>
-                            <span>Profil</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="bi bi-calendar-date"></i>
-                            <span>Görevler</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link has-dropdawn collapsed" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                            <i class="bi bi-shield-fill-check"></i>
-                            <span>Doğrulama</span>
-                        </a>
-                        <ul id="auth" class="sidebar-dropdawn list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="" class="sidebar-link">Giriş Yap</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="" class="sidebar-link">Kayıt Ol</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link link has-dropdawn collapsed" data-bs-toggle="collapse" data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
-                            <i class="bi bi-layout-wtf"></i>
-                            <span>Multi Level</span>
-                        </a>
-                        <ul id="multi" class="sidebar-dropdawn list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
-                                    Two Links
-                                </a>
-                                <ul id="multi-two" class="sidebar-dropdawn list-unstyled collapse">
-                                    <li class="sidebar-item">
-                                        <a href="#" id="sidebar-link">Link 1</a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="#" id="sidebar-link">Link 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="bi bi-exclamation-octagon-fill"></i>
-                            <span>Notification</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="bi bi-gear"></i>
-                            <span>Ayarlar</span>
-                        </a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli - Proje Yönetim Sistemi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Üstbilgi -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">Admin Paneli</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Çıkış Yap</a>
                     </li>
                 </ul>
-                <div class="sidebar-footer">
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-power"></i>
-                        <span>Logout</span>
-                    </a>
-                </div>
-            </aside>
-            <div class="main">
-                <nav class="navbar navbar-expand px-4 py-3">
-                    <form action="#" class="d-none d-sm-inline-block">
-                        <div class="input-group input-group-navbar">
-                            <input type="text" class="form-control border-0 rounded-0" placeholder="Seaarch..">
-                            <button class="btn border-0 rounded-0" type="button">
-                                Search
-                            </button>
-                        </div>
-                    </form>
-                    <div class="navbar-collapse collapse">
-                        <ul class="navbar-nav mas-auto">
-                            <li class="nav-item drapdown">
-                                <a href="" class="nav-icon pe-md-0" data-base-toggle="dropdawn">
-                                    <img src="/account.png" class="avatar img-fluid" alt="">
-                                </a>
-                                <div class="dropdawn-menu dropdown-menu-end rounded">
-                                    <a href="#" class="dropdawn-item">
-                                        <i class="bi bi-stopwatch-fill"></i>
-                                        <span>istatistikler</span>
-                                    </a>
-                                    <a href="#" class="dropdawn-item">
-                                        <i class="bi bi-gear"></i>
-                                        <span>Aarlar</span>
-                                    </a>
-                                    <div class="dropdawn-divider"></div>
-                                    <a href="#" class="dropdawn-item">
-                                        <i class="bi bi-question-octagon-fill"></i>
-                                        <span>Sorular</span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <main class="contentpx-3 py-4">
-                    <div class="container-fluid">
-                        <div class="mb-3"></div>
-                        <h3 class="fw-bold fs-4 mb-3">Admin Paneli</h3>
-                        <div class="col-12 col-md-4">
-                            <div class="card-body py-4">
-                                <h5 class="mb-2 fw-bold">
-                                    Members Progress
-                                </h5>
-                                <p class="mb-2 fw-bold">
-                                    $72.550
-                                </p>
-                                <div class="mb-0">
-                                    <span class="badge text-success me-2">
-                                        +9.0%
-                                    </span>
-                                    <span class="fw-bold">
-                                        Since Last Month
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
             </div>
         </div>
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </nav>
 
-        <script src="script.js"></script>
-    </body>
+    <!-- İçerik -->
+    <div class="admin-container">
+        <!-- Yönetici paneli yan menü -->
+        <div class="admin-sidebar">
+            <h4>Yönetici Paneli</h4>
+            <ul class="nav flex-column mt-4">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Ana Sayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kullanıcılar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Projeler</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ayarlar</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Yönetici paneli içerik -->
+        <div class="admin-content">
+            <h2>Hoş Geldiniz!</h2>
+            <p>Burada yönetici panelinin içeriği yer alacak.</p>
+        </div>
+    </div>
+
+    <!-- Altbilgi -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Proje Yönetim Sistemi</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
