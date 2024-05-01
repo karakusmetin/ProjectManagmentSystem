@@ -394,3 +394,5 @@ C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\tr\Microsoft.CodeAnaly
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\obj\Debug\net6.0\PMS.WebUI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

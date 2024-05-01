@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "IoW9k22dtQIZpC+h7KUzfw/ZeRPJ9yB+cS81BsPjXb5rEYJ3lyXf3c+xbUml0twwiMqecPWf4k74DqHlnNNUnQ==",
+  "dgSpecHash": "aaZzZXbo6VDLaDvYtC8l19TJEZNjbw9c43h2uEBEEEVA6WLAKU5+znyV4IIo8lQSljaRSKuGj3bgLlv3XyAXmA==",
   "success": true,
   "projectFilePath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\fener\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\fener\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\fener\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\fener\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.7\\microsoft.data.sqlclient.2.1.7.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.28\\microsoft.entityframeworkcore.6.0.28.nupkg.sha512",

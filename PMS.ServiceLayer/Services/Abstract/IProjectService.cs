@@ -1,4 +1,4 @@
-﻿using PMS.EntityLayer.Concrete;
+﻿using PMS_EntityLayer.DTOs.Projects;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,6 +6,6 @@ namespace PMS.ServiceLayer.Services.Abstract
 {
 	public interface IProjectService
 	{
-		Task<List<Project>> GetListArticleAsync();
+		Task<List<ProjectDto>> GetListArticleAsync();
 	}
 }
