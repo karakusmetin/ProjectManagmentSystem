@@ -3,6 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{66860842-369E-4FA0-B477-D4D1C99BBA4C}|..\\PMS.DataLayer\\PMS.DataLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.datalayer\\mapping\\usermap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66860842-369E-4FA0-B477-D4D1C99BBA4C}|..\\PMS.DataLayer\\PMS.DataLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.datalayer\\mapping\\usertokenmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66860842-369E-4FA0-B477-D4D1C99BBA4C}|..\\PMS.DataLayer\\PMS.DataLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.datalayer\\mapping\\userrolemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66860842-369E-4FA0-B477-D4D1C99BBA4C}|..\\PMS.DataLayer\\PMS.DataLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.datalayer\\mapping\\userloginmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66860842-369E-4FA0-B477-D4D1C99BBA4C}|..\\PMS.DataLayer\\PMS.DataLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.datalayer\\mapping\\userclaimmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66860842-369E-4FA0-B477-D4D1C99BBA4C}|..\\PMS.DataLayer\\PMS.DataLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.datalayer\\mapping\\roleclaimmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66860842-369E-4FA0-B477-D4D1C99BBA4C}|..\\PMS.DataLayer\\PMS.DataLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.datalayer\\mapping\\rolemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66860842-369E-4FA0-B477-D4D1C99BBA4C}|..\\PMS.DataLayer\\PMS.DataLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.datalayer\\context\\pmsdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\appusertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\appuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\appuserlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\appuserclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\approle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\approleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\projectmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\projectupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{887601CF-9AB8-494D-9EA1-6661F0E61EB5}|..\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms.servicelayer\\automapper\\projects\\projectprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -31,9 +85,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\dtos\\projects\\projectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\concrete\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,8 +94,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserMap.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserMap.cs",
+              "RelativeDocumentMoniker": "..\\PMS.DataLayer\\Mapping\\UserMap.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserMap.cs",
+              "RelativeToolTip": "..\\PMS.DataLayer\\Mapping\\UserMap.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:05:46.948Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -67,106 +131,132 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\Home\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\Home\\Privacy.cshtml",
-              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-01T11:38:16.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PMS.ServiceLayer.csproj",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
-              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
-              "RelativeToolTip": "..\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-01T11:37:46.403Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-01T11:37:36.474Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProjectService.cs",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Services\\Concrete\\ProjectService.cs",
-              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\Services\\Concrete\\ProjectService.cs",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Services\\Concrete\\ProjectService.cs",
-              "RelativeToolTip": "..\\PMS.ServiceLayer\\Services\\Concrete\\ProjectService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAOAAAA",
+              "Title": "UserTokenMap.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserTokenMap.cs",
+              "RelativeDocumentMoniker": "..\\PMS.DataLayer\\Mapping\\UserTokenMap.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserTokenMap.cs",
+              "RelativeToolTip": "..\\PMS.DataLayer\\Mapping\\UserTokenMap.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T11:31:34.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProjectProfile.cs",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\AutoMapper\\Projects\\ProjectProfile.cs",
-              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\AutoMapper\\Projects\\ProjectProfile.cs",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\AutoMapper\\Projects\\ProjectProfile.cs",
-              "RelativeToolTip": "..\\PMS.ServiceLayer\\AutoMapper\\Projects\\ProjectProfile.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T11:13:26.26Z",
+              "WhenOpened": "2024-05-03T10:10:14.429Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "Views\\_ViewImports.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-01T11:38:21.327Z",
+              "Title": "UserRoleMap.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserRoleMap.cs",
+              "RelativeDocumentMoniker": "..\\PMS.DataLayer\\Mapping\\UserRoleMap.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserRoleMap.cs",
+              "RelativeToolTip": "..\\PMS.DataLayer\\Mapping\\UserRoleMap.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:07:30.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserLoginMap.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserLoginMap.cs",
+              "RelativeDocumentMoniker": "..\\PMS.DataLayer\\Mapping\\UserLoginMap.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserLoginMap.cs",
+              "RelativeToolTip": "..\\PMS.DataLayer\\Mapping\\UserLoginMap.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:06:46.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserClaimMap.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserClaimMap.cs",
+              "RelativeDocumentMoniker": "..\\PMS.DataLayer\\Mapping\\UserClaimMap.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\UserClaimMap.cs",
+              "RelativeToolTip": "..\\PMS.DataLayer\\Mapping\\UserClaimMap.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:06:38.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoleClaimMap.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\RoleClaimMap.cs",
+              "RelativeDocumentMoniker": "..\\PMS.DataLayer\\Mapping\\RoleClaimMap.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\RoleClaimMap.cs",
+              "RelativeToolTip": "..\\PMS.DataLayer\\Mapping\\RoleClaimMap.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T10:06:17.725Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "IProjectService.cs",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Services\\Abstract\\IProjectService.cs",
-              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\Services\\Abstract\\IProjectService.cs",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Services\\Abstract\\IProjectService.cs",
-              "RelativeToolTip": "..\\PMS.ServiceLayer\\Services\\Abstract\\IProjectService.cs",
+              "Title": "RoleMap.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\RoleMap.cs",
+              "RelativeDocumentMoniker": "..\\PMS.DataLayer\\Mapping\\RoleMap.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Mapping\\RoleMap.cs",
+              "RelativeToolTip": "..\\PMS.DataLayer\\Mapping\\RoleMap.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T11:31:02.901Z",
+              "WhenOpened": "2024-05-03T10:06:03.848Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ServiceLayerExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Extensions\\ServiceLayerExtensions.cs",
-              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\Extensions\\ServiceLayerExtensions.cs",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Extensions\\ServiceLayerExtensions.cs",
-              "RelativeToolTip": "..\\PMS.ServiceLayer\\Extensions\\ServiceLayerExtensions.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "DocumentIndex": 12,
+              "Title": "AppUserClaim.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUserClaim.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\AppUserClaim.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUserClaim.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\AppUserClaim.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T11:18:57.896Z",
+              "WhenOpened": "2024-05-02T09:30:01.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AppUserLogin.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUserLogin.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\AppUserLogin.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUserLogin.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\AppUserLogin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:30:20.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AppUserRole.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUserRole.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\AppUserRole.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUserRole.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\AppUserRole.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:31:22.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppUserToken.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUserToken.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\AppUserToken.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUserToken.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\AppUserToken.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:30:36.625Z",
               "EditorCaption": ""
             },
             {
@@ -184,7 +274,189 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
+              "Title": "PMSDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Context\\PMSDbContext.cs",
+              "RelativeDocumentMoniker": "..\\PMS.DataLayer\\Context\\PMSDbContext.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.DataLayer\\Context\\PMSDbContext.cs",
+              "RelativeToolTip": "..\\PMS.DataLayer\\Context\\PMSDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:31:29.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AppRole.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppRole.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\AppRole.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppRole.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\AppRole.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:29:48.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppRoleClaim.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppRoleClaim.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\AppRoleClaim.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppRoleClaim.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\AppRoleClaim.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:31:02.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUser.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\AppUser.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\AppUser.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\AppUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:29:34.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ProjectManager.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\ProjectManager.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\ProjectManager.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\ProjectManager.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\ProjectManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T11:28:10.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProjectUpdate.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\ProjectUpdate.cs",
+              "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\Concrete\\ProjectUpdate.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\Concrete\\ProjectUpdate.cs",
+              "RelativeToolTip": "..\\PMS-EntityLayer\\Concrete\\ProjectUpdate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T11:27:17.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-01T11:38:16.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "PMS.ServiceLayer.csproj",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
+              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
+              "RelativeToolTip": "..\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-01T11:37:46.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-01T11:37:36.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ProjectService.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Services\\Concrete\\ProjectService.cs",
+              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\Services\\Concrete\\ProjectService.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Services\\Concrete\\ProjectService.cs",
+              "RelativeToolTip": "..\\PMS.ServiceLayer\\Services\\Concrete\\ProjectService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T11:31:34.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ProjectProfile.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\AutoMapper\\Projects\\ProjectProfile.cs",
+              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\AutoMapper\\Projects\\ProjectProfile.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\AutoMapper\\Projects\\ProjectProfile.cs",
+              "RelativeToolTip": "..\\PMS.ServiceLayer\\AutoMapper\\Projects\\ProjectProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T11:13:26.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-01T11:38:21.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IProjectService.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Services\\Abstract\\IProjectService.cs",
+              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\Services\\Abstract\\IProjectService.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Services\\Abstract\\IProjectService.cs",
+              "RelativeToolTip": "..\\PMS.ServiceLayer\\Services\\Abstract\\IProjectService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T11:31:02.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ServiceLayerExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Extensions\\ServiceLayerExtensions.cs",
+              "RelativeDocumentMoniker": "..\\PMS.ServiceLayer\\Extensions\\ServiceLayerExtensions.cs",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\Extensions\\ServiceLayerExtensions.cs",
+              "RelativeToolTip": "..\\PMS.ServiceLayer\\Extensions\\ServiceLayerExtensions.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T11:18:57.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
               "Title": "ProjectDto.cs",
               "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\DTOs\\Projects\\ProjectDto.cs",
               "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\DTOs\\Projects\\ProjectDto.cs",

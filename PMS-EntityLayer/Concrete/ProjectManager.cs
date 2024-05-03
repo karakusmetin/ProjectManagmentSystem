@@ -1,4 +1,5 @@
 ﻿using PMS.CoreLayer.Entities;
+using PMS_EntityLayer.Concrete;
 using System;
 
 namespace PMS.EntityLayer.Concrete
@@ -7,7 +8,7 @@ namespace PMS.EntityLayer.Concrete
 	{
 		public bool EditerOrNot { get; set; }
 		public Guid UserId { get; set; }
-		public User User { get; set; }
+		public AppUser AppUser { get; set; }
 
        
     }

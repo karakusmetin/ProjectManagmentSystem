@@ -1,11 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PMS.EntityLayer.Concrete;
+using PMS_EntityLayer.Concrete;
+using System;
 using System.Reflection;
 
 
 namespace PMS.DataLayer.Context
 {
-	public class PMSDbContext : DbContext
+	public class PMSDbContext : IdentityDbContext<AppUser,AppRole,Guid,AppUserClaim,AppUserRole,AppUserLogin,AppRoleClaim,AppUserToken>
 	{
 		protected PMSDbContext()
 		{
@@ -18,7 +21,6 @@ namespace PMS.DataLayer.Context
 		public DbSet<ProjectCategory> ProjectCategories { get; set; }
 		public DbSet<ProjectManager> ProjectManagers { get; set; }
 		public DbSet<ProjectUpdate> ProjectUpdates { get; set; }
-		public DbSet<User> Users { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
