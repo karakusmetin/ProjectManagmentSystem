@@ -13,6 +13,7 @@ namespace PMS.DataLayer.Context
 		protected PMSDbContext()
 		{
 		}
+
 		public PMSDbContext(DbContextOptions<PMSDbContext> options) : base(options)
 		{
 		}
