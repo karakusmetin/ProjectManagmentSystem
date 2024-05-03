@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PMS_EntityLayer.Concrete;
+using System;
 
 namespace PMS.DataLayer.Mapping
 {
@@ -32,6 +33,30 @@ namespace PMS.DataLayer.Mapping
 
             // Each Role can have many associated RoleClaims
             builder.HasMany<AppRoleClaim>().WithOne().HasForeignKey(rc => rc.RoleId).IsRequired();
+
+            builder.HasData(new AppRole
+            {
+                Id = Guid.Parse("D4321AFC-0323-4E31-B4B8-D07CE1EFC8ED"),
+                Name = "Superadmin",
+                NormalizedName = "SUPERADMIN",
+                ConcurrencyStamp = Guid.NewGuid().ToString()
+            },
+            new AppRole
+            {
+                Id = Guid.Parse("E8EAFB80-8FDD-4FAA-9395-ECE1889D1636"),
+                Name = "Admin",
+                NormalizedName = "ADMIN",
+                ConcurrencyStamp = Guid.NewGuid().ToString()
+            },
+            new AppRole
+            {
+
+                Id = Guid.Parse("FE91ECF3-F094-477E-B956-3D895529AB32"),
+                Name = "User",
+                NormalizedName = "USER",
+                ConcurrencyStamp = Guid.NewGuid().ToString()
+            }
+            );
         }
     }
 }
