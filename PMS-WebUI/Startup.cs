@@ -1,10 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PMS.DataLayer.Context;
 using PMS.DataLayer.Extensions;
 using PMS.ServiceLayer.Extensions;
+using PMS_EntityLayer.Concrete;
+using System;
 
 namespace PMS_WebUI
 {
@@ -24,7 +29,34 @@ namespace PMS_WebUI
 			services.LoadDataLayerExtension(Configuration);
 			services.LoadServiceLayerExtension();
 
+			services.AddSession();//Cookie
 
+			services.AddIdentity<AppUser, AppRole>(opt =>
+			{
+				opt.Password.RequireNonAlphanumeric = false;
+				opt.Password.RequireLowercase = false;
+				opt.Password.RequireUppercase = false;
+			})
+				.AddRoleManager<RoleManager<AppRole>>()
+				.AddEntityFrameworkStores<PMSDbContext>()
+				.AddDefaultTokenProviders();
+
+			services.ConfigureApplicationCookie(config => //Cookie
+			{
+				config.LoginPath = new PathString("/Admin/Auth/Login");
+				config.LogoutPath = new PathString("/Admin/Auth/Logout");
+				config.Cookie = new CookieBuilder
+				{
+					Name = "ProjectMenagmentSystem",
+					HttpOnly = true,
+					SameSite = SameSiteMode.Strict,
+					SecurePolicy = CookieSecurePolicy.SameAsRequest // Site canlýya çýkýnca Always olmalý
+				};
+
+				config.SlidingExpiration = true;
+				config.ExpireTimeSpan = TimeSpan.FromDays(7);//Login kalma süresi
+				config.AccessDeniedPath = new PathString("/Admin/Auth/AccessDenied");
+			});
         }
 
 		
@@ -45,9 +77,12 @@ namespace PMS_WebUI
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseRouting();
+            app.UseSession();//Cookie
+            app.UseRouting();
 
-			app.UseAuthorization();
+			app.UseAuthentication();//UseAuthorization her zaman daha altta kalmalýdýr.
+
+            app.UseAuthorization();
 
             
             app.UseEndpoints(endpoints =>
