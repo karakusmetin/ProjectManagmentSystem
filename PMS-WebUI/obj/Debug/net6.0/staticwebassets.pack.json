@@ -1,8 +1,20 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\index.html",
-      "PackagePath": "staticwebassets\\AdminPanel\\index.html"
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\Css\\page-auth.css",
+      "PackagePath": "staticwebassets\\AdminPanel\\Css\\page-auth.css"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\Css\\style.css",
+      "PackagePath": "staticwebassets\\AdminPanel\\Css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\Html\\auth-login-basic.html",
+      "PackagePath": "staticwebassets\\AdminPanel\\Html\\auth-login-basic.html"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\Html\\index.html",
+      "PackagePath": "staticwebassets\\AdminPanel\\Html\\index.html"
     },
     {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\package-lock.json",
@@ -15,10 +27,6 @@
     {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\script.js",
       "PackagePath": "staticwebassets\\AdminPanel\\script.js"
-    },
-    {
-      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\style.css",
-      "PackagePath": "staticwebassets\\AdminPanel\\style.css"
     },
     {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\site.css",

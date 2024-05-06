@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PMS.ServiceLayer.Services.Abstract;
 using System.Threading.Tasks;
 
 namespace PMS_WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class HomeController : Controller
     {
         IProjectService projectService;
