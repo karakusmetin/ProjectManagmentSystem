@@ -18,6 +18,9 @@ namespace PMS.DataLayer.Context
 		{
 		}
 
+		public DbSet<Image> Images { get; set; }
+		public DbSet<Task> Tasks { get; set; }
+		public DbSet<UserProject> UserProjects { get; set; }
 		public DbSet<Project> Projects { get; set; }
 		public DbSet<ProjectCategory> ProjectCategories { get; set; }
 		public DbSet<ProjectManager> ProjectManagers { get; set; }

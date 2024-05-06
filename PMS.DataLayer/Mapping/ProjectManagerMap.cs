@@ -15,9 +15,9 @@ namespace PMS.DataLayer.Mapping
 				InsertedBy = "Admin",
 				InsertDate = DateTime.Now,
 				IsActive = true,
-				UserId = Guid.Parse("9B9217BB-BA94-4C2F-B57E-2A4450C60F07")
+				UserId = Guid.Parse("8D707ABB-7379-421D-A35A-500B03F55AC7")
 
-			});
+            });
 		}
 	}
 }

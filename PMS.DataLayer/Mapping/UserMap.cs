@@ -57,6 +57,7 @@ namespace PMS.DataLayer.Mapping
                 LastName = "Karakuş",
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
+                ImageId = Guid.Parse("E8CDA3AC-B6B3-48F7-8EE1-9EF2CA415AD5"),
                 SecurityStamp = Guid.NewGuid().ToString()
             };
             superadmin.PasswordHash = CreatePasswordHash(superadmin, "123456");
@@ -73,11 +74,47 @@ namespace PMS.DataLayer.Mapping
                 LastName = "User",
                 PhoneNumberConfirmed = false,
                 EmailConfirmed = false,
+                ImageId = Guid.Parse("E8CDA3AC-B6B3-48F7-8EE1-9EF2CA415AD5"),
                 SecurityStamp = Guid.NewGuid().ToString()
             };
             admin.PasswordHash = CreatePasswordHash(admin, "123456");
 
-            builder.HasData(superadmin, admin);
+            var user1 = new AppUser
+            {
+                Id = Guid.Parse("10B0EB46-8482-415C-B5AC-BD6762D966FD"),
+                UserName = "yasin@gmail.com",
+                NormalizedUserName = "YASIN@GMAIL.COM",
+                Email = "yasin@gmail.com",
+                NormalizedEmail = "YASIN@GMAIL.COM",
+                PhoneNumber = "+905435555588",
+                FirstName = "Yasin",
+                LastName = "Ceyhun",
+                PhoneNumberConfirmed = false,
+                EmailConfirmed = false,
+                ImageId = Guid.Parse("E8CDA3AC-B6B3-48F7-8EE1-9EF2CA415AD5"),
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+            user1.PasswordHash = CreatePasswordHash(user1, "123456");
+
+            var user2 = new AppUser
+            {
+                Id = Guid.Parse("70F07528-20C1-46EB-A9B2-C5CD7007C0F2"),
+                UserName = "samet@gmail.com",
+                NormalizedUserName = "SAMET@GMAIL.COM",
+                Email = "samet@gmail.com",
+                NormalizedEmail = "SAMET@GMAIL.COM",
+                PhoneNumber = "+905438888888",
+                FirstName = "Samet",
+                LastName = "Yılmaz",
+                PhoneNumberConfirmed = false,
+                ImageId = Guid.Parse("E8CDA3AC-B6B3-48F7-8EE1-9EF2CA415AD5"),
+                EmailConfirmed = false,
+                SecurityStamp = Guid.NewGuid().ToString()
+
+            };
+            user2.PasswordHash = CreatePasswordHash(user2, "123456");
+
+            builder.HasData(superadmin, admin,user1,user2);
         }
 
         private string CreatePasswordHash(AppUser user,string password)

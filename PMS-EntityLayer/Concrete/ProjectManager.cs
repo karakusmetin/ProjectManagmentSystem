@@ -1,6 +1,7 @@
 ﻿using PMS.CoreLayer.Entities;
 using PMS_EntityLayer.Concrete;
 using System;
+using System.Collections.Generic;
 
 namespace PMS.EntityLayer.Concrete
 {
@@ -9,7 +10,6 @@ namespace PMS.EntityLayer.Concrete
 		public bool EditerOrNot { get; set; }
 		public Guid UserId { get; set; }
 		public AppUser AppUser { get; set; }
-
        
     }
 }
