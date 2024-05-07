@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-webui\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|solutionrelative:areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-webui\\areas\\admin\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|solutionrelative:areas\\admin\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-webui\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|solutionrelative:areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-webui\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|solutionrelative:areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-webui\\wwwroot\\adminpanel\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|solutionrelative:wwwroot\\adminpanel\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-webui\\areas\\admin\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|solutionrelative:areas\\admin\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-webui\\areas\\admin\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{561B6645-F0F4-464E-BA91-B127E49F45AD}|PMS.WebUI.csproj|solutionrelative:areas\\admin\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6374E0E5-3DC2-4E14-B186-70D3CAF42A47}|..\\PMS-EntityLayer\\PMS.EntityLayer.csproj|c:\\users\\fener\\desktop\\deeneme\\pms-entitylayer\\dtos\\users\\userlogindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -33,19 +37,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-07T07:53:02.462Z",
+              "DocumentIndex": 2,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\Css\\style.css",
+              "RelativeDocumentMoniker": "wwwroot\\AdminPanel\\Css\\style.css",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\Css\\style.css",
+              "RelativeToolTip": "wwwroot\\AdminPanel\\Css\\style.css",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAEAAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-07T08:33:28.654Z",
               "EditorCaption": ""
             },
             {
@@ -70,20 +74,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-07T07:53:02.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Areas\\Admin\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Areas\\Admin\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Areas\\Admin\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADYAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-06T19:25:16.339Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Areas\\Admin\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\_ViewImports.cshtml",
@@ -91,8 +108,7 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\_ViewImports.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-06T19:22:10.69Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-06T19:22:10.69Z"
             },
             {
               "$type": "Document",
@@ -109,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UserLoginDto.cs",
               "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-EntityLayer\\DTOs\\Users\\UserLoginDto.cs",
               "RelativeDocumentMoniker": "..\\PMS-EntityLayer\\DTOs\\Users\\UserLoginDto.cs",
@@ -117,12 +133,11 @@
               "RelativeToolTip": "..\\PMS-EntityLayer\\DTOs\\Users\\UserLoginDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T19:02:22.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-06T19:02:22.905Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\Areas\\Admin\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\AuthController.cs",
@@ -130,8 +145,7 @@
               "RelativeToolTip": "Areas\\Admin\\Controllers\\AuthController.cs",
               "ViewState": "AQIAABwAAAAAAAAAAAAcwDwAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T17:17:59.175Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-06T17:17:59.175Z"
             }
           ]
         }
