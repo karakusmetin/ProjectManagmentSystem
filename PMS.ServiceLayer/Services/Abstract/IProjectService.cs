@@ -6,6 +6,8 @@ namespace PMS.ServiceLayer.Services.Abstract
 {
 	public interface IProjectService
 	{
-		Task<List<ProjectDto>> GetListArticleAsync();
+		Task<List<ProjectDto>> GetListProjectsWithNonDeletedAsync();
+
+		Task CreateProjectAsync(ProjectAddDto projectAddDto);
 	}
 }

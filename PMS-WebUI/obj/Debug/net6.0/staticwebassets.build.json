@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lPnli1hE3TCWmyuGp5AT87Tql/NAo9k3z7dzFM/VxNI=",
+  "Hash": "Lm03hQbQxBIlwQIxhNxpa5LkfPNz3h454BorVdGruEs=",
   "Source": "PMS.WebUI",
   "BasePath": "_content/PMS.WebUI",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectIndex.js",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "js/projectIndex.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\projectIndex.js"
     },
     {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\site.js",

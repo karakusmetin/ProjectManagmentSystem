@@ -17,7 +17,7 @@ namespace PMS.EntityLayer.Concrete
 		public PriorityLevel Priority { get; set; }
         
 		public Guid ProjectManagerId { get; set; }
-		public ProjectManager ProjectManager { get; set; }
+        public ProjectManager ProjectManager { get; set; }
 
         public Guid? ImageId { get; set; }
         public Image Image { get; set; }

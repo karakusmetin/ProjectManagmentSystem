@@ -52,11 +52,6 @@ body {
             background-color: #343a40; /* Navbar dropdown menü üzerine gelindiðinde arka plan rengi */
         }
 
-.admin-container {
-    padding: 20px;
-    margin-left: 220px; /* Yan menü geniþliði + yan menü ile arasýndaki boþluk */
-}
-
 .admin-sidebar {
     background-color: #3e2481; /* Yönetici paneli yan menü arka plan rengi */
     color: #fff; /* Yönetici paneli yan menü metin rengi */
@@ -104,6 +99,14 @@ body {
     border-radius: 10px;
     padding: 20px;
     min-height: calc(100vh - 60px); /* Navbar ve footer yüksekliði hariç sayfa yüksekliði */
+}
+
+.admin-container{
+    margin-left: 400px;
+    margin-right: 200px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    scroll-margin-bottom: 50px;
 }
 
 .footer {

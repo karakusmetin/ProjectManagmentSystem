@@ -21,7 +21,7 @@ namespace PMS_WebUI.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			var projects = await projectService.GetListArticleAsync();
+			var projects = await projectService.GetListProjectsWithNonDeletedAsync();
 			return View(projects);
 		}
 
