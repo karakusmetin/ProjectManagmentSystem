@@ -63,5 +63,11 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             return View();
 
         }
+        public async Task<IActionResult> Delete(Guid projectId)
+        {
+            await projectService.SafeDeleteProjectAsync(projectId);
+
+            return RedirectToAction("Index", "Project", new { Area = "Admin" });
+        }
     }
 }

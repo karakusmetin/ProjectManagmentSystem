@@ -69,5 +69,15 @@ namespace PMS.ServiceLayer.Services.Concrete
             await unitOfWork.SaveAsnyc();
         }
 
+        public async Task SafeDeleteProjectAsync(Guid projectId)
+        {
+            var project = await unitOfWork.GetRepository<Project>().GetByGuidAsync(projectId);
+
+            project.IsActive = false;
+            project.DeletedDate = DateTime.Now;
+
+            await unitOfWork.GetRepository<Project>().UpdateAsnyc(project);
+            await unitOfWork.SaveAsnyc();
+        }
 	}
 }

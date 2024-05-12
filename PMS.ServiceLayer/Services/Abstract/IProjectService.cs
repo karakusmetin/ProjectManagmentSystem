@@ -15,5 +15,7 @@ namespace PMS.ServiceLayer.Services.Abstract
 
 		Task UpdateProjectAsync(ProjectUpdateDto projectUpdateDto);
 
+		Task SafeDeleteProjectAsync(Guid projectId);
+
     }
 }
