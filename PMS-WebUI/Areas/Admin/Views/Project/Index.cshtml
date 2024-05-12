@@ -48,10 +48,14 @@
                                 <td>@project.EndDate</td>
                                 <td>@project.InsertedBy</td>
                                 <td>@project.Priority</td>
-                                <td>@(project.ProjectUpdate != null ? project.ProjectUpdate.UpdateDate : "---")</td>
-                                <td>@(project.ProjectUpdate != null ? project.ProjectUpdate.Status : "---")</td>
-                                <td>@(project.IsActive ? "Aktif Değil" : "Aktif")</td>
                                 <td></td>
+                                <td></td>
+                                <td>@(project.IsActive ? "Aktif" : "Aktif Değil")</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" data-id="@project.Id" asp-area="Admin" asp-controller="Project" asp-action="Update" asp-route-projectId="@project.Id"><i class="bx bxs-edit"></i></a>
+                                    <a class="btn btn-danger btn-sm" data-id="@project.Id" asp-area="Admin" asp-controller="Project" asp-action="Delete" asp-route-projectId="@project.Id"><i class="bx bx-minus-circle"></i></a>
+
+                                </td>
                             </tr>
                         }
                     </tbody>
@@ -153,57 +157,6 @@
 
 </style>
 
-
-@* <style>
-    /* Tablo başlığı */
-    .card-header {
-        background-color: #3e2481; /* Tema rengi */
-        color: #fff; /* Başlık metni rengi */
-        border-bottom: 1px solid #3e2481; /* Alt çizgi */
-        font-weight: bold; /* Kalın font */
-    }
-
-    /* Tablo satırları */
-    #projectTable tbody tr:hover {
-        background-color: #f0f0f0; /* Fare üzerine geldiğinde arka plan rengi */
-    }
-
-    /* Tablo içeriği hücreleri */
-    #projectTable tbody td {
-        vertical-align: middle; /* İçeriği dikey olarak hizalar */
-        color: #333; /* Metin rengi */
-        font-size: 14px; /* Yazı boyutu */
-        font-family: Arial, sans-serif; /* Yazı tipi */
-        border-top: 1px solid #dee2e6; /* Üst çizgi */
-    }
-
-    /* Tablo footer */
-    .card-footer {
-        background-color: #3e2481; /* Tema rengi */
-        color: #fff; /* Footer metni rengi */
-        border-top: 1px solid #3e2481; /* Üst çizgi */
-    }
-
-    /* Tablo satırlarının çift ve tek renkleri */
-    #projectTable tbody tr:nth-child(even) {
-        background-color: #f8f9fa; /* Çift satırların arka plan rengi */
-    }
-
-    #projectTable tbody tr:nth-child(odd) {
-        background-color: #fff; /* Tek satırların arka plan rengi */
-    }
-
-    /* Tablo başlık ve footer yazı tipi büyüklüğü */
-    .card-header, .card-footer {
-        font-size: 16px;
-    }
-
-    /* Tablo hücrelerinin içeriğinin ortalanması */
-    #projectTable tbody td {
-        text-align: center;
-    }
-
-</style> *@
 
 
 
