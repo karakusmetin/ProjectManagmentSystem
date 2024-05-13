@@ -11,6 +11,7 @@ namespace PMS.ServiceLayer.AutoMapper.Projects
             CreateMap<ProjectDto, Project>().ReverseMap();
             CreateMap<ProjectUpdateDto, Project>().ReverseMap();
             CreateMap<ProjectUpdateDto, ProjectDto>().ReverseMap();
+            CreateMap<ProjectAddDto, Project>().ReverseMap();
         }
     }
 }

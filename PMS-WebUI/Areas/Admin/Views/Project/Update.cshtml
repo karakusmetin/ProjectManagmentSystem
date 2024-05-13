@@ -14,19 +14,23 @@
                             <div>
                                 <label asp-for="ProjectName" class="form-label">Proje Adı</label>
                                 <input asp-for="ProjectName" type="text" class="form-control mb-2"  placeholder="Proje Adı..." aria-describedby="defaultFormControlHelp">
+                                <span asp-validation-for="ProjectName" class="text-danger"></span>
                             </div>
                             <div>
                                 <label asp-for="Description" for="defaultFormControlInput" class="form-label">Proje Açıklaması</label>
                                 <textarea asp-for="Description" type="text" class="form-control mb-2" style="min-height:100px" placeholder="Proje Açıklaması..." aria-describedby="defaultFormControlHelp"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                             <div>
                                 <label asp-for="Budget" for="defaultFormControlInput" class="form-label">Bütçe</label>
                                 <input asp-for="Budget" class="form-control" type="number" id="html5-number-input">
+                                <span asp-validation-for="Budget" class="text-danger"></span>
                             </div>
                             
                             <div>
                                 <label asp-for="EndDate" for="defaultFormControlInput" class="form-label">Proje Bitiş Tarihi</label>
                                 <input asp-for="EndDate" class="form-control mb-2" type="datetime-local"  id="html5-datetime-local-input">
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
 
                             <div class="mb-3">

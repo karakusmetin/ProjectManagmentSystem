@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "H46scq+j/CFKk4uAmPOZBtbt7p4Yiw+lT3frmFWr+fVN26QNPTWLtc2GvMj5yeO0XZWnvDk8I+sMZ8l9UzGfbA==",
+  "dgSpecHash": "7M+7rZjC7oM49IrJ4gP1YyU/t7Llpej72GI+ZaeEsMJzVhaI0Nw8oouKiG1ngjYAWW8rE71/mK7dLBGRUdpE4w==",
   "success": true,
   "projectFilePath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fener\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\fener\\.nuget\\packages\\fluentvalidation\\11.9.1\\fluentvalidation.11.9.1.nupkg.sha512",
+    "C:\\Users\\fener\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\fener\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.1\\fluentvalidation.dependencyinjectionextensions.11.9.1.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.28\\microsoft.aspnetcore.cryptography.internal.6.0.28.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.28\\microsoft.aspnetcore.cryptography.keyderivation.6.0.28.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.28\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.28.nupkg.sha512",

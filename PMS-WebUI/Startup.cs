@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NToastNotify;
 using PMS.DataLayer.Context;
 using PMS.DataLayer.Extensions;
 using PMS.ServiceLayer.Extensions;
@@ -25,7 +26,15 @@ namespace PMS_WebUI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllersWithViews().AddRazorRuntimeCompilation();
+			services.AddControllersWithViews()
+				.AddNToastNotifyToastr(new ToastrOptions()
+				{
+					PositionClass = ToastPositions.TopRight,
+					TimeOut = 3000
+				})
+				.AddRazorRuntimeCompilation();
+
+
 			services.LoadDataLayerExtension(Configuration);
 			services.LoadServiceLayerExtension();
 
@@ -74,7 +83,9 @@ namespace PMS_WebUI
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
-			app.UseHttpsRedirection();
+
+            app.UseNToastNotify();
+            app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
             app.UseSession();//Cookie

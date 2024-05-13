@@ -13,9 +13,9 @@ namespace PMS.ServiceLayer.Services.Abstract
 
 		Task<ProjectDto> GetProjectWithNonDeletedAsync(Guid projectId);
 
-		Task UpdateProjectAsync(ProjectUpdateDto projectUpdateDto);
+		Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto);
 
-		Task SafeDeleteProjectAsync(Guid projectId);
+        Task<string> SafeDeleteProjectAsync(Guid projectId);
 
     }
 }

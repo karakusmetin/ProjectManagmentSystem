@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using PMS.EntityLayer.Concrete;
-using PMS.EntityLayer.Enums;
+using PMS.ServiceLayer.Extensions;
 using PMS.ServiceLayer.Services.Abstract;
 using PMS_EntityLayer.DTOs.Projects;
+using PMS_WebUI.ResultMessages;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace PMS_WebUI.Areas.Admin.Controllers
@@ -15,11 +17,15 @@ namespace PMS_WebUI.Areas.Admin.Controllers
     {
         private readonly IProjectService projectService;
         private readonly IMapper mapper;
+        private readonly IValidator<Project> validator;
+        private readonly IToastNotification toast;
 
-        public ProjectController(IProjectService projectService,IMapper mapper)
+        public ProjectController(IProjectService projectService,IMapper mapper,IValidator<Project> validator,IToastNotification toast)
         {
             this.projectService = projectService;
             this.mapper = mapper;
+            this.validator = validator;
+            this.toast = toast;
         }
 
         public async Task<IActionResult> Index()
@@ -37,11 +43,21 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(ProjectAddDto projectAddDto)
         {
+            var map = mapper.Map<Project>(projectAddDto);
+            var result = await validator.ValidateAsync(map);
 
-            await projectService.CreateProjectAsync(projectAddDto);
-            RedirectToAction("Index", "Project", new { Area = "Admin" });
-
-            return View();
+            if (result.IsValid)
+            {
+                await projectService.CreateProjectAsync(projectAddDto);
+                toast.AddSuccessToastMessage(Messages.Project.Add(projectAddDto.ProjectName), new ToastrOptions { Title = "Başarılı" });
+                return RedirectToAction("Index", "Project", new { Area = "Admin" });
+            }
+            else
+            {
+                result.AddToModelState(this.ModelState);
+                return View();
+            }
+            
         }
         
         [HttpGet]
@@ -57,15 +73,26 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(ProjectUpdateDto projectUpdateDto)
         {
-            await projectService.UpdateProjectAsync(projectUpdateDto);
-            RedirectToAction("Index", "Project", new { Area = "Admin" });
-
-            return View();
+            var map = mapper.Map<Project>(projectUpdateDto);
+            var result = await validator.ValidateAsync(map);
+            
+            if (result.IsValid)
+            {
+                var projectName = await projectService.UpdateProjectAsync(projectUpdateDto);
+                toast.AddSuccessToastMessage(Messages.Project.Update(projectName), new ToastrOptions() { Title = "İşlem Başarılı" });
+                return RedirectToAction("Index", "Project", new { Area = "Admin" });
+            }
+            else
+            {
+                result.AddToModelState(this.ModelState);
+                return View();
+            }            
 
         }
         public async Task<IActionResult> Delete(Guid projectId)
         {
-            await projectService.SafeDeleteProjectAsync(projectId);
+            var projectName = await projectService.SafeDeleteProjectAsync(projectId);
+            toast.AddWarningToastMessage(Messages.Project.Delete(projectName), new ToastrOptions() { Title = "İşlem Başarılı" });
 
             return RedirectToAction("Index", "Project", new { Area = "Admin" });
         }
