@@ -45,12 +45,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectAdd.js",
+      "PackagePath": "staticwebassets\\js\\projectAdd.js"
+    },
+    {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectIndex.js",
       "PackagePath": "staticwebassets\\js\\projectIndex.js"
     },
     {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\taskIndex.js",
+      "PackagePath": "staticwebassets\\js\\taskIndex.js"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\userIndex.js",
+      "PackagePath": "staticwebassets\\js\\userIndex.js"
     },
     {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\lib\\bootstrap\\LICENSE",

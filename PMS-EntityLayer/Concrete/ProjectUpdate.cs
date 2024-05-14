@@ -17,6 +17,6 @@ namespace PMS.EntityLayer.Concrete
         public DateTime UpdateDate { get; set; } = DateTime.Now;
        
         public UpdateType Type { get; set; }
-        public ProjectUpdateStatus Status { get; set; }
+        public TaskUpdateStatus Status { get; set; }
     }
 }

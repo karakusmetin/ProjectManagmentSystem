@@ -1,0 +1,174 @@
+﻿@model List<TaskDto>
+
+<div class="admin-container">
+    <div class="task-content">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Proje Görev Yönetimi /</span> Görevler</h4>
+
+        <!-- Basic Bootstrap Table -->
+        <div class="card">
+            <h5 class="card-header">Görevler</h5>
+            <div class="table-responsive text-nowrap custom-table">
+
+                <a class="btn btn-success" asp-area="Admin" asp-controller="Task" asp-action="Add">
+                    Görev Ekle <i class="bx bx-plus"></i>
+                </a>
+
+                <table class="table table-bordered" id="taskTable" withd="100%" collspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Görev İsmi</th>
+                            <th>Görev Tanımı</th>
+                            <th>Başlangıç Tarihi</th>
+                            <th>Bitiş Tarihi</th>
+                            <th>Öncelik</th>
+                            <th>Oluşturan</th>
+                            <th>Güncellenme Tarihi</th>
+                            <th>Görev Sahibi</th>
+                            <th>İlerleme Durumu</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Görev İsmi</th>
+                            <th>Görev Tanımı</th>
+                            <th>Başlangıç Tarihi</th>
+                            <th>Bitiş Tarihi</th>
+                            <th>Öncelik</th>
+                            <th>Oluşturan</th>
+                            <th>Güncellenme Tarihi</th>
+                            <th>Görev Sahibi</th>
+                            <th>İlerleme Durumu</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </tfoot>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var task in Model)
+                        {
+                            <tr name="@task.Id">
+                                <td>@task.TaskName</td>
+                                <td>@task.Description</td>
+                                <td>@task.StartDate</td>
+                                <td>@task.EndDate</td>
+                                <td>@task.Priority</td>
+                                <td>@task.InsertedBy</td>
+                                <td></td>
+                                <td></td>
+                                <td>@(task.IsActive ? "Aktif" : "Aktif Değil")</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" data-id="@task.Id" asp-area="Admin" asp-controller="Task" asp-action="Update" asp-route-taskId="@task.Id"><i class="bx bxs-edit"></i></a>
+                                    <a class="btn btn-danger btn-sm" data-id="@task.Id" asp-area="Admin" asp-controller="Task" asp-action="Delete" asp-route-taskId="@task.Id"><i class="bx bx-minus-circle"></i></a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Tablo başlığı */
+    .card-header {
+        background-color: #3e2481 !important; /* Tema rengi */
+        color: #fff !important; /* Başlık metni rengi */
+        border-bottom: 1px solid #3e2481 !important; /* Alt çizgi */
+        font-weight: bold !important; /* Kalın font */
+    }
+
+    /* Tablo satırları */
+    #projectTable tbody tr:hover {
+        background-color: #f0f0f0 !important; /* Fare üzerine geldiğinde arka plan rengi */
+    }
+
+    /* Tablo içeriği hücreleri */
+    #projectTable tbody td {
+        vertical-align: middle; /* İçeriği dikey olarak hizalar */
+        color: #333 !important; /* Metin rengi */
+        font-size: 14px !important; /* Yazı boyutu */
+        font-family: Arial, sans-serif !important; /* Yazı tipi */
+        border-top: 1px solid #dee2e6 !important; /* Üst çizgi */
+    }
+
+    /* Tablo footer */
+    .card-footer {
+        background-color: #3e2481; /* Tema rengi */
+        color: #fff; /* Footer metni rengi */
+        border-top: 1px solid #3e2481 /* Üst çizgi */
+    }
+
+    /* Tablo satırlarının çift ve tek renkleri */
+    #projectTable tbody tr:nth-child(even) {
+        background-color: #f8f9fa; /* Çift satırların arka plan rengi */
+    }
+
+    #projectTable tbody tr:nth-child(odd) {
+        background-color: #fff; /* Tek satırların arka plan rengi */
+    }
+
+    /* Tablo başlık ve footer yazı tipi büyüklüğü */
+    .card-header, .card-footer {
+        font-size: 16px !important;
+    }
+
+    /* Tablo hücrelerinin içeriğinin ortalanması */
+    #projectTable tbody td {
+        text-align: center;
+    }
+
+    /* Tablo sütunlarının genişlikleri */
+    #projectTable th {
+        text-align: center !important; /* Sütun başlıklarını ortala */
+    }
+
+    .dataTables_info, .dataTables_paginate {
+        font-size: 14px !important; /* Yazı boyutu */
+        margin-left: 15px !important;
+        margin-bottom: 10px !important;
+        color: #333 !important; /* Yazı rengi */
+        font-family: Arial, sans-serif; /* Yazı tipi */
+    }
+
+    .dataTables_length, .dataTables_paginate {
+        font-size: 14px !important; /* Yazı boyutu */
+        margin-left: 15px !important;
+        margin-top: 10px !important;
+        color: #333 !important; /* Yazı rengi */
+        font-family: Arial, sans-serif; /* Yazı tipi */
+    }
+
+    .dataTables_filter, .dataTables_paginate {
+        font-size: 14px !important; /* Yazı boyutu */
+        margin-left: 15px !important;
+        margin-top: 10px !important;
+        margin-right: 10px !important;
+        color: #333 !important; /* Yazı rengi */
+        font-family: Arial, sans-serif; /* Yazı tipi */
+    }
+
+    /* Tablo sayfalama butonları */
+    .paginate_button {
+        font-size: 14px !important; /* Yazı boyutu */
+        color: #333 !important; /* Yazı rengi */
+        font-family: Arial, sans-serif !important; /* Yazı tipi */
+    }
+
+        /* Tablo sayfalama butonlarının aktif durumu */
+        .paginate_button.active {
+            background-color: #3e2481 !important; /* Tema rengi */
+            color: #fff !important; /* Yazı rengi */
+        }
+
+</style>
+
+
+
+
+
+
+
+@section Scripts {
+    <script src="~/js/taskIndex.js" type="application/ecmascript"></script>
+}

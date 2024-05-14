@@ -1,6 +1,6 @@
 ﻿namespace PMS.EntityLayer.Enums
 {
-	public enum ProjectUpdateStatus
+	public enum TaskUpdateStatus
 	{
 		ToDo, 
 		InProgress, 

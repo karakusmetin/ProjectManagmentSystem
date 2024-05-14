@@ -17,5 +17,21 @@
                 return $"{projectTitle} başlıklı proje başarı ile silindi";
             }
         }
+
+        public static class Task
+        {
+            public static string Add(string taskName)
+            {
+                return $"{taskName} başlıklı görev başarı ile eklendi";
+            }
+            public static string Update(string taskName)
+            {
+                return $"{taskName} başlıklı task başarı ile düzenlendi";
+            }
+            public static string Delete(string taskName)
+            {
+                return $"{taskName} başlıklı task başarı ile silindi";
+            }
+        }
     }
 }

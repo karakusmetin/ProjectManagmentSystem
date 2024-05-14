@@ -23,7 +23,7 @@ namespace PMS.DataLayer.Mapping
 				UpdateDate=DateTime.Now,
 				Content="ExampleString",
 				Type= EntityLayer.Enums.UpdateType.Progress,
-				Status= EntityLayer.Enums.ProjectUpdateStatus.InProgress
+				Status= EntityLayer.Enums.TaskUpdateStatus.InProgress
 
 
 			},new ProjectUpdate
@@ -37,7 +37,7 @@ namespace PMS.DataLayer.Mapping
 				UpdateDate = DateTime.Now,
 				Content = "ExampleString2",
 				Type = EntityLayer.Enums.UpdateType.Progress,
-				Status = EntityLayer.Enums.ProjectUpdateStatus.InProgress
+				Status = EntityLayer.Enums.TaskUpdateStatus.InProgress
 
 
 			});

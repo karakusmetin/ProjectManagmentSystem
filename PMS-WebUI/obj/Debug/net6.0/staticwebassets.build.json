@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "V8PJjfnW7eFILhVNXElgamua41BXTjGetixU+ZQWLuA=",
+  "Hash": "O90AcMqAZ7PUAZp3RUkJ7YKGW3OVcZuIZuR0hXBrwxc=",
   "Source": "PMS.WebUI",
   "BasePath": "_content/PMS.WebUI",
   "Mode": "Default",
@@ -238,6 +238,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectAdd.js",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "js/projectAdd.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\projectAdd.js"
+    },
+    {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectIndex.js",
       "SourceId": "PMS.WebUI",
       "SourceType": "Discovered",
@@ -270,6 +287,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\taskIndex.js",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "js/taskIndex.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\taskIndex.js"
+    },
+    {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\userIndex.js",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "js/userIndex.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\userIndex.js"
     },
     {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

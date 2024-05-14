@@ -50,7 +50,7 @@
                 <a asp-area="Admin" asp-controller="Project" asp-action="Index" class="nav-link active"><i class='bx bx-spreadsheet'></i> Proje Yönetimi</a>
             </li>
             <li class="nav-item">
-                <a asp-area="Admin" asp-controller="SocialMedia" asp-action="Index" class="nav-link active"><i class='bx bxl-meta'></i> Medya Yönetimi</a>
+                <a asp-area="Admin" asp-controller="Task" asp-action="Index" class="nav-link active"><i class='bx bx-task'></i> Görev Yönetimi</a>
             </li>
 
             <li class="nav-item">
@@ -99,7 +99,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https:buttons.min.js"></script>
 
     @await Component.InvokeAsync("NToastNotify");
     @await RenderSectionAsync("Scripts",false);

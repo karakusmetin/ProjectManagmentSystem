@@ -8,6 +8,7 @@ using PMS.ServiceLayer.Services.Abstract;
 using PMS_EntityLayer.DTOs.Projects;
 using PMS_WebUI.ResultMessages;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PMS_WebUI.Areas.Admin.Controllers
@@ -59,7 +60,27 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             }
             
         }
-        
+
+        [HttpPost]
+        public async Task<IActionResult> AddWithAjax([FromBody] ProjectAddDto projectAddDto)
+        {
+            var map = mapper.Map<Project>(projectAddDto);
+            var result = await validator.ValidateAsync(map);
+            
+            if (result.IsValid)
+            {
+                await projectService.CreateProjectAsync(projectAddDto);
+                toast.AddSuccessToastMessage(Messages.Project.Add(projectAddDto.ProjectName), new ToastrOptions { Title = "Başarılı" });
+                return Json(Messages.Project.Add(projectAddDto.ProjectName));
+            }
+            else
+            {
+                toast.AddErrorToastMessage(result.Errors.First().ErrorMessage, new ToastrOptions { Title = "Başarısız" });
+                return Json(result.Errors.First().ErrorMessage);
+            }
+
+        }
+
         [HttpGet]
         public async Task<IActionResult> Update(Guid projectId)
         {
