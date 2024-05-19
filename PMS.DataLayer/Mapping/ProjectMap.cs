@@ -5,7 +5,6 @@ using PMS.EntityLayer.Concrete;
 using PMS_EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Runtime.Intrinsics.X86;
 
 namespace PMS.DataLayer.Mapping
 {

@@ -8,7 +8,6 @@ using PMS_EntityLayer.DTOs.Projects;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace PMS.ServiceLayer.Services.Concrete
@@ -71,7 +70,7 @@ namespace PMS.ServiceLayer.Services.Concrete
 
 
             return map;
-        }
+        } 
 
         public async Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto)
         {

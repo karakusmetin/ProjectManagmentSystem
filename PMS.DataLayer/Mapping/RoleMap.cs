@@ -5,7 +5,7 @@ using System;
 
 namespace PMS.DataLayer.Mapping
 {
-    internal class RoleMap : IEntityTypeConfiguration<AppRole>
+    public class RoleMap : IEntityTypeConfiguration<AppRole>
     {
         public void Configure(EntityTypeBuilder<AppRole> builder)
         {

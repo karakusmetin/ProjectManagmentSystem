@@ -33,5 +33,20 @@
                 return $"{taskName} başlıklı task başarı ile silindi";
             }
         }
+        public static class User
+        {
+            public static string Add(string userEmail)
+            {
+                return $"{userEmail} email adresli kullanıcı başarı ile eklendi";
+            }
+            public static string Update(string userEmail)
+            {
+                return $"{userEmail} email adresli kullanıcı başarı ile düzenlendi";
+            }
+            public static string Delete(string userEmail)
+            {
+                return $"{userEmail} email adresli kullanıcı başarı ile silindi";
+            }
+        }
     }
 }

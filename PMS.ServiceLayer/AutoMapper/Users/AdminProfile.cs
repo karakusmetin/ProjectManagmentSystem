@@ -9,6 +9,7 @@ namespace PMS.ServiceLayer.AutoMapper.Users
         public AdminProfile()
         {
             CreateMap<UserDto,AppUser>().ReverseMap();
+            CreateMap<UserAddDto,AppUser>().ReverseMap();
         }
     }
 }
