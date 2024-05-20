@@ -33,9 +33,9 @@
                             <th>Soyisim</th>
                             <th>Email</th>
                             <th>Telefon Numarası</th>
+                            <th>Rol</th>
                             <th>Email Doğrulaması</th>
                             <th>Giriş Hatası</th>
-                            <th>Rol</th>
                             <th>İşlemler</th>
                         </tr>
                     </tfoot>
@@ -51,8 +51,8 @@
                                 <td>@(user.EmailConfirmed ? "Doğrulanmış" :"Doğrulanmamış")</td>
                                 <td>@user.AccessFailedCount</td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm" data-id="@user.Id" asp-area="Admin" asp-controller="Task" asp-action="Update" asp-route-taskId="@user.Id"><i class="bx bxs-edit"></i></a>
-                                    <a class="btn btn-danger btn-sm" data-id="@user.Id" asp-area="Admin" asp-controller="Task" asp-action="Delete" asp-route-taskId="@user.Id"><i class="bx bx-minus-circle"></i></a>
+                                    <a class="btn btn-primary btn-sm" data-id="@user.Id" asp-area="Admin" asp-controller="User" asp-action="Update" asp-route-userId="@user.Id"><i class="bx bxs-edit"></i></a>
+                                    <a class="btn btn-danger btn-sm" data-id="@user.Id" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-userId="@user.Id"><i class="bx bx-minus-circle"></i></a>
 
                                 </td>
                             </tr>
