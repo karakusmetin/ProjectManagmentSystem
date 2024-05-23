@@ -26,9 +26,16 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             this.mapper = mapper;
             this.toastNotification = toastNotification;
         }
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var tasks = await taskService.GetAllTasksNonDeleted();
+            var tasks = await taskService.GetAllTasksNonDeletedAsync();
+            return View(tasks);
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeletedTask()
+        {
+            var tasks = await taskService.GetAllTasksDeletedAsync();
             return View(tasks);
         }
         [HttpGet]
@@ -61,7 +68,7 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(Guid taskId)
         {
-            var task = await taskService.GetTaskByGuid(taskId);
+            var task = await taskService.GetTaskByGuidAsync(taskId);
             return View(task);
         }
 
@@ -88,6 +95,14 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         {
             var taskName = await taskService.SafeDeleteTaskAsync(taskId);
             toastNotification.AddWarningToastMessage(Messages.Task.Delete(taskName), new ToastrOptions() { Title = "İşlem Başarılı" });
+
+            return RedirectToAction("Index", "Task", new { Area = "Admin" });
+        }
+
+        public async Task<IActionResult> UndoDelete(Guid taskId)
+        {
+            var taskName = await taskService.UndoDeleteTaskAsync(taskId);
+            toastNotification.AddWarningToastMessage(Messages.Task.UndoDelete(taskName), new ToastrOptions() { Title = "İşlem Başarılı" });
 
             return RedirectToAction("Index", "Task", new { Area = "Admin" });
         }

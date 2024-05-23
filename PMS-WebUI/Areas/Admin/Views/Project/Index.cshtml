@@ -1,4 +1,9 @@
 ﻿@model List<ProjectDto>
+<div id="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 <div class="admin-container">
     <div class="project-content">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Proje Yönetimi /</span> Projeler</h4>
@@ -7,11 +12,15 @@
         <div class="card">
             <h5 class="card-header">Projeler</h5>
             <div class="table-responsive text-nowrap custom-table">
+                @{
+                    if (!User.IsInRole("SuperAdmin"))
+                    {
+                        <a class="btn btn-success" asp-area="Admin" asp-controller="Project" asp-action="Add">
+                            Proje Ekle <i class="bx bx-plus"></i>
+                        </a>
+                    }
 
-                <a class="btn btn-success" asp-area="Admin" asp-controller="Project" asp-action="Add">
-                    Proje Ekle <i class="bx bx-plus"></i>
-                </a>
-
+                }
                 <table class="table table-bordered" id="projectTable" withd="100%" collspacing="0">
                     <thead>
                         <tr>
@@ -126,6 +135,7 @@
         color: #333 !important; /* Yazı rengi */
         font-family: Arial, sans-serif; /* Yazı tipi */
     }
+
     .dataTables_length, .dataTables_paginate {
         font-size: 14px !important; /* Yazı boyutu */
         margin-left: 15px !important;
@@ -133,6 +143,7 @@
         color: #333 !important; /* Yazı rengi */
         font-family: Arial, sans-serif; /* Yazı tipi */
     }
+
     .dataTables_filter, .dataTables_paginate {
         font-size: 14px !important; /* Yazı boyutu */
         margin-left: 15px !important;
@@ -163,6 +174,6 @@
 
 
 
-@section Scripts{
+@section Scripts {
     <script src="~/js/projectIndex.js" type="application/ecmascript"></script>
 }

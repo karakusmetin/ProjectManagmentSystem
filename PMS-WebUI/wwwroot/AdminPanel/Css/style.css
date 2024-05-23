@@ -1,57 +1,97 @@
+/* Genel Ayarlar */
 body {
     background-color: #f8f9fa; /* Arka plan rengi */
     font-family: Arial, sans-serif;
     color: #333; /* Metin rengi */
     margin: 0;
     padding: 0;
+
+}
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
-.navbar-custom {
-    background-color: #3e2481 !important; /* Navbar arka plan rengi */
-    border-bottom: 1px solid #fff; /* Navbar alt kenar çizgisi */
+.spinner-border {
+    color: #3e2481 !important;
 }
 
-    .navbar-custom .navbar-brand,
-    .navbar-custom .navbar-nav .nav-link {
-        color: #fff !important; /* Navbar metin rengi */
-        font-weight: bold; /* Navbar metin kalýnlýðý */
-        text-transform: uppercase; /* Navbar metin büyütme */
+/* Gizli içerik */
+.hidden {
+    display: none;
+}
+
+/* Navbar */
+.navbar {
+    border-bottom: 1px solid #5a3296; /* Navbar alt çizgi */
+    padding: 0.5rem 1rem; /* Navbar padding */
+    color: #fff;
+    z-index: 1001; /* Navbar z-index */
+    position: fixed; /* Navbar sabit pozisyon */
+    width: 100%; /* Navbar geniþliði */
+    top: 0; /* Navbar üstte */
+    background-color: #3e2481; /* Navbar arka plan rengi */
+}
+    .navbar brand {
+        color: #fff;
     }
 
-        .navbar-custom .navbar-brand:hover,
-        .navbar-custom .navbar-nav .nav-link:hover {
-            color: #f8f9fa !important; /* Navbar üzerine gelindiðinde metin rengi */
-        }
+.navbar-nav .nav-link {
+    color: #fff; /* Navbar baðlantý metin rengi */
+    margin-right: 1rem; /* Navbar baðlantý sað boþluk */
+}
 
-    .navbar-custom .navbar-toggler-icon {
-        background-color: #fff; /* Navbar açýlýr menü simgesi rengi */
+    .navbar-nav .nav-link:hover {
+        color: #d1c4e9; /* Navbar baðlantý metin rengi (üzerine gelindiðinde) */
     }
 
-    .navbar-custom .navbar-toggler {
-        border-color: #fff; /* Navbar açýlýr menü düðmesi rengi */
+.navbar-nav .dropdown-menu {
+    background-color: #3e2481; /* Navbar dropdown menü arka plan rengi */
+    border: 1px solid #5a3296; /* Navbar dropdown menü çerçeve */
+}
+
+.navbar-nav .dropdown-item {
+    color: #fff; /* Navbar dropdown öðe metin rengi */
+}
+
+    .navbar-nav .dropdown-item:hover {
+        background-color: #5a3296; /* Navbar dropdown öðe üzerine gelindiðinde arka plan rengi */
+        color: #fff; /* Navbar dropdown öðe metin rengi (üzerine gelindiðinde) */
     }
 
-        .navbar-custom .navbar-toggler:focus,
-        .navbar-custom .navbar-toggler:hover {
-            background-color: #fff; /* Navbar açýlýr menü düðmesi üzerine gelindiðinde arka plan rengi */
-        }
+.navbar-nav .dropdown-divider {
+    background-color: #5a3296; /* Navbar dropdown ayýrýcý çizgi rengi */
+}
 
-    .navbar-custom .navbar-collapse {
-        background-color: #3e2481; /* Navbar açýlýr menü arka plan rengi */
+.navbar-nav .dropdown-item.active,
+.navbar-nav .dropdown-item:active {
+    background-color: #5a3296; /* Navbar dropdown aktif öðe arka plan rengi */
+    color: #fff; /* Navbar dropdown aktif öðe metin rengi */
+}
+
+/* Kullanýcý resmi ve dropdown */
+.navbar-nav .nav-item .user-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .navbar-nav .nav-item .user-dropdown img {
+        border-radius: 50%; /* Kullanýcý resmi yuvarlak */
+        width: 35px; /* Kullanýcý resmi geniþliði */
+        height: 35px; /* Kullanýcý resmi yüksekliði */
+        margin-right: 10px; /* Kullanýcý resmi sað boþluk */
     }
 
-    .navbar-custom .navbar-nav .dropdown-menu {
-        background-color: #3e2481; /* Navbar dropdown menü arka plan rengi */
+    .navbar-nav .nav-item .user-dropdown span {
+        color: #fff; /* Kullanýcý ismi metin rengi */
+        font-size: 1rem; /* Kullanýcý ismi metin boyutu */
     }
 
-    .navbar-custom .navbar-nav .dropdown-item {
-        color: #fff; /* Navbar dropdown menü metin rengi */
-    }
-
-        .navbar-custom .navbar-nav .dropdown-item:hover {
-            background-color: #343a40; /* Navbar dropdown menü üzerine gelindiðinde arka plan rengi */
-        }
-
+/* Yönetici Paneli Yan Menü */
 .admin-sidebar {
     background-color: #3e2481; /* Yönetici paneli yan menü arka plan rengi */
     color: #fff; /* Yönetici paneli yan menü metin rengi */
@@ -67,7 +107,7 @@ body {
 }
 
     .admin-sidebar h4 {
-        font-size: 20px; /* Yan menü baþlýk font büyüklüðü */
+        font-size: 20px !important; /* Yan menü baþlýk font büyüklüðü */
         margin-bottom: 20px; /* Yan menü baþlýk alt boþluk */
     }
 
@@ -93,7 +133,6 @@ body {
     .admin-sidebar li.active a {
         background-color: #5a3296; /* Yan menü aktif baðlantý arka plan rengi */
     }
-
 .admin-content {
     background-color: #fff; /* Yönetici paneli içerik arka plan rengi */
     border-radius: 10px;
@@ -101,10 +140,10 @@ body {
     min-height: calc(100vh - 60px); /* Navbar ve footer yüksekliði hariç sayfa yüksekliði */
 }
 
-.admin-container{
+.admin-container {
     margin-left: 350px;
     margin-right: 150px;
-    margin-top: 20px;
+    margin-top: 80px; /* Navbar yüksekliði kadar üst boþluk */
     margin-bottom: 100px;
     scroll-margin-bottom: 50px;
 }

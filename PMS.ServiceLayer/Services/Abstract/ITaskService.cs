@@ -7,10 +7,12 @@ namespace PMS.ServiceLayer.Services.Abstract
 {
     public interface ITaskService
     {
-        Task<List<TaskDto>> GetAllTasksNonDeleted();
+        Task<List<TaskDto>> GetAllTasksNonDeletedAsync();
+        Task<List<TaskDto>> GetAllTasksDeletedAsync();
         Task CreateTaskAsync(TaskAddDto taskAddDto);
-        Task<TaskUpdateDto> GetTaskByGuid(Guid id);
+        Task<TaskUpdateDto> GetTaskByGuidAsync(Guid id);
         Task<string> UpdateTaskAsync(TaskUpdateDto taskUpdateDto);
         Task<string> SafeDeleteTaskAsync(Guid id);
+        Task<string> UndoDeleteTaskAsync(Guid id);
     }
 }

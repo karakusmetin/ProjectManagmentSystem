@@ -27,7 +27,7 @@ namespace PMS.ServiceLayer.Services.Concrete
             _user = httpContextAccessor.HttpContext.User;
         }
 
-        public async Task<List<TaskDto>> GetAllTasksNonDeleted()
+        public async Task<List<TaskDto>> GetAllTasksNonDeletedAsync()
         {
             var tasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().GetAllAsync(x=>x.IsActive==true);
             var map = mapper.Map<List<TaskDto>>(tasks);
@@ -57,7 +57,7 @@ namespace PMS.ServiceLayer.Services.Concrete
 
         }
 
-        public async Task<TaskUpdateDto> GetTaskByGuid(Guid id)
+        public async Task<TaskUpdateDto> GetTaskByGuidAsync(Guid id)
         {
             var task = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().GetByGuidAsync(id);
              var map = mapper.Map<TaskUpdateDto>(task);
@@ -88,6 +88,29 @@ namespace PMS.ServiceLayer.Services.Concrete
             task.IsActive = false;
             task.UpdateDate = DateTime.Now;
             task.UpdatedBy= userEmail;
+
+            await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().UpdateAsnyc(task);
+            await unitOfWork.SaveAsnyc();
+
+            return task.TaskName;
+        }
+
+        public async Task<List<TaskDto>> GetAllTasksDeletedAsync()
+        {
+            var tasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().GetAllAsync(x => x.IsActive == false);
+            var map = mapper.Map<List<TaskDto>>(tasks);
+
+            return map;
+        }
+
+        public async Task<string> UndoDeleteTaskAsync(Guid id)
+        {
+            var userEmail = _user.GetLoggedInEmail();
+
+            var task = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().GetAsync(x => x.IsActive == false && x.Id == id);
+            task.IsActive = true;
+            task.UpdateDate = null;
+            task.UpdatedBy = null;
 
             await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().UpdateAsnyc(task);
             await unitOfWork.SaveAsnyc();

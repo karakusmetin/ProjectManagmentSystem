@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using NToastNotify;
 using PMS.DataLayer.Context;
 using PMS.DataLayer.Extensions;
+using PMS.ServiceLayer.Describers;
 using PMS.ServiceLayer.Extensions;
 using PMS_EntityLayer.Concrete;
 using System;
@@ -47,6 +48,7 @@ namespace PMS_WebUI
 				opt.Password.RequireUppercase = false;
 			})
 				.AddRoleManager<RoleManager<AppRole>>()
+				.AddErrorDescriber<CustomIdentityErrorDescriber>()
 				.AddEntityFrameworkStores<PMSDbContext>()
 				.AddDefaultTokenProviders();
 

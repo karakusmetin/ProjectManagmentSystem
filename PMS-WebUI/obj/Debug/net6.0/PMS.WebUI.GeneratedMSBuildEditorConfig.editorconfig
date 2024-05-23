@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\fener\Desktop\Deeneme\PMS-WebUI
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/fener/Desktop/Deeneme/PMS-WebUI/Areas/Admin/Views/Auth/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/fener/Desktop/Deeneme/PMS-WebUI/Areas/Admin/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -26,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/fener/Desktop/Deeneme/PMS-WebUI/Areas/Admin/Views/Project/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvamVjdFxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/fener/Desktop/Deeneme/PMS-WebUI/Areas/Admin/Views/Project/DeletedProject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvamVjdFxEZWxldGVkUHJvamVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/fener/Desktop/Deeneme/PMS-WebUI/Areas/Admin/Views/Project/Index.cshtml]
@@ -42,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/fener/Desktop/Deeneme/PMS-WebUI/Areas/Admin/Views/Task/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFza1xBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/fener/Desktop/Deeneme/PMS-WebUI/Areas/Admin/Views/Task/DeletedTask.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGFza1xEZWxldGVkVGFzay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/fener/Desktop/Deeneme/PMS-WebUI/Areas/Admin/Views/Task/Index.cshtml]

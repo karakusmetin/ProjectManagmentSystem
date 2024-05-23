@@ -16,6 +16,10 @@
             {
                 return $"{projectTitle} başlıklı proje başarı ile silindi";
             }
+            public static string UndoDelete(string projectTitle)
+            {
+                return $"{projectTitle} başlıklı proje başarı ile geri alındı";
+            }
         }
 
         public static class Task
@@ -31,6 +35,10 @@
             public static string Delete(string taskName)
             {
                 return $"{taskName} başlıklı task başarı ile silindi";
+            }
+            public static string UndoDelete(string taskName)
+            {
+                return $"{taskName} başlıklı task başarı ile geri alındı";
             }
         }
         public static class User

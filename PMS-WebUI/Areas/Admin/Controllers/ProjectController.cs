@@ -28,10 +28,17 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             this.validator = validator;
             this.toast = toast;
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var project = await projectService.GetListProjectsWithNonDeletedAsync();
+            return View(project);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeletedProject()
+        {
+            var project = await projectService.GetAllDeletedProjectAsync();
             return View(project);
         }
 
@@ -114,6 +121,14 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         {
             var projectName = await projectService.SafeDeleteProjectAsync(projectId);
             toast.AddWarningToastMessage(Messages.Project.Delete(projectName), new ToastrOptions() { Title = "İşlem Başarılı" });
+
+            return RedirectToAction("Index", "Project", new { Area = "Admin" });
+        }
+
+        public async Task<IActionResult> UndoDelete(Guid projectId)
+        {
+            var projectName = await projectService.UndoDeleteProjectAsync(projectId);
+            toast.AddWarningToastMessage(Messages.Project.UndoDelete(projectName), new ToastrOptions() { Title = "İşlem Başarılı" });
 
             return RedirectToAction("Index", "Project", new { Area = "Admin" });
         }

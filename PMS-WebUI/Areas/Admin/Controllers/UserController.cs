@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using NToastNotify;
+using PMS.ServiceLayer.Extensions;
 using PMS_EntityLayer.Concrete;
 using PMS_EntityLayer.DTOs.Tasks;
 using PMS_EntityLayer.DTOs.Users;
@@ -12,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 namespace PMS_WebUI.Areas.Admin.Controllers
 {
@@ -22,13 +25,15 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         private readonly RoleManager<AppRole> roleManager;
         private readonly IMapper mapper;
         private readonly IToastNotification toastNotification;
+        private readonly IValidator<AppUser> validator;
 
-        public UserController(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IMapper mapper, IToastNotification toastNotification)
+        public UserController(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IMapper mapper, IToastNotification toastNotification,IValidator<AppUser> validator)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.mapper = mapper;
             this.toastNotification = toastNotification;
+            this.validator = validator;
         }
         public async Task<IActionResult> Index()
         {
@@ -58,7 +63,9 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Add(UserAddDto userAddDto)
         {
             var map = mapper.Map<AppUser>(userAddDto);
+            var validation = await validator.ValidateAsync(map);
             var roles = await roleManager.Roles.ToListAsync();
+
 
             if (ModelState.IsValid)
             {
@@ -73,10 +80,8 @@ namespace PMS_WebUI.Areas.Admin.Controllers
                 }
                 else
                 {
-                    foreach (var errors in result.Errors)
-                    {
-                        ModelState.AddModelError("", errors.Description);
-                    }
+                    result.AddToIdentityModelState(this.ModelState);
+                    validation.AddToModelState(this.ModelState);
                     return View(new UserAddDto { Roles = roles });
                 }
             }
@@ -105,26 +110,35 @@ namespace PMS_WebUI.Areas.Admin.Controllers
                 var roles = await roleManager.Roles.ToListAsync();
                 if (ModelState.IsValid)
                 {
-                    mapper.Map(userUpdateDto, user);
-                    user.UserName = userUpdateDto.Email;
-                    user.SecurityStamp = Guid.NewGuid().ToString();
-                    var result = await userManager.UpdateAsync(user);
-                    if (result.Succeeded)
+                    var map = mapper.Map(userUpdateDto, user);
+                    var validation = await validator.ValidateAsync(map);
+                    if(validation.IsValid)
                     {
-                        await userManager.RemoveFromRoleAsync(user, userRole);
-                        var findRole = await roleManager.FindByIdAsync(userUpdateDto.RoleId.ToString());
-                        await userManager.AddToRoleAsync(user, findRole.Name);
-                        toastNotification.AddSuccessToastMessage(Messages.User.Update(userUpdateDto.Email), new ToastrOptions { Title = "Başarılı" });
-                        return RedirectToAction("Index", "User", new { Area = "Admin" });
+                        user.UserName = userUpdateDto.Email;
+                        user.SecurityStamp = Guid.NewGuid().ToString();
+                        var result = await userManager.UpdateAsync(user);
+                        if (result.Succeeded)
+                        {
+                            await userManager.RemoveFromRoleAsync(user, userRole);
+                            var findRole = await roleManager.FindByIdAsync(userUpdateDto.RoleId.ToString());
+                            await userManager.AddToRoleAsync(user, findRole.Name);
+                            toastNotification.AddSuccessToastMessage(Messages.User.Update(userUpdateDto.Email), new ToastrOptions { Title = "Başarılı" });
+                            return RedirectToAction("Index", "User", new { Area = "Admin" });
+                        }
+                        else
+                        {
+                            result.AddToIdentityModelState(this.ModelState);
+                            validation.AddToModelState(this.ModelState);
+                            return View(new UserUpdateDto { Roles = roles });
+                        }
                     }
                     else
                     {
-                        foreach (var errors in result.Errors)
-                        {
-                            ModelState.AddModelError("", errors.Description);
-                        }
+                        validation.AddToModelState(this.ModelState);
                         return View(new UserUpdateDto { Roles = roles });
+
                     }
+
                 }
             }
             return NotFound();

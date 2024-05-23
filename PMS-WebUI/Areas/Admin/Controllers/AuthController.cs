@@ -64,5 +64,12 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             await SignInManager.SignOutAsync();
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AccessDenied()
+        {
+            return View();
+        }
     }
 }

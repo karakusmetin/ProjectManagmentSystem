@@ -102,5 +102,28 @@ namespace PMS.ServiceLayer.Services.Concrete
 
             return project.ProjectName; 
         }
-	}
+
+        public async Task<List<ProjectDto>> GetAllDeletedProjectAsync()
+        {
+            var projects = await unitOfWork.GetRepository<Project>().GetAllAsync(x => x.IsActive == false, x => x.ProjectUpdates);
+            var map = mapper.Map<List<ProjectDto>>(projects);
+
+            return map;
+        }
+
+        public async Task<string> UndoDeleteProjectAsync(Guid projectId)
+        {
+            var userEmail = _user.GetLoggedInEmail();
+            var project = await unitOfWork.GetRepository<Project>().GetByGuidAsync(projectId);
+
+            project.IsActive = true;
+            project.DeletedDate = null;
+            project.DeletedBy = null;
+
+            await unitOfWork.GetRepository<Project>().UpdateAsnyc(project);
+            await unitOfWork.SaveAsnyc();
+
+            return project.ProjectName;
+        }
+    }
 }

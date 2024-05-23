@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "O90AcMqAZ7PUAZp3RUkJ7YKGW3OVcZuIZuR0hXBrwxc=",
+  "Hash": "ixKP752d+BcyG7A4LnOYjN7mmeqFSDykn6rlxSLg3X0=",
   "Source": "PMS.WebUI",
   "BasePath": "_content/PMS.WebUI",
   "Mode": "Default",
@@ -85,6 +85,23 @@
       "OriginalItemSpec": "C:\\Users\\fener\\.nuget\\packages\\ntoastnotify\\8.0.0\\staticwebassets\\toastr.js"
     },
     {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\Css\\acces-denied.css",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "AdminPanel/Css/acces-denied.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminPanel\\Css\\acces-denied.css"
+    },
+    {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\Css\\page-auth.css",
       "SourceId": "PMS.WebUI",
       "SourceType": "Discovered",
@@ -151,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminPanel\\Html\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\js\\scripts.js",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "AdminPanel/js/scripts.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminPanel\\js\\scripts.js"
     },
     {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\AdminPanel\\package.json",
@@ -236,6 +270,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\page-misc-error-light.png",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "images/page-misc-error-light.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\page-misc-error-light.png"
     },
     {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectAdd.js",

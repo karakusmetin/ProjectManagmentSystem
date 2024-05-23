@@ -9,13 +9,17 @@ namespace PMS.ServiceLayer.Services.Abstract
 	{
 		Task<List<ProjectDto>> GetListProjectsWithNonDeletedAsync();
 
-		Task CreateProjectAsync(ProjectAddDto projectAddDto);
+        Task<List<ProjectDto>> GetAllDeletedProjectAsync();
+
+        Task CreateProjectAsync(ProjectAddDto projectAddDto);
 
 		Task<ProjectDto> GetProjectWithNonDeletedAsync(Guid projectId);
 
 		Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto);
 
         Task<string> SafeDeleteProjectAsync(Guid projectId);
+        
+        Task<string> UndoDeleteProjectAsync(Guid projectId);
 
     }
 }
