@@ -1,4 +1,5 @@
-﻿using PMS.EntityLayer.Enums;
+﻿using PMS.EntityLayer.Concrete;
+using PMS.EntityLayer.Enums;
 using System;
 
 namespace PMS_EntityLayer.DTOs.Projects
@@ -15,5 +16,8 @@ namespace PMS_EntityLayer.DTOs.Projects
         public DateTime InsertDate { get; set; }
         public string InsertedBy { get; set; }
         public bool IsActive { get; set; }
+        public Guid ProjectManagerId { get; set; }
+        public ProjectManager ProjectManager { get; set; }
+
     }
 }

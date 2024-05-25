@@ -1,4 +1,4 @@
-﻿
+﻿using Microsoft.AspNetCore.Http;
 using PMS.EntityLayer.Enums;
 using System;
 
@@ -13,6 +13,10 @@ namespace PMS_EntityLayer.DTOs.Projects
         public DateTime UpdateDate { get; set; }
         public DateTime EndDate { get; set; }
         public PriorityLevel Priority { get; set; }
+
+        public Guid ProjectManagerId { get; set; }
+
+        public IFormFile? File { get; set; }
         
     }
 }

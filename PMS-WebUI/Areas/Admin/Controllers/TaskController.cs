@@ -1,12 +1,17 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NToastNotify;
 using PMS.ServiceLayer.Extensions;
 using PMS.ServiceLayer.Services.Abstract;
+using PMS_EntityLayer.Concrete;
 using PMS_EntityLayer.DTOs.Tasks;
+using PMS_EntityLayer.DTOs.Users;
 using PMS_WebUI.ResultMessages;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PMS_WebUI.Areas.Admin.Controllers
@@ -18,13 +23,15 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         private readonly IValidator<PMS_EntityLayer.Concrete.Task> validator;
         private readonly IMapper mapper;
         private readonly IToastNotification toastNotification;
+        private readonly UserManager<AppUser> userManager;
 
-        public TaskController(ITaskService taskService,IValidator<PMS_EntityLayer.Concrete.Task> validator,IMapper mapper,IToastNotification toastNotification)
+        public TaskController(ITaskService taskService,IValidator<PMS_EntityLayer.Concrete.Task> validator,IMapper mapper,IToastNotification toastNotification, UserManager<AppUser> userManager)
         {
             this.taskService = taskService;
             this.validator = validator;
             this.mapper = mapper;
             this.toastNotification = toastNotification;
+            this.userManager = userManager;
         }
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -39,9 +46,12 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             return View(tasks);
         }
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
-            return View();
+            var users = await userManager.Users.ToListAsync();
+            var map = mapper.Map<List<UserDto>>(users);
+
+            return View(new TaskAddDto { AppUsers = map});
         }
         [HttpPost]
         public async Task<IActionResult> Add(TaskAddDto taskAddDto)

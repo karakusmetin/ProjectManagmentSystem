@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7M+7rZjC7oM49IrJ4gP1YyU/t7Llpej72GI+ZaeEsMJzVhaI0Nw8oouKiG1ngjYAWW8rE71/mK7dLBGRUdpE4w==",
+  "dgSpecHash": "Zl+fQHHvAUVOYbhusMAo45JWDwmhgKa3c8Ag3kZVTNvpk72D4IoDYzae7MJbx3LEAtg70Sz5wxhTtcYVScaHNQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS.ServiceLayer\\PMS.ServiceLayer.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\fener\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.1\\fluentvalidation.dependencyinjectionextensions.11.9.1.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.28\\microsoft.aspnetcore.cryptography.internal.6.0.28.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.28\\microsoft.aspnetcore.cryptography.keyderivation.6.0.28.nupkg.sha512",
+    "C:\\Users\\fener\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.28\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.28.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\fener\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.7\\microsoft.data.sqlclient.2.1.7.nupkg.sha512",

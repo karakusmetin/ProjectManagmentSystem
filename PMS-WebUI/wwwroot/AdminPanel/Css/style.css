@@ -23,7 +23,36 @@ body {
 .hidden {
     display: none;
 }
+.autocomplete-suggestions {
+    background-color: #fff; /* Öneri kutusu arka plan rengi */
+    max-height: 150px; /* Öneri kutusu maksimum yüksekliði */
+    overflow-y: auto; /* Öneri kutusu taþma durumu */
+    position: absolute; /* Öneri kutusu pozisyonu */
+    z-index: 1001; /* Öneri kutusu z-index */
+    width: 100%; /* Öneri kutusu geniþliði */
+    margin-top: 5px; /* Öneri kutusu üst boþluk */
+    border-radius: 5px; /* Öneri kutusu köþe yuvarlama */
+}
 
+.autocomplete-suggestion {
+    padding: 10px; /* Öneri öðesi padding */
+    cursor: pointer; /* Öneri öðesi imleç tipi */
+
+}
+
+    .autocomplete-suggestion:hover {
+        background-color: #5a3296; /* Öneri öðesi üzerine gelindiðinde arka plan rengi */
+        color: #fff; /* Öneri öðesi üzerine gelindiðinde metin rengi */
+    }
+
+#appUserEmail {
+    width: 100%; /* Email input geniþliði */
+    padding: 5px; /* Email input padding */
+    border: 1px solid #ccc; /* Email input çerçeve rengi */
+    border-radius: 5px; /* Email input köþe yuvarlama */
+    box-sizing: border-box; /* Email input box-sizing */
+    font-size: 1rem; /* Email input font boyutu */
+}
 /* Navbar */
 .navbar {
     border-bottom: 1px solid #5a3296; /* Navbar alt çizgi */

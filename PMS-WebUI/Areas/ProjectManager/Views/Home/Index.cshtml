@@ -1,0 +1,120 @@
+﻿@model List<ProjectDto>
+    <style>
+        body {
+            background-color: #fff; /* Koyu mor arka plan rengi */
+            font-family: Arial, sans-serif;
+            color: #333; /* Metin rengi */
+            margin: 0;
+            margin-top:100px;
+            padding-bottom:80px;
+        }
+        .navbar-custom {
+            background-color: #3e2481 !important; /* Navbar arka plan rengi */
+            border-bottom: 1px solid #fff; /* Navbar alt kenar çizgisi */
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff !important; /* Navbar metin rengi */
+            font-weight: bold; /* Navbar metin kalınlığı */
+            
+        }
+        .navbar-custom .navbar-brand:hover,
+        .navbar-custom .navbar-nav .nav-link:hover {
+            color: #f8f9fa !important; /* Navbar üzerine gelindiğinde metin rengi */
+        }
+        .navbar-custom .navbar-toggler-icon {
+            background-color: #fff; /* Navbar açılır menü simgesi rengi */
+        }
+        .navbar-custom .navbar-toggler {
+            border-color: #fff; /* Navbar açılır menü düğmesi rengi */
+        }
+        .navbar-custom .navbar-toggler:focus,
+        .navbar-custom .navbar-toggler:hover {
+            background-color: #fff; /* Navbar açılır menü düğmesi üzerine gelindiğinde arka plan rengi */
+        }
+        .navbar-custom .navbar-collapse {
+            background-color: #3e2481; /* Navbar açılır menü arka plan rengi */
+
+        }
+        .navbar-custom .navbar-nav .dropdown-menu {
+            background-color: #3e2481; /* Navbar dropdown menü arka plan rengi */
+        }
+        .navbar-custom .navbar-nav .dropdown-item {
+            color: #fff; /* Navbar dropdown menü metin rengi */
+            margin-top: 200px;
+
+        }
+        .navbar-custom .navbar-nav .dropdown-item:hover {
+            background-color: #343a40; /* Navbar dropdown menü üzerine gelindiğinde arka plan rengi */
+        }
+
+        .card {
+            transition: transform 0.3s;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            background-color: #fff; /* Kart arka plan rengi */
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Kart gölgelendirme */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 1rem;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+        }
+        .footer {
+            background-color: #3e2481; /* Üst ve alt bilgi arka plan rengi */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .footer p {
+            margin-bottom: 0;
+        }
+    </style>
+
+
+    <!-- İçerik -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">Proje Özetleri</h2>
+            </div>
+        </div>
+        <div class="row">
+            @{
+                foreach(var project in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">@project.ProjectName</h5>
+                                <p class="card-text">@project.Description</p>
+                                <p class="card-text">Bitiş Tarihi:@project.EndDate</p>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-area="ProjectManager" asp-controller="Project" asp-action="Detail" asp-route-projectId="@project.Id" class="btn btn-primary">Projeyi Görüntüle</a>
+                                <a href="#" class="btn btn-warning">Projeyi Dondur</a>
+                            </div>
+                        </div>
+                    </div>
+                    // Her altı projeden sonra yeni bir satır başlatmak için kontrol yapalım
+                    if (Model.Count() % 6 == 0 && Model.Count() != 9)
+                    {
+                        @:</div><div class="row">
+                    }
+                }
+            }
+        </div>
+    </div>

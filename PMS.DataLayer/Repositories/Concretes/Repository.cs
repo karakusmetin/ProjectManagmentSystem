@@ -78,5 +78,30 @@ namespace PMS.DataLayer.Repositories.Concretes
 		{
 			return await Table.CountAsync(predicate);
 		}
-	}
+        public async Task<T> GetWithIncludesAsync(Expression<Func<T, bool>> predicate, params Func<IQueryable<T>, IQueryable<T>>[] includeProperties)
+        {
+            IQueryable<T> query = Table;
+
+            query = query.Where(predicate);
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = includeProperty(query);
+            }
+
+            return await query.SingleOrDefaultAsync();
+        }
+
+        public async Task<List<T>> GetAllWithIncludesAsync(params Func<IQueryable<T>, IQueryable<T>>[] includeProperties)
+        {
+            IQueryable<T> query = Table;
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = includeProperty(query);
+            }
+
+            return await query.ToListAsync();
+        }
+    }
 }

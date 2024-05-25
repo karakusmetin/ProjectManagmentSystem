@@ -1,5 +1,6 @@
 ﻿@model TaskAddDto
 
+
 <div class="admin-container">
     <div class="Project-add">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Görev Yönetimi /</span> Görev Ekle</h4>
@@ -9,8 +10,6 @@
                 <div class="card mb-4">
                     <form asp-controller="Task" asp-action="Add" method="post" enctype="multipart/form-data">
                         <div class="card-body">
-
-
                             <div>
                                 <a class="btn text-primary float-lg-right" data-toggle="modal" data-target="#exampleModalCenter">
                                     Proje Ekle  <i class="bx bx-plus"></i>
@@ -42,6 +41,11 @@
                                 <select asp-for="Priority" asp-items="Html.GetEnumSelectList<PriorityLevel>()" id="defaultSelect" class="form-select">
                                 </select>
                             </div>
+                            <div class="mb-3">
+                                <label asp-for="AppUserId" for="appUserEmail">Görev Atanan Kişinin Email Adresi:</label>
+                                <input asp-for="AppUserId" type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
+                                <div id="autocompleteSuggestions" class="autocomplete-suggestions"></div>
+                            </div>
                             <div class="form group">
                                 <button type="submit" class="btn btn-primary">Kaydet</button>
                             </div>
@@ -53,51 +57,48 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"> Proje Ekle</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label class="d-block form-label">Proje Adı</label>
-                        <input class="form-control" type="text" id="projectName" />
-
-                        <label class="d-block form-label">Proje Açıklaması</label>
-                        <input class="form-control" type="text" id="projectDescription" />
-
-                        <label class="d-block form-label">Bütçe</label>
-                        <input class="form-control" type="number" id="projectBudget" />
-
-                        <label class="d-block form-label">Başlangıç Tarihi</label>
-                        <input class="form-control" type="datetime-local" id="projectStartDate" />
-
-                        <label class="d-block form-label">Bitiş Tarihi</label>
-                        <input class="form-control" type="datetime-local" id="projectEndDate" />
-                        
-                        <label class="d-block form-label"> Öncelik</label>
-                        <select class="form-select" asp-items="Html.GetEnumSelectList<PriorityLevel>()" id="projectPriority"></select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                <button type="button" data-keyboard="false" class="btn btn-primary" id="btnSave">Kaydet</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 @section Scripts
 {
     <script src="~/js/projectAdd.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const emailInput = document.getElementById('appUserEmail');
+            const suggestionsBox = document.getElementById('autocompleteSuggestions');
+
+            emailInput.addEventListener('input', function () {
+                const query = emailInput.value;
+
+                if (query.length === 0) {
+                    suggestionsBox.innerHTML = '';
+                    return;
+                }
+
+                fetch(`/api/users/search-users?email=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        suggestionsBox.innerHTML = '';
+                        data.forEach(user => {
+                            const suggestion = document.createElement('div');
+                            suggestion.classList.add('autocomplete-suggestion');
+                            suggestion.textContent = `${user.fullName} (${user.email})`;
+                            suggestion.dataset.userId = user.id;
+                            suggestionsBox.appendChild(suggestion);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching users:', error));
+            });
+
+            suggestionsBox.addEventListener('click', function (e) {
+                if (e.target.classList.contains('autocomplete-suggestion')) {
+                    emailInput.value = e.target.textContent;
+                    emailInput.dataset.userId = e.target.dataset.userId;
+                    suggestionsBox.innerHTML = '';
+                }
+            });
+        });
+    </script>
     <script>
         var app = app || {};
         app.Urls = app.Urls || {};
@@ -106,6 +107,7 @@
         app.Urls.projectAddUrl = "@(Url.Action("AddWithAjax", "Project"))";
         app.Urls.taskAddUrl = "@(Url.Action("Add", "Task"))";
     </script>
+
 
 }
 <style>

@@ -23,7 +23,17 @@ namespace PMS.DataLayer.Mapping
             new AppUserRole
             {
                 UserId = Guid.Parse("1D38A035-D954-4654-9466-25249903C517"),
+                RoleId = Guid.Parse("492F344E-4BA6-485B-A3F1-73219B3E61C9")
+            },
+            new AppUserRole
+            {
+                UserId = Guid.Parse("10B0EB46-8482-415C-B5AC-BD6762D966FD"),
                 RoleId = Guid.Parse("E8EAFB80-8FDD-4FAA-9395-ECE1889D1636")
+            },
+            new AppUserRole
+            {
+                UserId = Guid.Parse("70F07528-20C1-46EB-A9B2-C5CD7007C0F2"),
+                RoleId = Guid.Parse("FE91ECF3-F094-477E-B956-3D895529AB32")
             });
 
         }

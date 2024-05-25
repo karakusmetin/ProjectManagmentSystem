@@ -1,0 +1,98 @@
+﻿@model ProjectDetailDto
+
+
+<div class="container">
+    <h1 class="my-4">Proje Yönetim Sistemi</h1>
+    <form>
+        <div class="container">
+            <div class="row">
+                <!-- Sol sütun -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ProjectName">Proje Adı</label>
+                        <input asp-for="ProjectName" type="text" class="form-control" id="projectName" placeholder="Proje adı girin">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Budget" for="projectBudget">Bütçe</label>
+                        <input asp-for="Budget" type="number" class="form-control" id="projectBudget" placeholder="Proje bütçesi girin">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndDate">Bitiş Tarihi</label>
+                        <input asp-for="EndDate" type="date" class="form-control" id="projectEndDate">
+                    </div>
+                </div>
+
+                <!-- Sağ sütun -->
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label asp-for="Description">Açıklama</label>
+                        <textarea asp-for="Description" class="form-control" id="projectDescription" rows="6"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Priority">Öncelik Seviyesi</label>
+                        <div class="priority-buttons" id="projectPriority">
+                            <button type="button" class="btn btn-high" data-value="@PriorityLevel.High">Yüksek</button>
+                            <button type="button" class="btn btn-medium" data-value="@PriorityLevel.Medium">Orta</button>
+                            <button type="button" class="btn btn-low" data-value="@PriorityLevel.Low">Düşük</button>
+                        </div>
+                        <input asp-for="Priority" type="hidden" id="selectedPriority" name="priorityLevel" value="Medium">
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Proje Üyeleri</label>
+                <ul class="list-group">
+                    @* @{
+                        foreach (var users in Model.ProjectMembers)
+                        {
+                            <li class="list-group-item">@users.FirstName + @users.LastName+@users.Email</li>
+                        }
+                    } *@
+
+                </ul>
+            </div>
+        </div>
+
+        <label>Proje Görevleri</label>
+        <div class="task-container">
+
+            @{
+                foreach (var task in Model.Tasks)
+                {
+                    <div class="task-card card">
+                        <div class="card-body">
+                            <h5 class="card-title">@task.TaskName</h5>
+                            <p class="card-text">@task.Description</p>
+                            <p class="card-text">@task.Priority</p>
+                            <p class="card-text">Görev Sonu: @task.EndDate</p>
+                        </div>
+                        <div class="card-footer">
+                            <a asp-area="ProjectManager" asp-controller="Task" asp-action="Update" class="btn btn-secondary">Düzenle</a>
+                            <a asp-area="ProjectManager" asp-controller="Task" asp-action="Delete" class="btn btn-danger">Görevi Durdur</a>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="task-card card">
+                <div class="card-body">
+                    <h5 class="card-title">+Yeni Görev</h5>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="Task" asp-action="Add" class="btn btn-success">Yeni Görev Ekle</a>
+                </div>
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-save">Kaydet</button>
+    </form>
+    <div class="row mt-4">
+        <div class="col-md-12 text-center">
+            <button id="stopProjectBtn" class="btn btn-danger" onclick="confirmStopProject()">Projeyi Durdur</button>
+        </div>
+    </div>
+</div>
+
+

@@ -45,12 +45,20 @@
       "PackagePath": "staticwebassets\\AdminPanel\\script.js"
     },
     {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\ProjectManager\\Css\\style.css",
+      "PackagePath": "staticwebassets\\ProjectManager\\Css\\style.css"
+    },
+    {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\image1.png",
+      "PackagePath": "staticwebassets\\images\\image1.png"
     },
     {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\page-misc-error-light.png",

@@ -52,6 +52,14 @@ namespace PMS.DataLayer.Mapping
             {
 
                 Id = Guid.Parse("FE91ECF3-F094-477E-B956-3D895529AB32"),
+                Name = "ProjectManager",
+                NormalizedName = "PROJECTMANAGER",
+                ConcurrencyStamp = Guid.NewGuid().ToString()
+            }, 
+            new AppRole
+            {
+
+                Id = Guid.Parse("492F344E-4BA6-485B-A3F1-73219B3E61C9"),
                 Name = "User",
                 NormalizedName = "USER",
                 ConcurrencyStamp = Guid.NewGuid().ToString()

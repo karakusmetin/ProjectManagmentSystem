@@ -12,11 +12,13 @@ namespace PMS_EntityLayer.Concrete
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public PriorityLevel Priority { get; set; }
+        public TaskUpdateStatus UpdateStatus { get; set; }
 
-        public Guid AssignedUserId { get; set; } // Tek bir kullanıcıya atanan ID
-        public AppUser AssignedUser { get; set; } // Tek bir kullanıcıya referans
 
-        public Guid ProjectId { get; set; } // Görevin ait olduğu proje ID'si
-        public Project Project { get; set; } // Görevin ait olduğu proje
+        public Guid UserId { get; set; } 
+        public AppUser AppUser { get; set; } 
+
+        public Guid ProjectId { get; set; } 
+        public Project Project { get; set; } 
     }
 }

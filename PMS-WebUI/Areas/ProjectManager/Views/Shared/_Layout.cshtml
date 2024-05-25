@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje Yönetim Sistemi</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css" rel="stylesheet">
+
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+    <link href="~/ProjectManager/Css/style.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" asp-area="ProjectManager" asp-controller="Home" asp-action="Index">Proje Yönetim Paneli</a>
+        
+
+        @await Component.InvokeAsync("DashboardHeader")
+    </nav>
+
+
+    @RenderBody();
+
+    <!-- Altbilgi -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Proje Yönetim Sistemi</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    @await RenderSectionAsync("Scripts", false);
+    
+    <script>
+        $(document).ready(function () {
+            $('.priority-buttons .btn').click(function () {
+                $('.priority-buttons .btn').removeClass('active');
+                $(this).addClass('active');
+                $('#selectedPriority').val($(this).data('value'));
+            });
+        });
+    </script>
+    <script>
+        function confirmStopProject() {
+            if (confirm("Projeyi durdurmak istediğinize emin misiniz?")) {
+                // Burada projeyi durdurma işlemi gerçekleştirilebilir.
+                console.log("Proje durduruluyor...");
+            }
+        }
+    </script>
+</body>
+</html>
+

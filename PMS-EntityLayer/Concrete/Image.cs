@@ -7,11 +7,8 @@ namespace PMS_EntityLayer.Concrete
     public class Image : BaseEntityWithId
     {
         public string FileName { get; set; }
-        public string FileType { get; set; }
+        public byte[] ImageData { get; set; }
 
         public ICollection<AppUser> Users { get; set;}
-
-        public ICollection<Project> Projects { get; set; }
-
     }
 }

@@ -7,8 +7,8 @@ namespace PMS.EntityLayer.Concrete
 {
 	public class ProjectManager : BaseEntityWithId
 	{
-		public bool EditerOrNot { get; set; }
-		public Guid UserId { get; set; }
+		
+		public Guid AppUserId { get; set; }
 		public AppUser AppUser { get; set; }
        
     }

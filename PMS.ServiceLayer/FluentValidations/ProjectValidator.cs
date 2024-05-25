@@ -22,6 +22,9 @@ namespace PMS.ServiceLayer.FluentValidations
             RuleFor(x => x.Budget)
                 .GreaterThan(0)
                 .WithName("Bütçe");
+            RuleFor(x => x.ProjectManagerId)
+                .NotEmpty()
+                .WithName("Proje Yöneticisi");
         }
     }
 }

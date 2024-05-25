@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PMS.EntityLayer.Concrete;
 using PMS_EntityLayer.Concrete;
 using System;
 
@@ -11,38 +10,22 @@ namespace PMS.DataLayer.Mapping
     {
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
-            // Primary key
             builder.HasKey(u => u.Id);
 
-            // Indexes for "normalized" username and email, to allow efficient lookups
             builder.HasIndex(u => u.NormalizedUserName).HasName("UserNameIndex").IsUnique();
             builder.HasIndex(u => u.NormalizedEmail).HasName("EmailIndex");
 
-            // Maps to the AspNetUsers table
             builder.ToTable("AspNetUsers");
 
-            // A concurrency token for use with the optimistic concurrency checking
             builder.Property(u => u.ConcurrencyStamp).IsConcurrencyToken();
-
-            // Limit the size of columns to use efficient database types
             builder.Property(u => u.UserName).HasMaxLength(100);
             builder.Property(u => u.NormalizedUserName).HasMaxLength(256);
             builder.Property(u => u.Email).HasMaxLength(100);
             builder.Property(u => u.NormalizedEmail).HasMaxLength(256);
 
-            // The relationships between User and other entity types
-            // Note that these relationships are configured with no navigation properties
-
-            // Each User can have many UserClaims
             builder.HasMany<AppUserClaim>().WithOne().HasForeignKey(uc => uc.UserId).IsRequired();
-
-            // Each User can have many UserLogins
             builder.HasMany<AppUserLogin>().WithOne().HasForeignKey(ul => ul.UserId).IsRequired();
-
-            // Each User can have many UserTokens
             builder.HasMany<AppUserToken>().WithOne().HasForeignKey(ut => ut.UserId).IsRequired();
-
-            // Each User can have many entries in the UserRole join table
             builder.HasMany<AppUserRole>().WithOne().HasForeignKey(ur => ur.UserId).IsRequired();
 
             var superadmin = new AppUser
@@ -57,8 +40,8 @@ namespace PMS.DataLayer.Mapping
                 LastName = "Karakuş",
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true,
-                ImageId = Guid.Parse("E8CDA3AC-B6B3-48F7-8EE1-9EF2CA415AD5"),
-                SecurityStamp = Guid.NewGuid().ToString()
+                ImageId = Guid.Parse("BA09FD97-7832-4EBF-A065-B195D0900340"),
+                SecurityStamp = Guid.NewGuid().ToString(),
             };
             superadmin.PasswordHash = CreatePasswordHash(superadmin, "123456");
 
@@ -74,7 +57,7 @@ namespace PMS.DataLayer.Mapping
                 LastName = "User",
                 PhoneNumberConfirmed = false,
                 EmailConfirmed = false,
-                ImageId = Guid.Parse("E8CDA3AC-B6B3-48F7-8EE1-9EF2CA415AD5"),
+                ImageId = Guid.Parse("28E1FFAF-70DF-4F04-964A-D1C27FEDEF70"),
                 SecurityStamp = Guid.NewGuid().ToString()
             };
             admin.PasswordHash = CreatePasswordHash(admin, "123456");
@@ -91,7 +74,7 @@ namespace PMS.DataLayer.Mapping
                 LastName = "Ceyhun",
                 PhoneNumberConfirmed = false,
                 EmailConfirmed = false,
-                ImageId = Guid.Parse("E8CDA3AC-B6B3-48F7-8EE1-9EF2CA415AD5"),
+                ImageId = Guid.Parse("28E1FFAF-70DF-4F04-964A-D1C27FEDEF70"),
                 SecurityStamp = Guid.NewGuid().ToString()
             };
             user1.PasswordHash = CreatePasswordHash(user1, "123456");
@@ -107,17 +90,16 @@ namespace PMS.DataLayer.Mapping
                 FirstName = "Samet",
                 LastName = "Yılmaz",
                 PhoneNumberConfirmed = false,
-                ImageId = Guid.Parse("E8CDA3AC-B6B3-48F7-8EE1-9EF2CA415AD5"),
+                ImageId = Guid.Parse("28E1FFAF-70DF-4F04-964A-D1C27FEDEF70"),
                 EmailConfirmed = false,
                 SecurityStamp = Guid.NewGuid().ToString()
-
             };
             user2.PasswordHash = CreatePasswordHash(user2, "123456");
 
-            builder.HasData(superadmin, admin,user1,user2);
+            builder.HasData(superadmin, admin, user1, user2);
         }
 
-        private string CreatePasswordHash(AppUser user,string password)
+        private string CreatePasswordHash(AppUser user, string password)
         {
             var passwordHasher = new PasswordHasher<AppUser>();
             return passwordHasher.HashPassword(user, password);

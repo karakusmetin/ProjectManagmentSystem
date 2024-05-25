@@ -48,8 +48,8 @@ namespace PMS.ServiceLayer.Services.Concrete
                 Priority = taskAddDto.Priority,
                 InsertedBy=userEmail,
                 InsertDate=DateTime.Now,
-                AssignedUserId = Guid.Parse("10B0EB46-8482-415C-B5AC-BD6762D966FD"),
-                ProjectId = Guid.Parse("321599BD-3833-400A-A939-8B53DD7BD57A")
+                UserId = taskAddDto.AppUserId,
+                ProjectId = taskAddDto.ProjectId
 
             };
             await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().AddAsync(task);

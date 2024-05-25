@@ -1,6 +1,7 @@
 ﻿using PMS.CoreLayer.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -16,5 +17,7 @@ namespace PMS.DataLayer.Repositories.Abstracts
 		Task<T> DeleteAsync(T entity);
 		Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
 		Task<int> CountAsync(Expression<Func<T, bool>> predicate);
-	}
+        Task<T> GetWithIncludesAsync(Expression<Func<T, bool>> predicate, params Func<IQueryable<T>, IQueryable<T>>[] includeProperties);
+		Task<List<T>> GetAllWithIncludesAsync(params Func<IQueryable<T>, IQueryable<T>>[] includeProperties);
+    }
 }

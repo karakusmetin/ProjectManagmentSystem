@@ -1,4 +1,5 @@
 ﻿@model ProjectUpdateDto
+
 <div id="loading">
     <div class="spinner-border text-primary" role="status">
         <span class="sr-only">Loading...</span>
@@ -42,7 +43,18 @@
                                 <select asp-for="Priority" asp-items="Html.GetEnumSelectList<PriorityLevel>()" id="defaultSelect" class="form-select">
                                 </select>
                             </div>
-
+                            <div class="mb-3">
+                                <label asp-for="ProjectManagerId" class="form-label" for="appUserEmail">Proje Yöneticisi:</label>
+                                <input type="hidden" asp-for="ProjectManagerId" id="projectManagerId" />
+                                <input asp-for="ProjectManagerId" type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
+                                <div id="autocompleteSuggestions" class="autocomplete-suggestions"></div>
+                                <span asp-validation-for="ProjectManagerId" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <label asp-for="File" for="file" class="form-label">PDF Dosyası Seçin:</label>
+                                <input asp-for="File" type="file" id="file" name="file" accept="application/pdf" />
+                                <span asp-validation-for="File" class="text-danger"></span>
+                            </div>
                             <div class="form group">
                                 <button type="submit" class="btn btn-primary">Kaydet</button>
                             </div>
@@ -76,5 +88,46 @@
         .form-select option {
             color: #495057; /* Metin rengi */
         }
-
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const emailInput = document.getElementById('appUserEmail');
+        const suggestionsBox = document.getElementById('autocompleteSuggestions');
+        const projectManagerIdInput = document.getElementById('projectManagerId');
+
+        emailInput.addEventListener('input', function () {
+            const query = emailInput.value;
+
+            if (query.length === 0) {
+                suggestionsBox.innerHTML = '';
+                return;
+            }
+
+            fetch(`/api/users/search-manager?email=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsBox.innerHTML = '';
+                    console.log(data); // API yanıtını konsola yazdırma
+                    data.forEach(user => {
+                        const suggestion = document.createElement('div');
+                        suggestion.classList.add('autocomplete-suggestion');
+                        suggestion.textContent = `${user.fullName} (${user.email})`;
+                        suggestion.dataset.userId = user.appUserId;
+                        suggestionsBox.appendChild(suggestion);
+                    });
+                })
+                .catch(error => console.error('Error fetching users:', error));
+        });
+
+        suggestionsBox.addEventListener('click', function (e) {
+            if (e.target.classList.contains('autocomplete-suggestion')) {
+                emailInput.value = e.target.textContent;
+                projectManagerIdInput.value = e.target.dataset.userId;
+                suggestionsBox.innerHTML = '';
+            }
+        });
+    });
+</script>
+
+

@@ -1,4 +1,5 @@
-﻿using PMS_EntityLayer.DTOs.Projects;
+﻿using PMS_EntityLayer.Concrete;
+using PMS_EntityLayer.DTOs.Projects;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,11 +12,15 @@ namespace PMS.ServiceLayer.Services.Abstract
 
         Task<List<ProjectDto>> GetAllDeletedProjectAsync();
 
-        Task CreateProjectAsync(ProjectAddDto projectAddDto);
+        Task<List<ProjectDto>> GetAllProjectWithUserIdAsync();
+        
+        Task<ProjectDetailDto> GetProjectWithNonDeletedWithUsersWithTasksAsync(Guid projectId);
+
+        System.Threading.Tasks.Task CreateProjectAsync(ProjectAddDto projectAddDto, Document document);
 
 		Task<ProjectDto> GetProjectWithNonDeletedAsync(Guid projectId);
 
-		Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto);
+		Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto, Document document);
 
         Task<string> SafeDeleteProjectAsync(Guid projectId);
         

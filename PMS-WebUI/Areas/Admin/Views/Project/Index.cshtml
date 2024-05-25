@@ -30,7 +30,7 @@
                             <th>Oluşturan</th>
                             <th>Öncelik</th>
                             <th>Güncellenme Tarihi</th>
-                            <th>İlerleme Durumu</th>
+                            <th>Proje Yöneticisi</th>
                             <th>Durum</th>
                             <th>İşlemler</th>
                         </tr>
@@ -43,7 +43,7 @@
                             <th>Oluşturan</th>
                             <th>Öncelik</th>
                             <th>Güncellenme Tarihi</th>
-                            <th>İlerleme Durumu</th>
+                            <th>Proje Yöneticisi</th>
                             <th>Durum</th>
                             <th>İşlemler</th>
                         </tr>
@@ -58,7 +58,7 @@
                                 <td>@project.InsertedBy</td>
                                 <td>@project.Priority</td>
                                 <td></td>
-                                <td></td>
+                                <td>@project.ProjectManager.AppUser.Email</td>
                                 <td>@(project.IsActive ? "Aktif" : "Aktif Değil")</td>
                                 <td>
                                     <a class="btn btn-primary btn-sm" data-id="@project.Id" asp-area="Admin" asp-controller="Project" asp-action="Update" asp-route-projectId="@project.Id"><i class="bx bxs-edit"></i></a>

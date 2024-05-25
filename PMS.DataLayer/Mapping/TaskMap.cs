@@ -18,9 +18,9 @@ namespace PMS.DataLayer.Mapping
                    .HasForeignKey(t => t.ProjectId)
                    .IsRequired();
 
-            builder.HasOne(t => t.AssignedUser)
-                   .WithMany()
-                   .HasForeignKey(t => t.AssignedUserId)
+            builder.HasOne(t => t.AppUser)
+                   .WithMany(u => u.Tasks)
+                   .HasForeignKey(t => t.UserId)
                    .IsRequired();
 
             builder.HasData(new Task
@@ -31,8 +31,11 @@ namespace PMS.DataLayer.Mapping
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddMonths(1),
                 Priority = EntityLayer.Enums.PriorityLevel.Medium,
-                AssignedUserId = Guid.Parse("1D38A035-D954-4654-9466-25249903C517"),
-                ProjectId = Guid.Parse("321599BD-3833-400A-A939-8B53DD7BD57A")
+                UpdateStatus = EntityLayer.Enums.TaskUpdateStatus.InProgress,
+                UserId = Guid.Parse("70F07528-20C1-46EB-A9B2-C5CD7007C0F2"),
+                ProjectId = Guid.Parse("321599BD-3833-400A-A939-8B53DD7BD57A"),
+                InsertedBy = "Data Seed",
+                InsertDate = DateTime.Now,
             });
         }
     }

@@ -3,18 +3,15 @@ using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 using NToastNotify;
 using PMS.ServiceLayer.Extensions;
 using PMS_EntityLayer.Concrete;
-using PMS_EntityLayer.DTOs.Tasks;
 using PMS_EntityLayer.DTOs.Users;
 using PMS_WebUI.ResultMessages;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 namespace PMS_WebUI.Areas.Admin.Controllers
 {
