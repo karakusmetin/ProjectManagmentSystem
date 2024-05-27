@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
+using System.Threading.Tasks;
 using PMS.DataLayer.UnitOfWorks;
 using PMS.ServiceLayer.Services.Abstract;
 using PMS_EntityLayer.Concrete;
 using System;
-using System.Threading.Tasks;
 using Task = System.Threading.Tasks.Task;
 
 

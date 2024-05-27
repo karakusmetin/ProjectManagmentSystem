@@ -1,4 +1,5 @@
 ﻿using PMS.EntityLayer.Enums;
+using PMS_EntityLayer.Concrete;
 using System;
 
 namespace PMS_EntityLayer.DTOs.Tasks
@@ -13,5 +14,6 @@ namespace PMS_EntityLayer.DTOs.Tasks
         public PriorityLevel Priority { get; set; }
         public string InsertedBy { get; set; }
         public bool IsActive { get; set; } = true;
+        public AppUser AppUser { get; set; }
     }
 }

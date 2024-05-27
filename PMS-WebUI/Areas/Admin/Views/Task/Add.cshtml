@@ -1,6 +1,10 @@
 ﻿@model TaskAddDto
 
-
+<div id="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 <div class="admin-container">
     <div class="Project-add">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Görev Yönetimi /</span> Görev Ekle</h4>
@@ -18,6 +22,12 @@
                                 <label asp-for="TaskName" class="form-label">Görev Adı</label>
                                 <input asp-for="TaskName" type="text" class="form-control mb-2" placeholder="Görev Adı..." aria-describedby="defaultFormControlHelp">
                                 <span asp-validation-for="TaskName" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ProjectId" for="projectName">Proje Adı:</label>
+                                <input asp-for="ProjectId" type="text" id="projectName" name="projectName" value="" autocomplete="off">
+                                <input asp-for="ProjectId" type="hidden" id="hiddenProjectId" name="ProjectId">
+                                <div id="projectAutocompleteSuggestions" class="autocomplete-suggestions"></div>
                             </div>
                             <div>
                                 <label asp-for="TaskDescription" for="defaultFormControlInput" class="form-label">Görev Açıklaması</label>
@@ -44,7 +54,8 @@
                             <div class="mb-3">
                                 <label asp-for="AppUserId" for="appUserEmail">Görev Atanan Kişinin Email Adresi:</label>
                                 <input asp-for="AppUserId" type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
-                                <div id="autocompleteSuggestions" class="autocomplete-suggestions"></div>
+                                <input asp-for="AppUserId" type="hidden" id="hiddenAppUserId" name="AppUserId">
+                                <div id="userAutocompleteSuggestions" class="autocomplete-suggestions"></div>
                             </div>
                             <div class="form group">
                                 <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -57,58 +68,124 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> Proje Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="d-block form-label">Proje Adı</label>
+                        <input class="form-control" type="text" id="projectName" />
+
+                        <label class="d-block form-label">Proje Açıklaması</label>
+                        <input class="form-control" type="text" id="projectDescription" />
+
+                        <label class="d-block form-label">Bütçe</label>
+                        <input class="form-control" type="number" id="projectBudget" />
+
+                        <label class="d-block form-label">Başlangıç Tarihi</label>
+                        <input class="form-control" type="datetime-local" id="projectStartDate" />
+
+                        <label class="d-block form-label">Bitiş Tarihi</label>
+                        <input class="form-control" type="datetime-local" id="projectEndDate" />
+
+                        <label class="d-block form-label"> Öncelik</label>
+                        <select class="form-select" asp-items="Html.GetEnumSelectList<PriorityLevel>()" id="projectPriority"></select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button type="button" data-keyboard="false" class="btn btn-primary" id="btnSave">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts
 {
     <script src="~/js/projectAdd.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const projectNameInput = document.getElementById('projectName');
+            const projectSuggestionsBox = document.getElementById('projectAutocompleteSuggestions');
+            const hiddenProjectIdInput = document.getElementById('hiddenProjectId');
+
+            projectNameInput.addEventListener('input', function () {
+                const query = projectNameInput.value;
+
+                if (query.length === 0) {
+                    projectSuggestionsBox.innerHTML = '';
+                    return;
+                }
+
+                fetch(`/api/ProjectApi/search-projects?projectName=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        projectSuggestionsBox.innerHTML = '';
+                        data.forEach(project => {
+                            const suggestion = document.createElement('div');
+                            suggestion.classList.add('autocomplete-suggestion');
+                            suggestion.textContent = project.projectName;
+                            suggestion.dataset.projectId = project.id;
+                            projectSuggestionsBox.appendChild(suggestion);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching projects:', error));
+            });
+
+            projectSuggestionsBox.addEventListener('click', function (e) {
+                if (e.target.classList.contains('autocomplete-suggestion')) {
+                    projectNameInput.value = e.target.textContent;
+                    hiddenProjectIdInput.value = e.target.dataset.projectId;
+                    projectSuggestionsBox.innerHTML = '';
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
             const emailInput = document.getElementById('appUserEmail');
-            const suggestionsBox = document.getElementById('autocompleteSuggestions');
+            const userSuggestionsBox = document.getElementById('userAutocompleteSuggestions');
+            const hiddenAppUserIdInput = document.getElementById('hiddenAppUserId');
 
             emailInput.addEventListener('input', function () {
                 const query = emailInput.value;
 
                 if (query.length === 0) {
-                    suggestionsBox.innerHTML = '';
+                    userSuggestionsBox.innerHTML = '';
                     return;
                 }
 
                 fetch(`/api/users/search-users?email=${query}`)
                     .then(response => response.json())
                     .then(data => {
-                        suggestionsBox.innerHTML = '';
+                        userSuggestionsBox.innerHTML = '';
                         data.forEach(user => {
                             const suggestion = document.createElement('div');
                             suggestion.classList.add('autocomplete-suggestion');
                             suggestion.textContent = `${user.fullName} (${user.email})`;
                             suggestion.dataset.userId = user.id;
-                            suggestionsBox.appendChild(suggestion);
+                            userSuggestionsBox.appendChild(suggestion);
                         });
                     })
                     .catch(error => console.error('Error fetching users:', error));
             });
 
-            suggestionsBox.addEventListener('click', function (e) {
+            userSuggestionsBox.addEventListener('click', function (e) {
                 if (e.target.classList.contains('autocomplete-suggestion')) {
                     emailInput.value = e.target.textContent;
-                    emailInput.dataset.userId = e.target.dataset.userId;
-                    suggestionsBox.innerHTML = '';
+                    hiddenAppUserIdInput.value = e.target.dataset.userId;
+                    userSuggestionsBox.innerHTML = '';
                 }
             });
         });
     </script>
-    <script>
-        var app = app || {};
-        app.Urls = app.Urls || {};
-
-        app.Urls.baseUrl = '@Url.Content("~")';
-        app.Urls.projectAddUrl = "@(Url.Action("AddWithAjax", "Project"))";
-        app.Urls.taskAddUrl = "@(Url.Action("Add", "Task"))";
-    </script>
-
-
 }
 <style>
     .form-label {

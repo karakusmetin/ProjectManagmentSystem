@@ -94,8 +94,13 @@
         </div>
         <div class="row">
             @{
+                int counter = 0;
                 foreach(var project in Model)
                 {
+                    if (counter % 3 == 0 && counter != 0)
+                {
+                    @:</div><div class="row">
+                }
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body">
@@ -109,12 +114,21 @@
                             </div>
                         </div>
                     </div>
-                    // Her altı projeden sonra yeni bir satır başlatmak için kontrol yapalım
-                    if (Model.Count() % 6 == 0 && Model.Count() != 9)
-                    {
-                        @:</div><div class="row">
-                    }
                 }
+                if (counter % 3 == 0)
+                    {
+                         @:</div><div class="row">
+                    }
+                <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Yeni Proje Oluştur</h5>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a asp-area="ProjectManager" asp-controller="Project" asp-action="Add" asp-route-projectManagerId="@Model.FirstOrDefault().ProjectManagerId" class="btn btn-success">Proje Ekle</a>
+                            </div>
+                        </div>
+                    </div>
             }
         </div>
     </div>

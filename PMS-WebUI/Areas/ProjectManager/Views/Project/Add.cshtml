@@ -1,0 +1,194 @@
+﻿@model ProjectAddDto
+
+
+<div id="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div class="container">
+    <div class="Project-add">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Proje Yönetimi /</span> Proje Ekle</h4>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <form asp-controller="Project" asp-action="Add" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <input asp-for="ProjectManagerId" type="hidden" id="projectManagerInput" value="@Model.ProjectManagerId" />
+                            <div>
+                                <label asp-for="ProjectName" class="form-label">Proje Adı</label>
+                                <input asp-for="ProjectName" type="text" class="form-control mb-2" placeholder="Proje Adı..." aria-describedby="defaultFormControlHelp">
+                                <span asp-validation-for="ProjectName" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Description" for="defaultFormControlInput" class="form-label">Proje Açıklaması</label>
+                                <textarea asp-for="Description" type="text" class="form-control mb-2" style="min-height:100px" placeholder="Proje Açıklaması..." aria-describedby="defaultFormControlHelp"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Budget" for="defaultFormControlInput" class="form-label">Bütçe</label>
+                                <input asp-for="Budget" class="form-control" type="number" value="18" id="html5-number-input">
+                                <span asp-validation-for="Budget" class="text-danger"></span>
+                            </div>
+
+                            <div>
+                                <label asp-for="StartDate" for="defaultFormControlInput" class="form-label">Proje Başlama Tarihi</label>
+                                <input asp-for="StartDate" class="form-control mb-2" type="datetime-local" value="2024-06-18T12:30:00" id="html5-datetime-local-input">
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <label asp-for="EndDate" for="defaultFormControlInput" class="form-label">Proje Bitiş Tarihi</label>
+                                <input asp-for="EndDate" class="form-control mb-2" type="datetime-local" value="2024-06-18T12:30:00" id="html5-datetime-local-input">
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Priority" for="defaultSelect" class="form-label">Proje Önceliği</label>
+                                <select asp-for="Priority" asp-items="Html.GetEnumSelectList<PriorityLevel>()" id="defaultSelect" class="form-select">
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="AppUserIds" for="appUserEmail">Görev Atanan Kişinin Email Adresi:</label>
+                                <input type="text" id="appUserEmail" name="appUserEmail" autocomplete="off">
+                                <div id="userAutocompleteSuggestions" class="autocomplete-suggestions"></div>
+                            </div>
+                            <div>
+                                <label for="file" class="form-label">PDF Dosyası Seçin:</label>
+                                <input asp-for="File" type="file" id="file" name="file" accept="application/pdf" />
+                            </div>
+
+                            <!-- Container for selected users -->
+                            <div id="selectedUsersContainer" class="selected-users-container"></div>
+
+                            <div class="form group">
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-select {
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        border: 1px solid #3e2481;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+        .form-select option {
+            color: #495057;
+        }
+    /* Styles for selected users container */
+    .selected-users-container {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    /* Styles for individual user items */
+    .selected-user-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        background-color: #e9ecef;
+        border-radius: 3px;
+    }
+
+        .selected-user-item span {
+            margin-right: 10px;
+            font-weight: 500;
+        }
+
+        .selected-user-item .remove-user-btn {
+            cursor: pointer;
+            color: #ff0000;
+            font-weight: bold;
+        }
+</style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const emailInput = document.getElementById('appUserEmail');
+        const userSuggestionsBox = document.getElementById('userAutocompleteSuggestions');
+        const selectedUsersContainer = document.getElementById('selectedUsersContainer');
+        const appUserIdsInput = document.createElement('input');
+        appUserIdsInput.type = 'hidden';
+        appUserIdsInput.name = 'AppUserIds';
+        selectedUsersContainer.appendChild(appUserIdsInput);
+
+        emailInput.addEventListener('input', function () {
+            const query = emailInput.value;
+
+            if (query.length === 0) {
+                userSuggestionsBox.innerHTML = '';
+                return;
+            }
+
+            fetch(`/api/users/search-users?email=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    userSuggestionsBox.innerHTML = '';
+                    data.forEach(user => {
+                        const suggestion = document.createElement('div');
+                        suggestion.classList.add('autocomplete-suggestion');
+                        suggestion.textContent = `${user.fullName} (${user.email})`;
+                        suggestion.dataset.userId = user.id;
+                        userSuggestionsBox.appendChild(suggestion);
+                    });
+                })
+                .catch(error => console.error('Error fetching users:', error));
+        });
+
+        userSuggestionsBox.addEventListener('click', function (e) {
+            if (e.target.classList.contains('autocomplete-suggestion')) {
+                const userId = e.target.dataset.userId;
+                const userName = e.target.textContent;
+
+                const userIds = appUserIdsInput.value ? appUserIdsInput.value.split(',') : [];
+                if (!userIds.includes(userId)) {
+                    userIds.push(userId);
+                    appUserIdsInput.value = userIds.join(',');
+
+
+                    const userDiv = document.createElement('div');
+                    userDiv.classList.add('selected-user-item');
+                    userDiv.innerHTML = `<span>${userName}</span><span class="remove-user-btn" data-user-id="${userId}">X</span>`;
+                    selectedUsersContainer.appendChild(userDiv);
+                }
+
+                emailInput.value = '';
+                userSuggestionsBox.innerHTML = '';
+            }
+        });
+
+        selectedUsersContainer.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-user-btn')) {
+                const userId = e.target.dataset.userId;
+                const userIds = appUserIdsInput.value.split(',');
+                const updatedUserIds = userIds.filter(id => id !== userId);
+                appUserIdsInput.value = updatedUserIds.join(',');
+
+                e.target.parentElement.remove();
+            }
+        });
+    });
+</script>

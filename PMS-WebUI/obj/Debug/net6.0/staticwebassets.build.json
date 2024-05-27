@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b/gE5kNnKOWjNVj+WxxPu3914yvgU4d8WNIqHPpJCbQ=",
+  "Hash": "GqByW8EXfnYmRm9VsAIJLBfruN0lEdK1tqApO5UrEzQ=",
   "Source": "PMS.WebUI",
   "BasePath": "_content/PMS.WebUI",
   "Mode": "Default",
@@ -321,6 +321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\projectAdd.js"
+    },
+    {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectAppUserIndex.js",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "js/projectAppUserIndex.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\projectAppUserIndex.js"
     },
     {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectIndex.js",

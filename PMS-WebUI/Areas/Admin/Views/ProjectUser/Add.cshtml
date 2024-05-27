@@ -1,0 +1,137 @@
+﻿@model ProjectAppUserAddDto
+
+<div class="admin-container">
+    <div class="ProjectUser-add">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Proje Kullanıcısı Yönetimi /</span> Proje Kullanıcısı Ekle</h4>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <form asp-controller="ProjectUser" asp-action="Add" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label asp-for="ProjectId" for="projectName">Proje Adı:</label>
+                                <input asp-for="ProjectId" type="text" id="projectName" name="projectName" value="" autocomplete="off">
+                                <input asp-for="ProjectId" type="hidden" id="hiddenProjectId" name="ProjectId">
+                                <div id="projectAutocompleteSuggestions" class="autocomplete-suggestions"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="AppUserId" for="appUserEmail">Preje Atanan Kişinin Email Adresi:</label>
+                                <input asp-for="AppUserId" type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
+                                <input asp-for="AppUserId" type="hidden" id="hiddenAppUserId" name="AppUserId">
+                                <div id="userAutocompleteSuggestions" class="autocomplete-suggestions"></div>
+                            </div>
+                            <div class="form group">
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/projectAdd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const projectNameInput = document.getElementById('projectName');
+            const projectSuggestionsBox = document.getElementById('projectAutocompleteSuggestions');
+            const hiddenProjectIdInput = document.getElementById('hiddenProjectId');
+
+            projectNameInput.addEventListener('input', function () {
+                const query = projectNameInput.value;
+
+                if (query.length === 0) {
+                    projectSuggestionsBox.innerHTML = '';
+                    return;
+                }
+
+                fetch(`/api/ProjectApi/search-projects?projectName=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        projectSuggestionsBox.innerHTML = '';
+                        data.forEach(project => {
+                            const suggestion = document.createElement('div');
+                            suggestion.classList.add('autocomplete-suggestion');
+                            suggestion.textContent = project.projectName;
+                            suggestion.dataset.projectId = project.id;
+                            projectSuggestionsBox.appendChild(suggestion);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching projects:', error));
+            });
+
+            projectSuggestionsBox.addEventListener('click', function (e) {
+                if (e.target.classList.contains('autocomplete-suggestion')) {
+                    projectNameInput.value = e.target.textContent;
+                    hiddenProjectIdInput.value = e.target.dataset.projectId;
+                    projectSuggestionsBox.innerHTML = '';
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const emailInput = document.getElementById('appUserEmail');
+            const userSuggestionsBox = document.getElementById('userAutocompleteSuggestions');
+            const hiddenAppUserIdInput = document.getElementById('hiddenAppUserId');
+
+            emailInput.addEventListener('input', function () {
+                const query = emailInput.value;
+
+                if (query.length === 0) {
+                    userSuggestionsBox.innerHTML = '';
+                    return;
+                }
+
+                fetch(`/api/users/search-project-users?email=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        userSuggestionsBox.innerHTML = '';
+                        data.forEach(user => {
+                            const suggestion = document.createElement('div');
+                            suggestion.classList.add('autocomplete-suggestion');
+                            suggestion.textContent = `${user.fullName} (${user.email})`;
+                            suggestion.dataset.userId = user.id;
+                            userSuggestionsBox.appendChild(suggestion);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching users:', error));
+            });
+
+            userSuggestionsBox.addEventListener('click', function (e) {
+                if (e.target.classList.contains('autocomplete-suggestion')) {
+                    emailInput.value = e.target.textContent;
+                    hiddenAppUserIdInput.value = e.target.dataset.userId;
+                    userSuggestionsBox.innerHTML = '';
+                }
+            });
+        });
+    </script>
+}
+<style>
+    .form-label {
+        font-weight: bold; /* Kalın font */
+        color: #333; /* Metin rengi */
+    }
+
+    /* Select kutusu */
+    .form-select {
+        width: 100%; /* Genişlik tam olarak doldurulsun */
+        padding: 0.375rem 0.75rem; /* Dolgu */
+        line-height: 1.5; /* Satır yüksekliği */
+        color: #495057; /* Metin rengi */
+        background-color: #fff; /* Arka plan rengi */
+        border: 1px solid #3e2481; /* Kenarlık */
+        border-radius: 0.25rem; /* Kenar yuvarlaklığı */
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Geçiş efekti */
+    }
+
+        /* Seçenekler */
+        .form-select option {
+            color: #495057; /* Metin rengi */
+        }
+
+</style>

@@ -29,7 +29,7 @@ namespace PMS.ServiceLayer.Services.Concrete
 
         public async Task<List<TaskDto>> GetAllTasksNonDeletedAsync()
         {
-            var tasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().GetAllAsync(x=>x.IsActive==true);
+            var tasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().GetAllAsync(x=>x.IsActive==true,x=>x.AppUser);
             var map = mapper.Map<List<TaskDto>>(tasks);
 
             return map;

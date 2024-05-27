@@ -9,8 +9,8 @@ namespace PMS_EntityLayer.Concrete
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        
-        public Guid ImageId { get; set; } 
+
+        public Guid ImageId { get; set; } = Guid.Parse("BA09FD97-7832-4EBF-A065-B195D0900340");
         public Image Image { get; set; }
 
 

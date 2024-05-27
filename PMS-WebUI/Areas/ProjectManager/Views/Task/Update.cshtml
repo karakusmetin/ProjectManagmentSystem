@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <form asp-controller="Task" asp-action="Add" method="post" enctype="multipart/form-data">
                         <div class="card-body">
+                            <input asp-for="ProjectId" type="hidden" id="projectIdInput" value="@Model.ProjectId" />
                             <div>
                                 <a class="btn text-primary float-lg-right" data-toggle="modal" data-target="#exampleModalCenter">
                                     Proje Ekle  <i class="bx bx-plus"></i>
@@ -64,17 +65,19 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const emailInput = document.getElementById('appUserEmail');
+            const projectIdInput = document.getElementById('projectIdInput');
             const suggestionsBox = document.getElementById('autocompleteSuggestions');
 
             emailInput.addEventListener('input', function () {
                 const query = emailInput.value;
+                const projectId = projectIdInput.value;
 
                 if (query.length === 0) {
                     suggestionsBox.innerHTML = '';
                     return;
                 }
 
-                fetch(`/api/users/search-users?email=${query}`)
+                fetch(`/api/users/search-project-users/${projectId}?email=${query}`)
                     .then(response => response.json())
                     .then(data => {
                         suggestionsBox.innerHTML = '';
@@ -82,7 +85,7 @@
                             const suggestion = document.createElement('div');
                             suggestion.classList.add('autocomplete-suggestion');
                             suggestion.textContent = `${user.fullName} (${user.email})`;
-                            suggestion.dataset.userId = user.id;
+                            suggestion.dataset.userId = user.appUserId;
                             suggestionsBox.appendChild(suggestion);
                         });
                     })

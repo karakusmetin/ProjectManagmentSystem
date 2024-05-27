@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\js\\projectAdd.js"
     },
     {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectAppUserIndex.js",
+      "PackagePath": "staticwebassets\\js\\projectAppUserIndex.js"
+    },
+    {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\js\\projectIndex.js",
       "PackagePath": "staticwebassets\\js\\projectIndex.js"
     },

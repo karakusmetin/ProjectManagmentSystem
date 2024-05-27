@@ -9,6 +9,7 @@
                 <div class="card mb-4">
                     <form asp-controller="Task" asp-action="Add" method="post" enctype="multipart/form-data">
                         <div class="card-body">
+                            <input asp-for="ProjectId" type="hidden" id="projectIdInput" value="@Model.ProjectId" />
                             <div>
                                 <a class="btn text-primary float-lg-right" data-toggle="modal" data-target="#exampleModalCenter">
                                     Proje Ekle  <i class="bx bx-plus"></i>
@@ -43,6 +44,7 @@
                             <div class="mb-3">
                                 <label asp-for="AppUserId" for="appUserEmail">Görev Atanan Kişinin Email Adresi:</label>
                                 <input asp-for="AppUserId" type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
+                                <input asp-for="AppUserId" type="hidden" id="AppUserId" name="AppUserId">
                                 <div id="autocompleteSuggestions" class="autocomplete-suggestions"></div>
                             </div>
                             <div class="form group">
@@ -56,25 +58,26 @@
     </div>
 </div>
 
-
 @section Scripts
 {
     <script src="~/js/projectAdd.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const emailInput = document.getElementById('appUserEmail');
             const suggestionsBox = document.getElementById('autocompleteSuggestions');
+            const projectIdInput = document.getElementById('projectIdInput');
+            const appUserIdInput = document.getElementById('AppUserId');
 
             emailInput.addEventListener('input', function () {
                 const query = emailInput.value;
+                const projectId = projectIdInput.value;
 
                 if (query.length === 0) {
                     suggestionsBox.innerHTML = '';
                     return;
                 }
 
-                fetch(`/api/users/search-users?email=${query}`)
+                fetch(`/api/users/search-project-users/${projectId}?email=${query}`)
                     .then(response => response.json())
                     .then(data => {
                         suggestionsBox.innerHTML = '';
@@ -82,7 +85,7 @@
                             const suggestion = document.createElement('div');
                             suggestion.classList.add('autocomplete-suggestion');
                             suggestion.textContent = `${user.fullName} (${user.email})`;
-                            suggestion.dataset.userId = user.id;
+                            suggestion.dataset.userId = user.appUserId;
                             suggestionsBox.appendChild(suggestion);
                         });
                     })
@@ -92,7 +95,7 @@
             suggestionsBox.addEventListener('click', function (e) {
                 if (e.target.classList.contains('autocomplete-suggestion')) {
                     emailInput.value = e.target.textContent;
-                    emailInput.dataset.userId = e.target.dataset.userId;
+                    appUserIdInput.value = e.target.dataset.userId;  // Set the AppUserId hidden input value
                     suggestionsBox.innerHTML = '';
                 }
             });
@@ -106,8 +109,6 @@
         app.Urls.projectAddUrl = "@(Url.Action("AddWithAjax", "Project"))";
         app.Urls.taskAddUrl = "@(Url.Action("Add", "Task"))";
     </script>
-
-
 }
 <style>
     .form-label {

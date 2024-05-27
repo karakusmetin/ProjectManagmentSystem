@@ -52,8 +52,8 @@
                                 <td>@task.EndDate</td>
                                 <td>@task.Priority</td>
                                 <td>@task.InsertedBy</td>
-                                <td></td>
-                                <td></td>
+                                <td>-</td>
+                                <td>@task.AppUser.Email</td>
                                 <td>@(task.IsActive ? "Aktif" : "Aktif Değil")</td>
                                 <td>
                                     <a class="btn btn-primary btn-sm" data-id="@task.Id" asp-area="Admin" asp-controller="Task" asp-action="Update" asp-route-taskId="@task.Id"><i class="bx bxs-edit"></i></a>

@@ -14,8 +14,9 @@ namespace PMS_EntityLayer.DTOs.Projects
         public PriorityLevel Priority { get; set; }
         public DateTime EndDate { get; set; }
         public bool IsActive { get; set; }
+        public Guid ProjectManagerId { get; set; }
 
-        public IList<AppUser> ProjectMembers { get; set; }
+        public IList<ProjectAppUser> ProjectAppUsers { get; set; }
         public IList<Document> Documents { get; set; }
         public IList<Task> Tasks { get; set; }
 

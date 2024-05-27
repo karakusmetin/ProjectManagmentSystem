@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using PMS.EntityLayer.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace PMS_EntityLayer.DTOs.Projects
 {
@@ -16,5 +17,7 @@ namespace PMS_EntityLayer.DTOs.Projects
         public Guid ProjectManagerId { get; set; }
 
         public IFormFile? File { get; set; }
+
+        public List<Guid> AppUserIds { get; set; } = new List<Guid>();
     }
 }

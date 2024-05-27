@@ -21,6 +21,7 @@ namespace PMS.ServiceLayer.Extensions
             services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<IProjectManagerService, ProjectManagerService>();
             services.AddScoped<IDocumentService, DocumentService>();
+            services.AddScoped<IProjectAppUserService, ProjectAppUserService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

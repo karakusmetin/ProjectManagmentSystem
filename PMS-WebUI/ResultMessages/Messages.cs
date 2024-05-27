@@ -56,5 +56,25 @@
                 return $"{userEmail} email adresli kullanıcı başarı ile silindi";
             }
         }
+
+        public static class ProjectUser
+        {
+            public static string Add()
+            {
+                return "Projeye kullanıcı başarı ile eklendi";
+            }
+            public static string Update()
+            {
+                return "Proje kullanıcı ilişkisi başarı ile düzenlendi";
+            }
+            public static string Delete()
+            {
+                return "Proje kullanıcı ilişkisiı başarı ile silindi";
+            }
+            public static string Error()
+            {
+                return "Zaten Proje İçerisinde Kullanıcı Mevcut";
+            }
+        }
     }
 }

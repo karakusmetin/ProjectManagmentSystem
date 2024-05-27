@@ -1,8 +1,8 @@
-/* Genel Ayarlar */
+
 body {
-    background-color: #f8f9fa; /* Arka plan rengi */
+    background-color: #f8f9fa; 
     font-family: Arial, sans-serif;
-    color: #333; /* Metin rengi */
+    color: #333; 
     margin: 0;
     padding: 0;
 
@@ -46,6 +46,14 @@ body {
     }
 
 #appUserEmail {
+    width: 100%; /* Email input geniþliði */
+    padding: 5px; /* Email input padding */
+    border: 1px solid #ccc; /* Email input çerçeve rengi */
+    border-radius: 5px; /* Email input köþe yuvarlama */
+    box-sizing: border-box; /* Email input box-sizing */
+    font-size: 1rem; /* Email input font boyutu */
+}
+#projectName {
     width: 100%; /* Email input geniþliði */
     padding: 5px; /* Email input padding */
     border: 1px solid #ccc; /* Email input çerçeve rengi */

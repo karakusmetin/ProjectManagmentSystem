@@ -39,7 +39,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
             var users = await userManager.Users.ToListAsync();
             var map = mapper.Map<List<UserDto>>(users);
 
-            return View(new TaskAddDto { AppUsers = map ,ProjectId = projectId});
+            return View(new TaskAddDto { AppUsers = map, ProjectId = projectId });
         }
         [HttpPost]
         public async Task<IActionResult> Add(TaskAddDto taskAddDto)
@@ -51,7 +51,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
             {
                 await taskService.CreateTaskAsync(taskAddDto);
                 toastNotification.AddSuccessToastMessage(Messages.Task.Add(taskAddDto.TaskName), new ToastrOptions { Title = "Başarılı" });
-                return RedirectToAction("Index", "Task", new { Area = "Admin" });
+                return RedirectToAction("Detail", "Project", new { projectId = taskAddDto.ProjectId });
 
             }
             else

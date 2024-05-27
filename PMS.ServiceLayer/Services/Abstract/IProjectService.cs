@@ -16,11 +16,15 @@ namespace PMS.ServiceLayer.Services.Abstract
         
         Task<ProjectDetailDto> GetProjectWithNonDeletedWithUsersWithTasksAsync(Guid projectId);
 
-        System.Threading.Tasks.Task CreateProjectAsync(ProjectAddDto projectAddDto, Document document);
+        Task<Guid> CreateProjectAsync(ProjectAddDto projectAddDto, Document document);
 
 		Task<ProjectDto> GetProjectWithNonDeletedAsync(Guid projectId);
+        Task<List<ProjectDto>> GetAllProjectWithNameAsync(string projectName);
 
-		Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto, Document document);
+
+        Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto, Document document);
+        
+        Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto);
 
         Task<string> SafeDeleteProjectAsync(Guid projectId);
         
