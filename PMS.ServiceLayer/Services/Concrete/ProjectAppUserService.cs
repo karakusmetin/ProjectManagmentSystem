@@ -43,6 +43,22 @@ namespace PMS.ServiceLayer.Services.Concrete
             }
             return false;
         }
+        public async System.Threading.Tasks.Task<bool> CreateProjectAppUserAsync(Guid userId, Guid projectId)
+        {
+            var projectAppUser = new ProjectAppUser
+            {
+                AppUserId = userId,
+                ProjectId = projectId
+            };
+            var isAny = await dbContext.ProjectAppUsers.AnyAsync(x => x.ProjectId == projectId && x.AppUserId == userId);
+            if (isAny != true)
+            {
+                await dbContext.ProjectAppUsers.AddAsync(projectAppUser);
+                await dbContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
 
         public void DeleteProjectAppUser(Guid projectId,Guid appUserId)
         {

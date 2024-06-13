@@ -1,19 +1,102 @@
-﻿@model List<ProjectDto>
-
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proje Yönetim Sistemi</title>
+    <link href="~/css/homestyle.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <video autoplay loop playsinline muted poster="poster.jpg" class="background-video">
+                <source src="~/images/background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="overlay">
+                <h1>Proje Yönetim Sistemi</h1>
+            </div>
+            <div class="expand-button" id="expandButton">➔</div>
+        </div>
+        <div class="right-side" id="rightSide">
+            <div class="form-container" id="loginForm">
+                <h2>Hoşgeldiniz</h2>
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger text-danger">
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+                <form class="login-form" asp-controller="Auth" asp-action="Login" method="post">
+                    <input type="text" name="email" placeholder="Kullanıcı Adı" required>
+                    <input type="password" name="password" placeholder="Şifre" required>
+                    <input type="checkbox" name="rememberMe" style="display: none;" checked>
+                    <button type="submit" class="btn">Giriş Yap</button>
+                </form>
+                <button class="btn toggle-btn" onclick="toggleForm()">Kayıt Ol</button>
+            </div>
+            <div class="form-container" id="registerForm" style="display: none;">
+                <h2>Hesap Oluştur</h2>
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger text-danger">
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+                <form class="register-form" asp-controller="Auth" asp-action="Register" method="post">
+                    <input type="text" name="firstName" placeholder="İsim" required>
+                    <input type="text" name="lastName" placeholder="Soyisim" required>
+                    <input type="email" name="email" placeholder="E-posta" required>
+                    <input type="password" name="password" placeholder="Şifre" required>
+                    <input type="password" name="confirmPassword" placeholder="Şifre Tekrar" required>
+                    <input type="tel" name="phoneNumber" placeholder="Telefon Numarası" required>
+                    <button type="submit" class="btn">Kayıt Ol</button>
+                </form>
+                <button class="btn toggle-btn" onclick="toggleForm()">Giriş Yap</button>
+            </div>
+        </div>
+    </div>
 
-@foreach(var project in Model)
-{
-    <h1>@project.ProjectName</h1><br />
-    <h3>@project.Description</h3>
-    <br />
-    <br />
-    <br />
-} 
+    <script>
+        function toggleForm() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                registerForm.classList.add('active');
+                loginForm.classList.remove('active');
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const rightSide = document.getElementById("rightSide");
+            const expandButton = document.getElementById("expandButton");
+
+            expandButton.addEventListener("mouseover", () => {
+                rightSide.classList.add("expanded");
+            });
+
+            rightSide.addEventListener("mouseleave", () => {
+                rightSide.classList.remove("expanded");
+            });
+
+            // İlk açılışta loginForm aktif olsun
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('loginForm').classList.add('active');
+            document.getElementById('registerForm').style.display = 'none';
+        });
+
+    </script>
+</body>
+</html>

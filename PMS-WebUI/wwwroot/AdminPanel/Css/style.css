@@ -1,23 +1,146 @@
-
 body {
-    background-color: #f8f9fa; 
+    background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    color: #333; 
-    margin: 0;
-    padding: 0;
-
+    color: #333;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #e9ecef;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #495057;
 }
+/* Yükleniyor Animasyonu */
 #loading {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 9999;
+    z-index: 1000;
+}
+/* Hoþgeldiniz Mesajý */
+.welcome-message {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 5s linear infinite;
+    background-size: 200% auto;
+}
+/* Renkli Animasyon */
+@keyframes rainbow {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+.rainbow-text {
+    animation: rainbow 5s infinite alternate;
 }
 
 .spinner-border {
     color: #3e2481 !important;
 }
+
+/* Kartlar */
+.card {
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .card .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .card .card-front, .card .card-back {
+        position: absolute;
+        width: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .card .card-front {
+        background-color: #fff;
+    }
+
+    .card .card-back {
+        background-color: #f7f7f7;
+        transform: rotateY(180deg);
+    }
+
+    .card:hover .card-inner {
+        transform: rotateY(180deg);
+    }
+
+/* Ýkonlarýn Renkleri */
+.card-title i {
+    margin-right: 10px;
+}
+
+    .card-title i.fa-project-diagram {
+        color: #007bff;
+    }
+
+    .card-title i.fa-check-circle {
+        color: #28a745;
+    }
+
+    .card-title i.fa-spinner {
+        color: #ffc107;
+    }
+
+    .card-title i.fa-users {
+        color: #17a2b8;
+    }
+
+    .card-title i.fa-tasks {
+        color: #6c757d;
+    }
+
+/* Son Aktiviteler Ýçin Renkli Arkaplan */
+.event-olusturuldu {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.event-guncellendi {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.event-silindi {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+@keyframes animateText {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 200%;
+    }
+}
+
 
 /* Gizli içerik */
 .hidden {
@@ -134,7 +257,7 @@ body {
     color: #fff; /* Yönetici paneli yan menü metin rengi */
     border-radius: 15px;
     padding: 15px;
-    height: 730px; /* Navbar ve footer yüksekliði hariç yan menü yüksekliði */
+    height: 590px; /* Navbar ve footer yüksekliði hariç yan menü yüksekliði */
     width: 204px; /* Yan menü geniþliði ayarlandý */
     position: absolute; /* Yan menü sabit pozisyon */
     top: 80px; /* Navbar yüksekliði */
@@ -174,6 +297,8 @@ body {
     background-color: #fff; /* Yönetici paneli içerik arka plan rengi */
     border-radius: 10px;
     padding: 20px;
+    margin: 20px;
+    height: 100%;
     min-height: calc(100vh - 60px); /* Navbar ve footer yüksekliði hariç sayfa yüksekliði */
 }
 
@@ -181,18 +306,22 @@ body {
     margin-left: 350px;
     margin-right: 150px;
     margin-top: 80px; /* Navbar yüksekliði kadar üst boþluk */
-    margin-bottom: 100px;
+    margin-bottom: 150px;
+    height: 100%;
+    position:relative;
     scroll-margin-bottom: 50px;
 }
 
 .footer {
-    background-color: #3e2481; /* Alt bilgi arka plan rengi */
-    color: #fff; /* Alt bilgi metin rengi */
-    padding: 20px 0;
+    background-color: #3e2481 !important;
+    color: #fff;
+    padding: 10px 10px;
     text-align: center;
-    position: fixed;
+    position: relative; /* Change to relative */
     bottom: 0;
+    height: 70px;
     width: 100%;
+    margin-top: auto; /* This will push the footer to the bottom of the page */
 }
 
     .footer p {

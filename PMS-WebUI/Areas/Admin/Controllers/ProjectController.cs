@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using PMS.EntityLayer.Concrete;
@@ -17,6 +18,7 @@ using System.Threading.Tasks;
 namespace PMS_WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,Superadmin")]
     public class ProjectController : Controller
     {
         private readonly IProjectService projectService;

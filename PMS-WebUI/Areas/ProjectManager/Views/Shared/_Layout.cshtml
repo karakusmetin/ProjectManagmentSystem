@@ -10,21 +10,34 @@
 
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
 
-
-    
     <link href="~/ProjectManager/Css/style.css" rel="stylesheet">
 
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ">
         <a class="navbar-brand" asp-area="ProjectManager" asp-controller="Home" asp-action="Index">Proje Yönetim Paneli</a>
-        
-
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="ProjectManager" asp-controller="Home" asp-action="Index">Projelerim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="ProjectManager" asp-controller="Project" asp-action="DeletedProjects">Durdurulan Projelerim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">AdminPanel</a>
+                </li>
+            </ul>
+        </div>
         @await Component.InvokeAsync("DashboardHeader")
     </nav>
 
 
-    @RenderBody();
+
+    @RenderBody()
 
     <!-- Altbilgi -->
     <footer class="footer">
@@ -37,9 +50,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-    @await RenderSectionAsync("Scripts", false);
-    
+
+    @await Component.InvokeAsync("NToastNotify")
+    @await RenderSectionAsync("Scripts", false)
+
+
     <script>
         $(document).ready(function () {
             $('.priority-buttons .btn').click(function () {

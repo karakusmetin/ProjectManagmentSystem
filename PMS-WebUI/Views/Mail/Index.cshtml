@@ -1,0 +1,117 @@
+﻿@model MailRequest
+
+<div id="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+
+<div class="container">
+    <h1>Yeni Mail Gönderme Sayfası</h1>
+
+    <form asp-action="Index" method="post">
+        <div class="form-group">
+            <label asp-for="UserName" for="UserName">Kullanıcı Adı:</label>
+            <input asp-for="UserName" type="text" id="UserName" name="UserName" class="form-control" required readonly/>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReceiverMail" for="ReceiverMail">Alıcı Email:</label>
+            <input asp-for="ReceiverMail" type="email" id="ReceiverMail" name="ReceiverMail" class="form-control" required readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="ProjectManagerName" for="UserName">Kullanıcı Adı:</label>
+            <input asp-for="ProjectManagerName" type="text" id="UserName" name="UserName" class="form-control" required readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="ProjectName" for="ProjectName">Proje Adı:</label>
+            <input asp-for="ProjectName" type="text" id="ProjectName" name="ProjectName" class="form-control" required readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="Subject" for="Subject">Konu:</label>
+            <input asp-for="Subject" type="text" id="Subject" name="Subject" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label asp-for="Body" for="Body">İçerik:</label>
+            <textarea asp-for ="Body" id="Body" name="Body" class="form-control" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" id="btnGonder" class="btn btn-primary btn-block">Gönder</button>
+    </form>
+</div>
+
+<script>
+    const btn = document.getElementById("btnGonder");
+    const inputs = document.querySelectorAll("input, textarea");
+    btn.addEventListener("click", function () {
+        swal("Harika!", "Mailiniz başarıyla gönderildi.", "success");
+        inputs.forEach(input => input.value = "");
+    });
+</script>
+
+<style>
+
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+    }
+
+
+
+    h1 {
+        color: #343a40;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 2em;
+    }
+
+    label {
+        font-weight: bold;
+        color: #495057;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        input:focus, textarea:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+        }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+    .btn-block {
+        display: block;
+        width: 100%;
+    }
+
+</style>

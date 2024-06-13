@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GqByW8EXfnYmRm9VsAIJLBfruN0lEdK1tqApO5UrEzQ=",
+  "Hash": "xn55y6oewy1UQ6w+aC5kLgF8H8YJAiDhLGFyczrl5mQ=",
   "Source": "PMS.WebUI",
   "BasePath": "_content/PMS.WebUI",
   "Mode": "Default",
@@ -238,6 +238,23 @@
       "OriginalItemSpec": "wwwroot\\AdminPanel\\script.js"
     },
     {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\homestyle.css",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "css/homestyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\homestyle.css"
+    },
+    {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\site.css",
       "SourceId": "PMS.WebUI",
       "SourceType": "Discovered",
@@ -255,6 +272,23 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\taskuser.css",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "css/taskuser.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\taskuser.css"
+    },
+    {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\favicon.ico",
       "SourceId": "PMS.WebUI",
       "SourceType": "Discovered",
@@ -270,6 +304,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\background.mp4",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "images/background.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\background.mp4"
+    },
+    {
+      "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\empty_state.png",
+      "SourceId": "PMS.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\",
+      "BasePath": "_content/PMS.WebUI",
+      "RelativePath": "images/empty_state.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\empty_state.png"
     },
     {
       "Identity": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\image1.png",

@@ -1,0 +1,126 @@
+﻿@model DashboardPageDto
+
+<div id="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div class="admin-container">
+    <div class="main-content">
+        <div class="container">
+            <!-- Grafikler -->
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <canvas id="projectStatusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <canvas id="taskStatusChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Proje Tarih Grafiği -->
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Proje Tarihleri</h5>
+                            <canvas id="projectTimelineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var projectStatusData = @Html.Raw(Json.Serialize(new { completedProjects = Model.CompletedProjects, ongoingProjects = Model.OngoingProjects }));
+        var taskStatusData = @Html.Raw(Json.Serialize(new { completedTasks = Model.CompletedTasks, ongoingTasks = Model.OngoingTasks }));
+        var projectDates = @Html.Raw(Json.Serialize(Model.ProjectDates));
+        var projectCounts = @Html.Raw(Json.Serialize(Model.ProjectCounts));
+
+        // Proje Durumu Grafiği
+        var ctx1 = document.getElementById('projectStatusChart').getContext('2d');
+        var projectStatusChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Tamamlanmış', 'Devam Eden'],
+                datasets: [{
+                    label: 'Proje Durumu',
+                    data: [projectStatusData.completedProjects, projectStatusData.ongoingProjects],
+                    backgroundColor: ['#28a745', '#ffc107']
+                }]
+            }
+        });
+
+        // Görev Durumu Grafiği
+        var ctx2 = document.getElementById('taskStatusChart').getContext('2d');
+        var taskStatusChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Tamamlanmış', 'Devam Eden'],
+                datasets: [{
+                    label: 'Görev Durumu',
+                    data: [taskStatusData.completedTasks, taskStatusData.ongoingTasks],
+                    backgroundColor: ['#28a745', '#ffc107']
+                }]
+            }
+        });
+
+        // Proje Tarihleri Grafiği
+        var ctx3 = document.getElementById('projectTimelineChart').getContext('2d');
+        var projectTimelineChart = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: projectDates,
+                datasets: [{
+                    label: 'Proje Sayısı',
+                    data: projectCounts,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            tooltipFormat: 'yyyy-MM-dd'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+    /* Genel */
+    body {
+        background-color: #e9ecef;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #495057;
+    }
+
+    .main-content {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+</style>

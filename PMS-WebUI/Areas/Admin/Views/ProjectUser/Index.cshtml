@@ -1,11 +1,11 @@
 ﻿@model List<ProjectAppUserDto>
 
-
 <div id="loading">
     <div class="spinner-border text-primary" role="status">
         <span class="sr-only">Loading...</span>
     </div>
 </div>
+
 <div class="admin-container">
     <div class="projectAppUser-content">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Proje Kullanıcıları Yönetimi /</span> Proje Kullanıcıları</h4>
@@ -15,7 +15,7 @@
             <h5 class="card-header">Kullanıcılar</h5>
             <div class="table-responsive text-nowrap custom-table">
                 @{
-                    if (!User.IsInRole("SuperAdmin"))
+                    if (User.IsInRole("Superadmin")||User.IsInRole("Admin"))
                     {
                         <a class="btn btn-success" asp-area="Admin" asp-controller="ProjectUser" asp-action="Add">
                             Projeye Kullanıcı Ekle <i class="bx bx-plus"></i>
@@ -48,8 +48,11 @@
                                 <td>@projectAppUser.AppUser.FirstName+@projectAppUser.AppUser.LastName</td>
                                 <td>@projectAppUser.AppUser.Email</td>
                                 <td>
+                                    @if (User.IsInRole("Superadmin")||User.IsInRole("Admin"))
+                                    {
                                     <a class="btn btn-danger btn-sm" data-id="@projectAppUser.ProjectId,@projectAppUser.AppUserId" asp-area="Admin" asp-controller="ProjectUser" asp-action="Delete" asp-route-projectId="@projectAppUser.ProjectId" asp-route-appUserId="@projectAppUser.AppUserId"><i class="bx bx-minus-circle"></i></a>
 
+                                    }
                                 </td>
                             </tr>
                         }

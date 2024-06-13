@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using PMS.EntityLayer.Concrete;
+using System;
 
 namespace PMS.ServiceLayer.FluentValidations
 {
@@ -25,6 +26,11 @@ namespace PMS.ServiceLayer.FluentValidations
             RuleFor(x => x.ProjectManagerId)
                 .NotEmpty()
                 .WithName("Proje Yöneticisi");
+            RuleFor(x => x.EndDate)
+                .NotEmpty()
+                .GreaterThan(DateTime.Now.AddDays(3))
+                .WithName("Bitiş Tarihi");
+
         }
     }
 }

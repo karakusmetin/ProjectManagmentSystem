@@ -49,12 +49,28 @@
       "PackagePath": "staticwebassets\\ProjectManager\\Css\\style.css"
     },
     {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\homestyle.css",
+      "PackagePath": "staticwebassets\\css\\homestyle.css"
+    },
+    {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\css\\taskuser.css",
+      "PackagePath": "staticwebassets\\css\\taskuser.css"
+    },
+    {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\background.mp4",
+      "PackagePath": "staticwebassets\\images\\background.mp4"
+    },
+    {
+      "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\empty_state.png",
+      "PackagePath": "staticwebassets\\images\\empty_state.png"
     },
     {
       "Id": "C:\\Users\\fener\\Desktop\\Deeneme\\PMS-WebUI\\wwwroot\\images\\image1.png",

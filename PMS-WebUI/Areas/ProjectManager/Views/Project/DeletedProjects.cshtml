@@ -1,0 +1,57 @@
+﻿@model List<ProjectDto>
+<div id="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">Durdurulan Projelerim</h2>
+            </div>
+        </div>
+        <div class="row">
+        @{
+            if(Model == null)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center mb-4">Durdulan Bir Projeniz Bulunmamaktadır</h2>
+                    </div>
+                </div>
+            }
+            else
+            {
+                int counter = 0;
+                foreach(var project in Model)
+                {
+                    if (counter % 3 == 0 && counter != 0)
+                {
+                    @:</div><div class="row">
+                }
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">@project.ProjectName</h5>
+                                <p class="card-text">@project.Description</p>
+                                <p class="card-text"><strong>Bütçe: </strong>@project.Budget TL</p>
+                                <p class="card-text"><strong>Durdurulma Tarihi:</strong>@project.DeletedDate</p>
+                                <p class="card-text"><strong>Başlangıç Tarihi: </strong> Tarihi:@project.StartDate</p>
+                                <p class="card-text"><strong>Bitiş Tarihi: </strong>@project.EndDate</p>
+                                <p class="card-text"><strong>Öncelik: </strong>@project.Priority</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                }
+                if (counter % 3 == 0)
+                    {
+                         @:</div><div class="row">
+                    }
+            }
+            
+            }
+        </div>
+    </div>
+

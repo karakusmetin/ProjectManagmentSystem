@@ -1,11 +1,11 @@
 ﻿@model ProjectAddDto
 
-
 <div id="loading">
     <div class="spinner-border text-primary" role="status">
         <span class="sr-only">Loading...</span>
     </div>
 </div>
+
 <div class="container">
     <div class="Project-add">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Proje Yönetimi /</span> Proje Ekle</h4>
@@ -28,18 +28,18 @@
                             </div>
                             <div>
                                 <label asp-for="Budget" for="defaultFormControlInput" class="form-label">Bütçe</label>
-                                <input asp-for="Budget" class="form-control" type="number" value="18" id="html5-number-input">
+                                <input asp-for="Budget" class="form-control" type="number" value="1000" id="html5-number-input">
                                 <span asp-validation-for="Budget" class="text-danger"></span>
                             </div>
 
                             <div>
                                 <label asp-for="StartDate" for="defaultFormControlInput" class="form-label">Proje Başlama Tarihi</label>
-                                <input asp-for="StartDate" class="form-control mb-2" type="datetime-local" value="2024-06-18T12:30:00" id="html5-datetime-local-input">
+                                <input asp-for="StartDate" class="form-control mb-2" type="datetime-local" value="2024-06-11T14:30:00" id="html5-datetime-local-input">
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
                             </div>
                             <div>
                                 <label asp-for="EndDate" for="defaultFormControlInput" class="form-label">Proje Bitiş Tarihi</label>
-                                <input asp-for="EndDate" class="form-control mb-2" type="datetime-local" value="2024-06-18T12:30:00" id="html5-datetime-local-input">
+                                <input asp-for="EndDate" class="form-control mb-2" type="datetime-local" value="2024-06-11T15:30:00" id="html5-datetime-local-input">
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
 
@@ -57,11 +57,8 @@
                                 <label for="file" class="form-label">PDF Dosyası Seçin:</label>
                                 <input asp-for="File" type="file" id="file" name="file" accept="application/pdf" />
                             </div>
-
-                            <!-- Container for selected users -->
                             <div id="selectedUsersContainer" class="selected-users-container"></div>
-
-                            <div class="form group">
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Kaydet</button>
                             </div>
                         </div>
@@ -130,10 +127,6 @@
         const emailInput = document.getElementById('appUserEmail');
         const userSuggestionsBox = document.getElementById('userAutocompleteSuggestions');
         const selectedUsersContainer = document.getElementById('selectedUsersContainer');
-        const appUserIdsInput = document.createElement('input');
-        appUserIdsInput.type = 'hidden';
-        appUserIdsInput.name = 'AppUserIds';
-        selectedUsersContainer.appendChild(appUserIdsInput);
 
         emailInput.addEventListener('input', function () {
             const query = emailInput.value;
@@ -143,7 +136,7 @@
                 return;
             }
 
-            fetch(`/api/users/search-users?email=${query}`)
+            fetch(`/api/usersapi/search-project-users?email=${query}`)
                 .then(response => response.json())
                 .then(data => {
                     userSuggestionsBox.innerHTML = '';
@@ -163,11 +156,13 @@
                 const userId = e.target.dataset.userId;
                 const userName = e.target.textContent;
 
-                const userIds = appUserIdsInput.value ? appUserIdsInput.value.split(',') : [];
-                if (!userIds.includes(userId)) {
-                    userIds.push(userId);
-                    appUserIdsInput.value = userIds.join(',');
-
+                const existingInputs = selectedUsersContainer.querySelectorAll(`input[value="${userId}"]`);
+                if (existingInputs.length === 0) {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'AppUserIds';
+                    input.value = userId;
+                    selectedUsersContainer.appendChild(input);
 
                     const userDiv = document.createElement('div');
                     userDiv.classList.add('selected-user-item');
@@ -183,12 +178,14 @@
         selectedUsersContainer.addEventListener('click', function (e) {
             if (e.target.classList.contains('remove-user-btn')) {
                 const userId = e.target.dataset.userId;
-                const userIds = appUserIdsInput.value.split(',');
-                const updatedUserIds = userIds.filter(id => id !== userId);
-                appUserIdsInput.value = updatedUserIds.join(',');
+                const inputToRemove = selectedUsersContainer.querySelector(`input[value="${userId}"]`);
+                if (inputToRemove) {
+                    inputToRemove.remove();
+                }
 
                 e.target.parentElement.remove();
             }
         });
     });
+
 </script>

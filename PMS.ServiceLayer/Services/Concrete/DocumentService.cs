@@ -30,5 +30,21 @@ namespace PMS.ServiceLayer.Services.Concrete
             var document = await unitOfWork.GetRepository<Document>().GetByGuidAsync(documentId);
             return document;
         }
+
+        public async Task<bool> DeleteDocumentAsync(Guid documentId)
+        {
+            var document = await unitOfWork.GetRepository<Document>().GetByGuidAsync(documentId);
+            if (document != null)
+            {
+                await unitOfWork.GetRepository<Document>().DeleteAsync(document);
+                await unitOfWork.SaveAsnyc();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
 }

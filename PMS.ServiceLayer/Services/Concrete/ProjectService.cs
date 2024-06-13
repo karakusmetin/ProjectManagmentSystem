@@ -16,27 +16,47 @@ using Task = System.Threading.Tasks.Task;
 
 namespace PMS.ServiceLayer.Services.Concrete
 {
-	public class ProjectService : IProjectService
-	{
-		private readonly IUnitOfWork unitOfWork;
+    public class ProjectService : IProjectService
+    {
+        private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IDocumentService documentService;
         private readonly ClaimsPrincipal _user;
 
-        public ProjectService(IUnitOfWork unitOfWork,IMapper mapper,IHttpContextAccessor httpContextAccessor,IDocumentService documentService)
-		{
-			this.unitOfWork = unitOfWork;
+        public ProjectService(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, IDocumentService documentService)
+        {
+            this.unitOfWork = unitOfWork;
             this.mapper = mapper;
             this.httpContextAccessor = httpContextAccessor;
             this.documentService = documentService;
             _user = httpContextAccessor.HttpContext.User;
         }
+        public async Task<ProjectDetailDto> GetProjectWithNonDeletedWithUsersWithTasksAsync(Guid projectId)
+        {
 
-        public async Task<Guid> CreateProjectAsync(ProjectAddDto projectAddDto,Document document)
+            var project = await unitOfWork.GetRepository<Project>().GetWithIncludesAsync(x => x.IsActive == true && x.Id == projectId,
+                                                                                         x => x.Include(x => x.ProjectAppUsers).ThenInclude(x => x.AppUser),
+                                                                                         x => x.Include(x => x.Tasks.Where(x => x.IsActive == true)),
+                                                                                         x => x.Include(x => x.Documents));
+            var map = mapper.Map<ProjectDetailDto>(project);
+
+            return map;
+        }
+
+        public async Task<ProjectWithManagerDto> GetProjectWithNonDeletedWithUsersWithTasksWithManagerAsync(Guid projectId)
+        {
+            var project = await unitOfWork.GetRepository<Project>().GetWithIncludesAsync(x => x.IsActive == true && x.Id == projectId,
+                                                                                         x => x.Include(x => x.ProjectManager).ThenInclude(x => x.AppUser));
+            var map = mapper.Map<ProjectWithManagerDto>(project);
+
+            return map;
+        }
+
+        public async Task<Guid> CreateProjectAsync(ProjectAddDto projectAddDto, Document document)
         {
             var userEmail = _user.GetLoggedInEmail();
-           
+
 
             var project = new Project
             {
@@ -49,12 +69,12 @@ namespace PMS.ServiceLayer.Services.Concrete
                 ProjectManagerId = projectAddDto.ProjectManagerId,
                 InsertedBy = userEmail
             };
-           
+
 
             await unitOfWork.GetRepository<Project>().AddAsync(project);
             await unitOfWork.SaveAsnyc();
-            
-            if(document.Content != null)
+
+            if (document.Content != null)
             {
                 document.ProjectId = project.Id;
                 await documentService.CreateDocumentAsync(document);
@@ -65,12 +85,12 @@ namespace PMS.ServiceLayer.Services.Concrete
         }
 
         public async Task<List<ProjectDto>> GetListProjectsWithNonDeletedAsync()
-		{			
-            var projects = await unitOfWork.GetRepository<Project>().GetAllWithIncludesAsync(x=>x.Where(x=>x.IsActive == true),x=>x.Include(x=>x.ProjectManager).ThenInclude(x=>x.AppUser));
-			var map = mapper.Map<List<ProjectDto>>(projects);
+        {
+            var projects = await unitOfWork.GetRepository<Project>().GetAllWithIncludesAsync(x => x.Where(x => x.IsActive == true), x => x.Include(x => x.ProjectManager).ThenInclude(x => x.AppUser));
+            var map = mapper.Map<List<ProjectDto>>(projects);
 
-			return map;
-		}
+            return map;
+        }
 
         public async Task<ProjectDto> GetProjectWithNonDeletedAsync(Guid projectId)
         {
@@ -80,13 +100,22 @@ namespace PMS.ServiceLayer.Services.Concrete
 
             return map;
         }
-        public async Task<ProjectDetailDto> GetProjectWithNonDeletedWithUsersWithTasksAsync(Guid projectId)
+        public async Task<List<ProjectDto>> GetAllProjectWithManagerIdAsync()
         {
-            var project = await unitOfWork.GetRepository<Project>().GetWithIncludesAsync(x => x.IsActive == true && x.Id == projectId,
-                                                                                         x=>x.Include(x=>x.ProjectAppUsers).ThenInclude(x=>x.AppUser),
-                                                                                         x=>x.Include(x=>x.Tasks),
-                                                                                         x=>x.Include(x=>x.Documents));
-            var map = mapper.Map<ProjectDetailDto>(project);
+            var userId = _user.GetLoggedInUserId();
+            var projects = await unitOfWork.GetRepository<Project>().GetAllAsync(x => x.IsActive == true && x.ProjectManager.AppUserId == userId);
+
+            var map = mapper.Map<List<ProjectDto>>(projects);
+
+
+            return map;
+        }
+        public async Task<List<ProjectDto>> GetAllDeletedProjectWithManagerIdAsync()
+        {
+            var userId = _user.GetLoggedInUserId();
+            var projects = await unitOfWork.GetRepository<Project>().GetAllAsync(x => x.IsActive == false && x.ProjectManager.AppUserId == userId);
+
+            var map = mapper.Map<List<ProjectDto>>(projects);
 
 
             return map;
@@ -94,13 +123,17 @@ namespace PMS.ServiceLayer.Services.Concrete
         public async Task<List<ProjectDto>> GetAllProjectWithUserIdAsync()
         {
             var userId = _user.GetLoggedInUserId();
-            var projects = await unitOfWork.GetRepository<Project>().GetAllAsync(x => x.IsActive == true && x.ProjectManager.AppUserId == userId);
-            
+            var projects = await unitOfWork.GetRepository<Project>().GetAllWithIncludesAsync(
+             x => x.Where(p => p.IsActive == true && p.ProjectAppUsers.Any(pau => pau.AppUserId == userId)),
+             x => x.Include(p => p.ProjectAppUsers),
+             x => x.Include(p => p.ProjectManager));
+
             var map = mapper.Map<List<ProjectDto>>(projects);
 
 
             return map;
         }
+
         public async Task<List<ProjectDto>> GetAllProjectWithNameAsync(string projectName)
         {
             var projects = await unitOfWork.GetRepository<Project>().GetAllAsync(x => x.IsActive == true && x.ProjectName.Contains(projectName));
@@ -111,14 +144,14 @@ namespace PMS.ServiceLayer.Services.Concrete
             return map;
         }
 
-        public async Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto,Document document)
+        public async Task<string> UpdateProjectAsync(ProjectUpdateDto projectUpdateDto, Document document)
         {
-            var userEmail= _user.GetLoggedInEmail();
+            var userEmail = _user.GetLoggedInEmail();
 
             var project = await unitOfWork.GetRepository<Project>().GetAsync(x => x.IsActive == true && x.Id == projectUpdateDto.Id);
             projectUpdateDto.UpdateDate = DateTime.Now;
             project.UpdatedBy = userEmail;
-            
+
             if (document.Content != null)
             {
                 document.ProjectId = project.Id;
@@ -127,7 +160,7 @@ namespace PMS.ServiceLayer.Services.Concrete
                 await unitOfWork.SaveAsnyc();
             }
             mapper.Map<ProjectUpdateDto, Project>(projectUpdateDto, project);
-           
+
             await unitOfWork.GetRepository<Project>().UpdateAsnyc(project);
             await unitOfWork.SaveAsnyc();
 
@@ -161,7 +194,7 @@ namespace PMS.ServiceLayer.Services.Concrete
             await unitOfWork.GetRepository<Project>().UpdateAsnyc(project);
             await unitOfWork.SaveAsnyc();
 
-            return project.ProjectName; 
+            return project.ProjectName;
         }
 
         public async Task<List<ProjectDto>> GetAllDeletedProjectAsync()
@@ -178,8 +211,8 @@ namespace PMS.ServiceLayer.Services.Concrete
             var project = await unitOfWork.GetRepository<Project>().GetByGuidAsync(projectId);
 
             project.IsActive = true;
-            project.DeletedDate = null;
-            project.DeletedBy = null;
+            project.UpdateDate = DateTime.Now;
+            project.UpdatedBy = userEmail;
 
             await unitOfWork.GetRepository<Project>().UpdateAsnyc(project);
             await unitOfWork.SaveAsnyc();

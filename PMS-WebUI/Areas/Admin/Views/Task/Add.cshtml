@@ -15,10 +15,6 @@
                     <form asp-controller="Task" asp-action="Add" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <div>
-                                <a class="btn text-primary float-lg-right" data-toggle="modal" data-target="#exampleModalCenter">
-                                    Proje Ekle  <i class="bx bx-plus"></i>
-                                </a>
-
                                 <label asp-for="TaskName" class="form-label">Görev Adı</label>
                                 <input asp-for="TaskName" type="text" class="form-control mb-2" placeholder="Görev Adı..." aria-describedby="defaultFormControlHelp">
                                 <span asp-validation-for="TaskName" class="text-danger"></span>
@@ -63,46 +59,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"> Proje Ekle</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label class="d-block form-label">Proje Adı</label>
-                        <input class="form-control" type="text" id="projectName" />
-
-                        <label class="d-block form-label">Proje Açıklaması</label>
-                        <input class="form-control" type="text" id="projectDescription" />
-
-                        <label class="d-block form-label">Bütçe</label>
-                        <input class="form-control" type="number" id="projectBudget" />
-
-                        <label class="d-block form-label">Başlangıç Tarihi</label>
-                        <input class="form-control" type="datetime-local" id="projectStartDate" />
-
-                        <label class="d-block form-label">Bitiş Tarihi</label>
-                        <input class="form-control" type="datetime-local" id="projectEndDate" />
-
-                        <label class="d-block form-label"> Öncelik</label>
-                        <select class="form-select" asp-items="Html.GetEnumSelectList<PriorityLevel>()" id="projectPriority"></select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                <button type="button" data-keyboard="false" class="btn btn-primary" id="btnSave">Kaydet</button>
             </div>
         </div>
     </div>
@@ -162,7 +118,7 @@
                     return;
                 }
 
-                fetch(`/api/users/search-users?email=${query}`)
+                fetch(`/api/usersapi/search-users?email=${query}`)
                     .then(response => response.json())
                     .then(data => {
                         userSuggestionsBox.innerHTML = '';

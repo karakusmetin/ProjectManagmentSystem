@@ -9,6 +9,7 @@ namespace PMS.ServiceLayer.Services.Abstract
     {
         List<ProjectAppUserDto> GetAllListProjectAppUserNonDeletedAsync();
         Task<bool> CreateProjectAppUserAsync(ProjectAppUserAddDto projectAppUserAddDto);
+        Task<bool> CreateProjectAppUserAsync(Guid userId, Guid projectId);
         void DeleteProjectAppUser(Guid projectId, Guid appUserId);
     }
 }

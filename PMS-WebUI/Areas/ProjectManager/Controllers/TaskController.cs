@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ using System.Threading.Tasks;
 namespace PMS_WebUI.Areas.ProjectManager.Controllers
 {
     [Area("ProjectManager")]
+    [Authorize(Roles = "Admin,ProjectManager,Superadmin")]
     public class TaskController : Controller
     {
         private readonly ITaskService taskService;
@@ -44,7 +46,14 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(TaskAddDto taskAddDto)
         {
-            var map = mapper.Map<PMS_EntityLayer.Concrete.Task>(taskAddDto);
+            var map = new PMS_EntityLayer.Concrete.Task
+            {
+                TaskName = taskAddDto.TaskName,
+                Description = taskAddDto.TaskDescription,
+                StartDate = taskAddDto.StartDate,
+                EndDate = taskAddDto.EndDate,
+                UserId = taskAddDto.AppUserId
+            };
             var result = await validator.ValidateAsync(map);
 
             if (result.IsValid)
@@ -57,7 +66,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
             else
             {
                 result.AddToModelState(this.ModelState);
-                return View();
+                return View(taskAddDto);
             }
         }
 
@@ -94,7 +103,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
             var taskName = await taskService.SafeDeleteTaskAsync(taskId);
             toastNotification.AddWarningToastMessage(Messages.Task.Delete(taskName), new ToastrOptions() { Title = "İşlem Başarılı" });
 
-            return RedirectToAction("Index", "Task", new { Area = "Admin" });
+            return RedirectToAction("Index", "Home", new { Area = "ProjectManager" });
         }
     }
 }

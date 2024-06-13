@@ -104,7 +104,7 @@
                 return;
             }
 
-            fetch(`/api/users/search-manager?email=${query}`)
+            fetch(`/api/usersapi/search-manager?email=${query}`)
                 .then(response => response.json())
                 .then(data => {
                     suggestionsBox.innerHTML = '';

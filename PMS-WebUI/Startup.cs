@@ -12,6 +12,8 @@ using PMS.ServiceLayer.Describers;
 using PMS.ServiceLayer.Extensions;
 using PMS_EntityLayer.Concrete;
 using System;
+using System.Net;
+using System.Text.Json;
 
 namespace PMS_WebUI
 {
@@ -61,11 +63,11 @@ namespace PMS_WebUI
                     Name = "ProjectMenagmentSystem",
                     HttpOnly = true,
                     SameSite = SameSiteMode.Strict,
-                    SecurePolicy = CookieSecurePolicy.SameAsRequest // Site canlýya çýkýnca Always olmalý
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest // Can be Always on any Server Site
                 };
 
                 config.SlidingExpiration = true;
-                config.ExpireTimeSpan = TimeSpan.FromDays(7);//Login kalma süresi
+                config.ExpireTimeSpan = TimeSpan.FromDays(7);//Login Time
                 config.AccessDeniedPath = new PathString("/Admin/Auth/AccessDenied");
             });
         }
@@ -85,7 +87,10 @@ namespace PMS_WebUI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
 
+
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
             app.UseNToastNotify();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -104,13 +109,13 @@ namespace PMS_WebUI
                     name: "Admin",
                     areaName: "Admin",
                     pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapAreaControllerRoute(
                     name: "ProjectManager",
                     areaName: "ProjectManager",
                     pattern: "ProjectManager/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapDefaultControllerRoute();
-
             });
 
 

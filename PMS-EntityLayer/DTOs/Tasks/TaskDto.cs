@@ -12,6 +12,7 @@ namespace PMS_EntityLayer.DTOs.Tasks
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public PriorityLevel Priority { get; set; }
+        public TaskUpdateStatus UpdateStatus { get; set; }
         public string InsertedBy { get; set; }
         public bool IsActive { get; set; } = true;
         public AppUser AppUser { get; set; }

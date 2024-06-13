@@ -1,4 +1,9 @@
 ﻿@model ProjectDetailDto
+<div id="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 
 <div class="container">
     <h1 class="my-4">Proje Yönetim Sistemi</h1>
@@ -24,19 +29,20 @@
                         <input asp-for="EndDate" type="date" class="form-control" id="projectEndDate">
                         <span asp-validation-for="EndDate" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label>Proje Dokümanları</label>
-                        <a class="btn text-primary float-lg-right" asp-area="Admin" asp-controller="Project" asp-action="Add">
-                            Döküman Ekle <i class="bx bx-plus"></i>
+                    <div class="form-group md-12">
+                        <a type="button" class="btn text-primary float-lg-right" data-toggle="modal" data-target="#uploadDocumentModal">
+                            Pdf Ekle <i class="bx bx-plus"></i>
                         </a>
+                        <label>Proje Dokümanları</label>
                         <ul class="list-group">
                             @foreach (var document in Model.Documents)
                             {
-                                if(Model.Documents.Count() != 0)
+                                if (Model.Documents.Count() != 0)
                                 {
                                     <li class="list-group-item">
                                         @document.FileName
                                         <button type="button" class="btn btn-primary" onclick="viewPdf('@document.Id')">Görüntüle</button>
+                                        <button type="button" class="btn btn-danger" onclick="confirmDelete('@document.Id')">Sil</button>
                                     </li>
                                 }
                             }
@@ -64,7 +70,7 @@
             </div>
             <div class="form-group">
                 <label>Proje Üyeleri</label>
-                <a class="btn text-primary float-lg-right" asp-area="Admin" asp-controller="Project" asp-action="Add">
+                <a type="button" class="btn text-primary float-lg-right" data-toggle="modal" data-target="#addUserModal">
                     Üye Ekle <i class="bx bx-plus"></i>
                 </a>
                 <ul class="list-group">
@@ -90,7 +96,7 @@
                     </div>
                     <div class="card-footer">
                         <a asp-area="ProjectManager" asp-controller="Task" asp-action="Update" asp-route-taskId="@task.Id" class="btn btn-secondary">Düzenle</a>
-                        <a asp-area="ProjectManager" asp-controller="Task" asp-action="Delete" class="btn btn-danger">Görevi Durdur</a>
+                        <a href="#" class="btn btn-danger stop-task" data-task-id="@task.Id">Görevi Durdur</a>
                     </div>
                 </div>
             }
@@ -108,9 +114,30 @@
     </form>
     <div class="row mt-4">
         <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProjectModal">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProjectModal" data-project-id="@Model.Id">
                 Projeyi Durdur
             </button>
+        </div>
+    </div>
+</div>
+
+<!--  -->
+<div id="stopTaskModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Görevi Durdur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Görevi durdurmak istediğinize emin misiniz?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-danger" id="confirmStopTask">Evet, Durdur</button>
+            </div>
         </div>
     </div>
 </div>
@@ -132,6 +159,52 @@
     </div>
 </div>
 
+<div class="modal fade" id="uploadDocumentModal" tabindex="-1" role="dialog" aria-labelledby="uploadDocumentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadDocumentModalLabel">Döküman Yükle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadDocumentForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="documentFile">Dosya Seç</label>
+                        <input type="file" class="form-control-file" id="documentFile" name="fromFile" accept="application/pdf">
+                    </div>
+                    <input type="hidden" name="projectId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-primary">Yükle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Silme Modal -->
+<div class="modal fade" id="deleteDocumentModal" tabindex="-1" role="dialog" aria-labelledby="deleteDocumentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteDocumentModalLabel">Dökümanı Sil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bu dökümanı silmek istediğinize emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                <form id="deleteDocumentForm" method="post" action="/ProjectManager/Document/Delete">
+                    <input type="hidden" id="documentIdToDelete" name="documentId">
+                    <input type="hidden" id="projectIdToDelete" name="projectId" value="@Model.Id">
+                    <button type="submit" class="btn btn-danger">Sil</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="deleteProjectModal" tabindex="-1" role="dialog" aria-labelledby="deleteProjectModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -143,6 +216,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                            Bu İşlem Geri Alınamaz
                 Bu projeyi durdurmak istediğinizden emin misiniz?
             </div>
             <div class="modal-footer">
@@ -152,45 +226,164 @@
         </div>
     </div>
 </div>>
+<!-- User Ekle -->
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUserModalLabel">Üye Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addUserForm">
+                    <div class="mb-3">
+                        <label for="appUserEmail">Proje Atanan Kişinin Email Adresi:</label>
+                        <input type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
+                        <input type="hidden" id="hiddenAppUserId" name="AppUserId">
+                        <div id="userAutocompleteSuggestions" class="autocomplete-suggestions"></div>
+                    </div>
+                    <div id="selectedUsersContainer"></div>
+                    <input type="hidden" name="projectId" value="@Model.Id" />
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-@section Scripts {
+
+
+@section Scripts
+{
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            console.log("Sayfa yüklendi");
+        $(document).ready(function () {
+            var taskId; // taskId'yi global değişken yap
 
-            var selectedPriorityInput = document.getElementById("selectedPriority");
-            console.log(selectedPriorityInput);
-            if (selectedPriorityInput) {
-                // Input elementi varsa, işlemleri devam ettirebiliriz
-                var priorityButtons = document.querySelectorAll(".priority-buttons button");
+            // Görevi durdur butonuna tıklanınca
+            $(".stop-task").on("click", function () {
+                taskId = $(this).data("task-id"); // taskId'yi güncelle
 
-                // Diğer işlemler burada devam eder...
-            } else {
-                console.log("Priority input elementi bulunamadı.");
-            }
-
-
-            // Set the selected button based on the initial value
-            var initialPriority = selectedPriorityInput.value;
-            priorityButtons.forEach(function (button) {
-                if (button.getAttribute("data-value") === initialPriority) {
-                    button.classList.add("btn-selected");
-                }
+                // Modalı göster
+                $("#stopTaskModal").modal("show");
             });
 
-            priorityButtons.forEach(function (button) {
-                button.addEventListener("click", function () {
-                    var selectedValue = this.getAttribute("data-value");
-                    selectedPriorityInput.value = selectedValue;
+            // Görevi durdurma işlemini onayla butonuna tıklanınca
+            $("#confirmStopTask").on("click", function () {
+                // AJAX ile görevi durdurma işlemini gerçekleştir
+                $.ajax({
+                    url: "/ProjectManager/Task/Delete",
+                    type: "POST",
+                    data: { taskId: taskId },
+                    success: function (result) {
+                        // Başarılıysa, modalı kapat
+                        $("#stopTaskModal").modal("hide");
 
-                    // Highlight the selected button
-                    priorityButtons.forEach(function (btn) {
-                        btn.classList.remove("btn-selected");
-                    });
-                    this.classList.add("btn-selected");
+                        // Toastr mesajı göster
+                        toastr.success('Görev başarıyla durduruldu', 'Başarılı');
+
+                        // Sayfayı yenile
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500); // 2 saniye gecikme
+                    },
+                    error: function (xhr, status, error) {
+                        // Hata durumunda hata mesajını göster
+                        console.error(xhr.responseText);
+                    }
                 });
             });
         });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            const emailInput = document.getElementById('appUserEmail');
+            const userSuggestionsBox = document.getElementById('userAutocompleteSuggestions');
+            const selectedUsersContainer = document.getElementById('selectedUsersContainer');
+            const hiddenAppUserId = document.getElementById('hiddenAppUserId');
+            emailInput.addEventListener('input', function () {
+                const query = emailInput.value;
+
+                if (query.length === 0) {
+                    userSuggestionsBox.innerHTML = '';
+                    return;
+                }
+
+                fetch(`/api/usersapi/search-project-users?email=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        userSuggestionsBox.innerHTML = '';
+                        data.forEach(user => {
+                            const suggestion = document.createElement('div');
+                            suggestion.classList.add('autocomplete-suggestion');
+                            suggestion.textContent = `${user.fullName} (${user.email})`;
+                            suggestion.dataset.userId = user.id;
+                            userSuggestionsBox.appendChild(suggestion);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching users:', error));
+            });
+
+            userSuggestionsBox.addEventListener('click', function (event) {
+                if (event.target.classList.contains('autocomplete-suggestion')) {
+                    const userId = event.target.dataset.userId;
+                    const userName = event.target.textContent;
+
+                    const userBadge = document.createElement('span');
+                    userBadge.classList.add('badge', 'badge-secondary', 'm-1');
+                    userBadge.textContent = userName;
+
+                    const removeBtn = document.createElement('span');
+                    removeBtn.classList.add('remove-btn');
+                    removeBtn.textContent = 'x';
+                    userBadge.appendChild(removeBtn);
+
+                    selectedUsersContainer.appendChild(userBadge);
+
+                    hiddenAppUserId.value = userId;
+
+                    emailInput.value = '';
+                    userSuggestionsBox.innerHTML = '';
+                }
+            });
+
+            selectedUsersContainer.addEventListener('click', function (event) {
+                if (event.target.classList.contains('remove-btn')) {
+                    const badge = event.target.parentElement;
+                    badge.remove();
+                    hiddenAppUserId.value = '';
+                }
+            });
+
+            $('#addUserForm').submit(function (event) {
+                event.preventDefault();
+                const formData = $(this).serialize();
+                $.ajax({
+                    url: '/ProjectManager/User/Add',
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        console.log(response);
+                        if (response.success) {
+                            toastr.success(response.message, 'Başarılı');
+                            $("#addUserModal").modal('hide');
+                            location.reload();
+                        } else {
+                            toastr.error(response.message, 'Hata');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error:', error);
+                        toastr.error('Kullanıcı eklenirken bir hata oluştu: ' + xhr.responseText, 'Hata');
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
         function viewPdf(documentId) {
             $.ajax({
                 url: '/ProjectManager/Project/GetDocument',
@@ -210,31 +403,143 @@
                     console.error("Proje yüklenemedi");
                 }
             });
-           
-            document.getElementById("confirmDeleteButton").addEventListener("click", function () {
-                var projectId = this.getAttribute("data-project-id");
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Sayfa yüklendi");
 
+            var selectedPriorityInput = document.getElementById("selectedPriority");
+            if (selectedPriorityInput) {
+                var priorityButtons = document.querySelectorAll(".priority-buttons button");
+                var initialPriority = selectedPriorityInput.value;
+                priorityButtons.forEach(function (button) {
+                    if (button.getAttribute("data-value") === initialPriority) {
+                        button.classList.add("btn-selected");
+                    }
+                });
+
+                priorityButtons.forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        var selectedValue = this.getAttribute("data-value");
+                        selectedPriorityInput.value = selectedValue;
+                        priorityButtons.forEach(function (btn) {
+                            btn.classList.remove("btn-selected");
+                        });
+                        this.classList.add("btn-selected");
+                    });
+                });
+            } else {
+                console.log("Priority input elementi bulunamadı.");
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#confirmDeleteButton").on("click", function () {
+                var projectId = this.getAttribute("data-project-id");
                 $.ajax({
                     url: '/ProjectManager/Project/Delete',
                     type: 'POST',
-                    data: { id: projectId },
+                    data: { projectId: projectId },
+                    success: function (response) {
+                        toastr.success(response.message, "Başarılı");
+
+                        setTimeout(function () {
+                            window.location.href = '/ProjectManager/Home/Index';
+                        }, 1500); // 1.5 saniye gecikme
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Silme işlemi hatası:", xhr.status, xhr.statusText, xhr.responseText);
+                        toastr.error("Proje silinirken bir hata oluştu. Hata detayı: " + xhr.status + " " + xhr.statusText + " - " + xhr.responseText, "Hata");
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#uploadDocumentForm").submit(function (event) {
+                event.preventDefault();
+
+                var formData = new FormData(this);
+
+                $.ajax({
+                    url: '/ProjectManager/Document/Add',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
                     success: function (response) {
                         if (response.success) {
-                            window.location.href = '/ProjectManager/Project/Index';
+                            $("#uploadDocumentModal").modal('hide');
+                            location.reload();
                         } else {
-                            alert("Proje silinirken bir hata oluştu.");
+                            alert(response.message || "Döküman yüklenirken bir hata oluştu.");
                         }
                     },
-                    error: function () {
-                        alert("Proje silinirken bir hata oluştu.");
+                    error: function (xhr, status, error) {
+                        console.error('Error:', error);
+                        alert("Döküman yüklenirken bir hata oluştu.");
                     }
                 });
             });
 
-            
+            $("#deleteDocumentForm").submit(function (event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            $("#deleteDocumentModal").modal('hide');
+                            location.reload();
+                        } else {
+                            alert(response.message || "Döküman silinirken bir hata oluştu.");
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error:', error);
+                        alert("Döküman silinirken bir hata oluştu.");
+                    }
+                });
+            });
+        });
+
+        function confirmDelete(documentId, projectId) {
+            $('#documentIdToDelete').val(documentId);
+            $('#projectIdToDelete').val(projectId);
+            $('#deleteDocumentModal').modal('show');
         }
     </script>
 }
+
+<style>
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 0.75rem;
+        margin: 0.25rem;
+        border-radius: 0.25rem;
+        background-color: #6c757d;
+        color: white;
+    }
+
+        .badge .remove-btn {
+            margin-left: 10px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: red;
+        }
+</style>
 
 <style>
     .form-label {

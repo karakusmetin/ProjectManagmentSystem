@@ -230,7 +230,6 @@ C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\refs\System.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\refs\System.Drawing.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\refs\System.Drawing.Primitives.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\refs\System.Dynamic.Runtime.dll
-C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\refs\System.Formats.Asn1.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\refs\System.Globalization.Calendars.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\refs\System.Globalization.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\refs\System.Globalization.Extensions.dll
@@ -554,3 +553,9 @@ C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\runtimes\unix\lib\net6
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\MailKit.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\MimeKit.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\System.Formats.Asn1.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\fener\Desktop\Deeneme\PMS-WebUI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll

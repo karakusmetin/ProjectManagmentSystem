@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 namespace PMS_WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin,ProjectManager,Superadmin")]
     public class HomeController : Controller
     {
-        IProjectService projectService;
+        private readonly IProjectService projectService;
+        private readonly IDashboardService dashboardService;
 
-        public HomeController(IProjectService projectService)
+        public HomeController(IProjectService projectService,IDashboardService dashboardService)
         {
             this.projectService = projectService;
+            this.dashboardService = dashboardService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var project = await projectService.GetListProjectsWithNonDeletedAsync();
-            return View(project);
+            var recentActivities = await dashboardService.GetRecentActivitiesAsync();
+            return View(recentActivities);
+        }
+        public async  Task<IActionResult> Dashboard() 
+        {
+            var dashboardGraphics = await dashboardService.GetAllNumbersForGraphicsAsync();
+            return View(dashboardGraphics);
         }
     }
 }

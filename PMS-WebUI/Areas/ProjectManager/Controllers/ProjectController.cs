@@ -20,7 +20,7 @@ using Project = PMS.EntityLayer.Concrete.Project;
 namespace PMS_WebUI.Areas.ProjectManager.Controllers
 {
     [Area("ProjectManager")]
-    [Authorize]
+    [Authorize(Roles = "Admin,ProjectManager,Superadmin")]
     public class ProjectController : Controller
     {
         private readonly IProjectService projectService;
@@ -30,7 +30,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
         private readonly IToastNotification toastNotification;
         private readonly IProjectAppUserService projectAppUserService;
 
-        public ProjectController(IProjectService projectService, IDocumentService documentService,IMapper mapper, IValidator<Project> validator,IToastNotification toastNotification,IProjectAppUserService projectAppUserService)
+        public ProjectController(IProjectService projectService, IDocumentService documentService, IMapper mapper, IValidator<Project> validator, IToastNotification toastNotification, IProjectAppUserService projectAppUserService)
         {
             this.projectService = projectService;
             this.documentService = documentService;
@@ -67,7 +67,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
         [HttpGet]
         public async Task<IActionResult> Add(Guid projectManagerId)
         {
-            return View(new ProjectAddDto { ProjectManagerId =projectManagerId});
+            return View(new ProjectAddDto { ProjectManagerId = projectManagerId });
         }
 
         [HttpPost]
@@ -97,8 +97,8 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
 
             if (result.IsValid)
             {
-                var projectId =await projectService.CreateProjectAsync(projectAddDto, document);
-                foreach(var userId in projectAddDto.AppUserIds)
+                var projectId = await projectService.CreateProjectAsync(projectAddDto, document);
+                foreach (var userId in projectAddDto.AppUserIds)
                 {
                     var projectAppUsers = new ProjectAppUserAddDto
                     {
@@ -140,10 +140,25 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
 
         public async Task<IActionResult> Delete(Guid projectId)
         {
-            var projectName = await projectService.SafeDeleteProjectAsync(projectId);
-            toastNotification.AddWarningToastMessage(Messages.Project.Delete(projectName), new ToastrOptions() { Title = "İşlem Başarılı" });
-
-            return RedirectToAction("Index", "Home", new { Area = "ProjectManager" });
+            try
+            {
+                var projectName = await projectService.SafeDeleteProjectAsync(projectId);
+                toastNotification.AddSuccessToastMessage(Messages.Project.Delete(projectName), new ToastrOptions() { Title = "İşlem Başarılı" });
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                toastNotification.AddErrorToastMessage("Proje silinirken bir hata oluştu. Hata detayı: " + ex.Message, new ToastrOptions() { Title = "Hata" });
+                return Json(new { success = false, message = "Proje silinirken bir hata oluştu. Hata detayı: " + ex.Message });
+            }
         }
+
+
+        public async Task<IActionResult> DeletedProjects()
+        {
+            var projects = await projectService.GetAllDeletedProjectAsync();
+            return View(projects);
+        }
+
     }
 }

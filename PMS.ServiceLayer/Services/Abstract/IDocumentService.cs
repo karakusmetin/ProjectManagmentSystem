@@ -10,5 +10,7 @@ namespace PMS.ServiceLayer.Services.Abstract
     {
         System.Threading.Tasks.Task CreateDocumentAsync(Document document);
         Task<Document> GetDocumentWithIdAsync(Guid documentId);
+        Task<bool> DeleteDocumentAsync(Guid documentId);
+
     }
 }

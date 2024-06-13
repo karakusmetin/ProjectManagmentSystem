@@ -1,0 +1,109 @@
+﻿@model TotalNumbersDto
+
+<div class="container">
+    <div class="row">
+        <!-- Proje Durumu Kartları -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h5 class="card-title"><i class="fas fa-project-diagram"></i> Toplam Proje</h5>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text">@Model.TotalProjects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h5 class="card-title"><i class="fas fa-check-circle"></i> Tamamlanmış Proje</h5>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text">@Model.CompletedProjects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h5 class="card-title"><i class="fas fa-spinner"></i> Devam Eden Proje</h5>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text">@Model.OngoingProjects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Görev Durumu Kartları -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h5 class="card-title"><i class="fas fa-users"></i> Toplam Proje Yöneticisi</h5>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text">@Model.TotalProjectManagers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Proje Durumu Kartları -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h5 class="card-title"><i class="fas fa-tasks"></i> Toplam Görevler</h5>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text">@Model.TotalTasks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h5 class="card-title"><i class="fas fa-spinner"></i> Devam Eden Görevler</h5>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text">@Model.OngoingTasks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h5 class="card-title"><i class="fas fa-check-circle"></i> Tamamlanmış Görevler</h5>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text">@Model.CompletedTasks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Görev Durumu Kartları -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h5 class="card-title"><i class="fas fa-users"></i> Toplam Kullanıcı</h5>
+                    </div>
+                    <div class="card-back">
+                        <p class="card-text">@Model.TotalUsers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

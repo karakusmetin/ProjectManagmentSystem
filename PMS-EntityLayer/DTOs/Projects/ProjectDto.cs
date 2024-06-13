@@ -14,6 +14,7 @@ namespace PMS_EntityLayer.DTOs.Projects
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime InsertDate { get; set; }
+        public DateTime? DeletedDate { get; set; }
         public string InsertedBy { get; set; }
         public bool IsActive { get; set; }
         public Guid ProjectManagerId { get; set; }

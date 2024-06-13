@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PMS.ServiceLayer.Services.Abstract;
 using PMS_WebUI.Models;
@@ -8,21 +10,35 @@ using System.Threading.Tasks;
 
 namespace PMS_WebUI.Controllers
 {
-	public class HomeController : Controller
+    [AllowAnonymous]
+    public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
 		private readonly IProjectService projectService;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-		public HomeController(ILogger<HomeController> logger, IProjectService projectService)
+        public HomeController(ILogger<HomeController> logger, IProjectService projectService, IHttpContextAccessor httpContextAccessor)
 		{
 			_logger = logger;
 			this.projectService = projectService;
-		}
+            this.httpContextAccessor = httpContextAccessor;
+        }
 
 		public async Task<IActionResult> Index()
 		{
-			var projects = await projectService.GetListProjectsWithNonDeletedAsync();
-			return View(projects);
+			if(HttpContext.User.Identity.IsAuthenticated)
+			{
+                if (HttpContext.User.IsInRole("Admin"))
+                    return RedirectToAction("Index", "Home", new { Area = "Admin" });
+
+                else if (HttpContext.User.IsInRole("ProjectManager"))
+                    return RedirectToAction("Index", "Home", new { Area = "ProjectManager" });
+
+                else
+                    return RedirectToAction("Index", "UserTask");
+            }
+			else
+				return View();
 		}
 
 		public IActionResult Privacy()

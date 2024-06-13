@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using PMS.ServiceLayer.Services.Abstract;
 using PMS_EntityLayer.DTOs.ProjectAppUsers;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace PMS_WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,ProjectManager,Superadmin")]
     public class ProjectUserController : Controller
     {
         private readonly IProjectAppUserService projectAppUserService;

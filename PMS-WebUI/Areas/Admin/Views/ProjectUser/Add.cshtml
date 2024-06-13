@@ -1,4 +1,9 @@
 ﻿@model ProjectAppUserAddDto
+<div id="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 
 <div class="admin-container">
     <div class="ProjectUser-add">
@@ -86,7 +91,7 @@
                     return;
                 }
 
-                fetch(`/api/users/search-project-users?email=${query}`)
+                fetch(`/api/usersapi/search-project-users?email=${query}`)
                     .then(response => response.json())
                     .then(data => {
                         userSuggestionsBox.innerHTML = '';

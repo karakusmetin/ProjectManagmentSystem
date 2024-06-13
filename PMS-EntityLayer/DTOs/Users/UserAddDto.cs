@@ -14,5 +14,7 @@ namespace PMS_EntityLayer.DTOs.Users
         public string Password { get; set; }
         public Guid RoleId { get; set; }
         public List<AppRole> Roles { get; set; }
+
+        public Guid ProjectId { get; set; }
     }
 }
