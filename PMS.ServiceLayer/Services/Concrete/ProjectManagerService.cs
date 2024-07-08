@@ -16,6 +16,11 @@ namespace PMS.ServiceLayer.Services.Concrete
         {
             this.unitOfWork = unitOfWork;
         }
+        public async Task<ProjectManager> GetProjectManagerAsync(Guid pojectManagerId)
+        {
+            var manager = await unitOfWork.GetRepository<ProjectManager>().GetAsync(x => x.AppUserId == pojectManagerId);
+            return manager;
+        }
         public async Task CerateProjectManagerAsync(Guid appUserId)
         {
             var projectManager = new ProjectManager
@@ -27,14 +32,14 @@ namespace PMS.ServiceLayer.Services.Concrete
         }
         public async Task DeleteProjectManagerAsync(Guid appUserId)
         {
-            var projectManager = await unitOfWork.GetRepository<ProjectManager>().GetAsync(x=>x.AppUserId==appUserId);
-
+            var projectManager = await unitOfWork.GetRepository<ProjectManager>().GetAsync(x => x.AppUserId == appUserId);
+         
             await unitOfWork.GetRepository<ProjectManager>().DeleteAsync(projectManager);
             await unitOfWork.SaveAsnyc();
         }
         public async Task<List<ProjectManager>> GetAllProjectManagersAsync(string email)
         {
-            var projectManagers = await unitOfWork.GetRepository<ProjectManager>().GetAllAsync(x=>x.AppUser.Email.Contains(email),x=>x.AppUser);
+            var projectManagers = await unitOfWork.GetRepository<ProjectManager>().GetAllAsync(x => x.AppUser.Email.Contains(email), x => x.AppUser);
 
             return projectManagers;
         }

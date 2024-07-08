@@ -24,12 +24,12 @@
                 <table class="table table-bordered" id="projectTable" withd="100%" collspacing="0">
                     <thead>
                         <tr>
-                            <th>Başlık</th>
-                            <th>Oluşturulma Tarihi</th>
+                            <th>Proje Adı</th>
+                            <th>Bütçe</th>
+                            <th>Öncelik</th>
+                            <th>Başlangıç Tarihi</th>
                             <th>Bitiş Tarihi</th>
                             <th>Oluşturan</th>
-                            <th>Öncelik</th>
-                            <th>Güncellenme Tarihi</th>
                             <th>Proje Yöneticisi</th>
                             <th>Durum</th>
                             <th>İşlemler</th>
@@ -37,12 +37,12 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Başlık</th>
-                            <th>Oluşturulma Tarihi</th>
+                            <th>Proje Adı</th>
+                            <th>Bütçe</th>
+                            <th>Öncelik</th>
+                            <th>Başlangıç Tarihi</th>
                             <th>Bitiş Tarihi</th>
                             <th>Oluşturan</th>
-                            <th>Öncelik</th>
-                            <th>Güncellenme Tarihi</th>
                             <th>Proje Yöneticisi</th>
                             <th>Durum</th>
                             <th>İşlemler</th>
@@ -53,11 +53,11 @@
                         {
                             <tr name="@project.Id">
                                 <td>@project.ProjectName</td>
-                                <td>@project.InsertDate</td>
+                                <td>@project.Budget</td>
+                                <td>@project.Priority</td>
+                                <td>@project.StartDate</td>
                                 <td>@project.EndDate</td>
                                 <td>@project.InsertedBy</td>
-                                <td>@project.Priority</td>
-                                <td></td>
                                 <td>@project.ProjectManager.AppUser.Email</td>
                                 <td>@(project.IsActive ? "Aktif" : "Aktif Değil")</td>
                                 <td>

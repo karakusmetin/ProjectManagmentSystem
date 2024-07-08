@@ -16,27 +16,27 @@
                 <table class="table table-bordered" id="projectTable" withd="100%" collspacing="0">
                     <thead>
                         <tr>
-                            <th>Başlık</th>
-                            <th>Oluşturulma Tarihi</th>
+                            <th>Proje Adı</th>
+                            <th>Bütçe</th>
+                            <th>Öncelik</th>
+                            <th>Başlangıç Tarihi</th>
                             <th>Bitiş Tarihi</th>
                             <th>Oluşturan</th>
-                            <th>Öncelik</th>
-                            <th>Güncellenme Tarihi</th>
-                            <th>İlerleme Durumu</th>
-                            <th>Durum</th>
+                            <th>Proje Yöneticisi</th>
+                            <th>Silinme Tarihi</th>
                             <th>İşlemler</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Başlık</th>
-                            <th>Oluşturulma Tarihi</th>
+                            <th>Proje Adı</th>
+                            <th>Bütçe</th>
+                            <th>Öncelik</th>
+                            <th>Başlangıç Tarihi</th>
                             <th>Bitiş Tarihi</th>
                             <th>Oluşturan</th>
-                            <th>Öncelik</th>
-                            <th>Güncellenme Tarihi</th>
-                            <th>İlerleme Durumu</th>
-                            <th>Durum</th>
+                            <th>Proje Yöneticisi</th>
+                            <th>Silinme Tarihi</th>
                             <th>İşlemler</th>
                         </tr>
                     </tfoot>
@@ -45,13 +45,13 @@
                         {
                             <tr name="@project.Id">
                                 <td>@project.ProjectName</td>
-                                <td>@project.InsertDate</td>
+                                <td>@project.Budget</td>
+                                <td>@project.Priority</td>
+                                <td>@project.StartDate</td>
                                 <td>@project.EndDate</td>
                                 <td>@project.InsertedBy</td>
-                                <td>@project.Priority</td>
-                                <td></td>
-                                <td></td>
-                                <td>@(project.IsActive ? "Aktif" : "Aktif Değil")</td>
+                                <td>@project.ProjectManager.AppUser.Email</td>
+                                <td>@project.DeletedDate</td>
                                 <td>
                                     <a class="btn btn-warning btn-sm" data-id="@project.Id" asp-area="Admin" asp-controller="Project" asp-action="UndoDelete" asp-route-projectId="@project.Id"><i class="bx bx-undo"></i></a>
 @*                                     <a class="btn btn-danger btn-sm" data-id="@project.Id" asp-area="Admin" asp-controller="Project" asp-action="Delete" asp-route-projectId="@project.Id"><i class="bx bx-minus-circle"></i></a>

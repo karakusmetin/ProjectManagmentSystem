@@ -49,7 +49,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
             var map = new PMS_EntityLayer.Concrete.Task
             {
                 TaskName = taskAddDto.TaskName,
-                Description = taskAddDto.TaskDescription,
+                Description = taskAddDto.Description,
                 StartDate = taskAddDto.StartDate,
                 EndDate = taskAddDto.EndDate,
                 UserId = taskAddDto.AppUserId
@@ -83,18 +83,23 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
         public async Task<IActionResult> Update(TaskUpdateDto taskUpdateDto)
         {
             var map = mapper.Map<PMS_EntityLayer.Concrete.Task>(taskUpdateDto);
+            map.UserId = taskUpdateDto.AppUserId;
             var result = await validator.ValidateAsync(map);
-
+            if(taskUpdateDto.AppUserId == Guid.Parse("00000000-0000-0000-0000-000000000000"))
+            {
+                toastNotification.AddErrorToastMessage("Lütfen Kullanıcı Belirtiniz");
+                return View(taskUpdateDto);
+            }
             if (result.IsValid)
             {
                 await taskService.UpdateTaskAsync(taskUpdateDto);
                 toastNotification.AddSuccessToastMessage(Messages.Task.Update(taskUpdateDto.TaskName), new ToastrOptions { Title = "Başarılı" });
-                return RedirectToAction("Index", "Task", new { Area = "Admin" });
+                return RedirectToAction("Detail", "Project", new { projectId = taskUpdateDto.ProjectId });
             }
             else
             {
                 result.AddToModelState(this.ModelState);
-                return View();
+                return View(taskUpdateDto);
             }
         }
 

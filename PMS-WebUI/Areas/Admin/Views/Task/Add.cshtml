@@ -20,25 +20,25 @@
                                 <span asp-validation-for="TaskName" class="text-danger"></span>
                             </div>
                             <div class="mb-3">
-                                <label asp-for="ProjectId" for="projectName">Proje Adı:</label>
+                                <label asp-for="ProjectId" class="form-label" for="projectName">Proje Adı:</label>
                                 <input asp-for="ProjectId" type="text" id="projectName" name="projectName" value="" autocomplete="off">
                                 <input asp-for="ProjectId" type="hidden" id="hiddenProjectId" name="ProjectId">
                                 <div id="projectAutocompleteSuggestions" class="autocomplete-suggestions"></div>
                             </div>
                             <div>
-                                <label asp-for="TaskDescription" for="defaultFormControlInput" class="form-label">Görev Açıklaması</label>
-                                <textarea asp-for="TaskDescription" type="text" class="form-control mb-2" style="min-height:100px" placeholder="Görev Açıklaması..." aria-describedby="defaultFormControlHelp"></textarea>
-                                <span asp-validation-for="TaskDescription" class="text-danger"></span>
+                                <label asp-for="Description" for="defaultFormControlInput" class="form-label">Görev Açıklaması</label>
+                                <textarea asp-for="Description" type="text" class="form-control mb-2" style="min-height:100px" placeholder="Görev Açıklaması..." aria-describedby="defaultFormControlHelp"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
 
                             <div>
                                 <label asp-for="StartDate" for="defaultFormControlInput" class="form-label">Görev Başlama Tarihi</label>
-                                <input asp-for="StartDate" class="form-control mb-2" type="datetime-local" value="2024-06-18T12:10:00" id="html5-datetime-local-input">
+                                <input asp-for="StartDate" class="form-control mb-2" type="datetime-local" value="2024-06-30T12:10:00" id="html5-datetime-local-input">
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
                             </div>
                             <div>
                                 <label asp-for="EndDate" for="defaultFormControlInput" class="form-label">Görev Bitiş Tarihi</label>
-                                <input asp-for="EndDate" class="form-control mb-2" type="datetime-local" value="2024-06-18T12:10:00" id="html5-datetime-local-input">
+                                <input asp-for="EndDate" class="form-control mb-2" type="datetime-local" value="2024-07-05T12:10:00" id="html5-datetime-local-input">
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
 
@@ -48,7 +48,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label asp-for="AppUserId" for="appUserEmail">Görev Atanan Kişinin Email Adresi:</label>
+                                <label asp-for="AppUserId" class="form-label" for="appUserEmail">Görev Atanan Kişinin Email Adresi:</label>
                                 <input asp-for="AppUserId" type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
                                 <input asp-for="AppUserId" type="hidden" id="hiddenAppUserId" name="AppUserId">
                                 <div id="userAutocompleteSuggestions" class="autocomplete-suggestions"></div>
@@ -118,7 +118,7 @@
                     return;
                 }
 
-                fetch(`/api/usersapi/search-users?email=${query}`)
+                fetch(`/api/usersapi/search-project-users?email=${query}`)
                     .then(response => response.json())
                     .then(data => {
                         userSuggestionsBox.innerHTML = '';

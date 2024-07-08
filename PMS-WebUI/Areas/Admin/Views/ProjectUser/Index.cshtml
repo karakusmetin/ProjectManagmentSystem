@@ -34,9 +34,9 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Başlık</th>
-                            <th>Oluşturulma Tarihi</th>
-                            <th>Bitiş Tarihi</th>
+                            <th>Proje Adı</th>
+                            <th>Kullanıcı Adı</th>
+                            <th>Kullanıcı Emaili</th>
                             <th>İşlemler</th>
                         </tr>
                     </tfoot>
@@ -45,7 +45,7 @@
                         {
                             <tr name="Tablo">
                                 <td>@projectAppUser.Project.ProjectName</td>
-                                <td>@projectAppUser.AppUser.FirstName+@projectAppUser.AppUser.LastName</td>
+                                <td>@projectAppUser.AppUser.FirstName @projectAppUser.AppUser.LastName</td>
                                 <td>@projectAppUser.AppUser.Email</td>
                                 <td>
                                     @if (User.IsInRole("Superadmin")||User.IsInRole("Admin"))

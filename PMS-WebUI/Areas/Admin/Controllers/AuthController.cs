@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PMS_EntityLayer.Concrete;
@@ -10,13 +11,15 @@ namespace PMS_WebUI.Areas.Admin.Controllers
     [Area("Admin")]
     public class AuthController : Controller
     {
-        public UserManager<AppUser> UserManager { get; }
-        public SignInManager<AppUser> SignInManager { get; }
+        private readonly UserManager<AppUser> userManager;
+        private readonly SignInManager<AppUser> signInManager;
+        private readonly IMapper mapper;
 
-        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,IMapper mapper)
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -31,13 +34,28 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByEmailAsync(userLoginDto.Email);
+                var user = await userManager.FindByEmailAsync(userLoginDto.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır");
+                    return View();
+                }
+                var map = mapper.Map<UserDto>(user);
+                var role = string.Join("", await userManager.GetRolesAsync(user));
+                map.Role = role;
                 if (user != null)
                 {
-                    var result = await SignInManager.PasswordSignInAsync(user, userLoginDto.Password, userLoginDto.RememberMe, false);
+                    var result = await signInManager.PasswordSignInAsync(user, userLoginDto.Password, userLoginDto.RememberMe, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home", new { Area = "Admin" });
+                        if (map.Role == "Admin" || map.Role == "Superadmin")
+                            return RedirectToAction("Index", "Home", new { Area = "Admin" });
+
+                        if (map.Role == "ProjectManager")
+                            return RedirectToAction("Index", "Home", new { Area = "ProjectManager" });
+
+                        else
+                            return RedirectToAction("Index", "UserTask", new { Area = "" });
                     }
                     else
                     {
@@ -53,6 +71,7 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             }
             else
             {
+                ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır");
                 return View();
             }
         }
@@ -61,7 +80,7 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
-            await SignInManager.SignOutAsync();
+            await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
 

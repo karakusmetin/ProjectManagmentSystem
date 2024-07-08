@@ -1,4 +1,5 @@
 ﻿@model TaskUpdateDto
+
 <div id="loading">
     <div class="spinner-border text-primary" role="status">
         <span class="sr-only">Loading...</span>
@@ -11,14 +12,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <form asp-controller="Task" asp-action="Add" method="post" enctype="multipart/form-data">
+                    <form asp-controller="Task" asp-action="Update" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <input asp-for="ProjectId" type="hidden" id="projectIdInput" value="@Model.ProjectId" />
+                            <input asp-for="Id" type="hidden" id="taskIdInput" value="@Model.Id" />
                             <div>
-                                <a class="btn text-primary float-lg-right" data-toggle="modal" data-target="#exampleModalCenter">
-                                    Proje Ekle  <i class="bx bx-plus"></i>
-                                </a>
-
                                 <label asp-for="TaskName" class="form-label">Görev Adı</label>
                                 <input asp-for="TaskName" type="text" class="form-control mb-2" placeholder="Görev Adı..." aria-describedby="defaultFormControlHelp">
                                 <span asp-validation-for="TaskName" class="text-danger"></span>
@@ -31,12 +29,12 @@
 
                             <div>
                                 <label asp-for="StartDate" for="defaultFormControlInput" class="form-label">Görev Başlama Tarihi</label>
-                                <input asp-for="StartDate" class="form-control mb-2" type="datetime-local" value="2024-06-18T12:10:00" id="html5-datetime-local-input">
+                                <input asp-for="StartDate" class="form-control mb-2" type="datetime-local" id="html5-datetime-local-input">
                                 <span asp-validation-for="StartDate" class="text-danger"></span>
                             </div>
                             <div>
                                 <label asp-for="EndDate" for="defaultFormControlInput" class="form-label">Görev Bitiş Tarihi</label>
-                                <input asp-for="EndDate" class="form-control mb-2" type="datetime-local" value="2024-06-18T12:10:00" id="html5-datetime-local-input">
+                                <input asp-for="EndDate" class="form-control mb-2" type="datetime-local" id="html5-datetime-local-input">
                                 <span asp-validation-for="EndDate" class="text-danger"></span>
                             </div>
 
@@ -46,8 +44,9 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label asp-for="AppUserId" for="appUserEmail">Görev Atanan Kişinin Email Adresi:</label>
+                                <label asp-for="AppUserId" class="form-label" for="appUserEmail">Görev Atanan Kişinin Email Adresi:</label>
                                 <input asp-for="AppUserId" type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
+                                <input asp-for="AppUserId" type="hidden" id="AppUserId" name="AppUserId">
                                 <div id="autocompleteSuggestions" class="autocomplete-suggestions"></div>
                             </div>
                             <div class="form group">
@@ -69,8 +68,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const emailInput = document.getElementById('appUserEmail');
-            const projectIdInput = document.getElementById('projectIdInput');
             const suggestionsBox = document.getElementById('autocompleteSuggestions');
+            const projectIdInput = document.getElementById('projectIdInput');
+            const appUserIdInput = document.getElementById('AppUserId');
 
             emailInput.addEventListener('input', function () {
                 const query = emailInput.value;
@@ -99,7 +99,7 @@
             suggestionsBox.addEventListener('click', function (e) {
                 if (e.target.classList.contains('autocomplete-suggestion')) {
                     emailInput.value = e.target.textContent;
-                    emailInput.dataset.userId = e.target.dataset.userId;
+                    appUserIdInput.value = e.target.dataset.userId;
                     suggestionsBox.innerHTML = '';
                 }
             });

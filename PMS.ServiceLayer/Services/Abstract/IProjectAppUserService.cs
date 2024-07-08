@@ -7,6 +7,7 @@ namespace PMS.ServiceLayer.Services.Abstract
 {
     public interface IProjectAppUserService
     {
+        bool CheckUserInProjectAsync(Guid projectId, Guid appUserId);
         List<ProjectAppUserDto> GetAllListProjectAppUserNonDeletedAsync();
         Task<bool> CreateProjectAppUserAsync(ProjectAppUserAddDto projectAppUserAddDto);
         Task<bool> CreateProjectAppUserAsync(Guid userId, Guid projectId);

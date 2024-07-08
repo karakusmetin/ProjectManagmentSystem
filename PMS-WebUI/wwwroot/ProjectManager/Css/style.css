@@ -12,6 +12,16 @@
     margin-top: 100px;
 }
 
+/* Yükleniyor Animasyonu */
+#loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
 .container {
     margin-bottom: 100px;
     
@@ -82,6 +92,8 @@
         color: #fff;
         font-size: 1rem;
     }
+
+
 
 .autocomplete-suggestions {
     background-color: #fff;
@@ -244,7 +256,9 @@
     z-index: 999999;
     box-shadow: 0 1px 20px 1px green;
 }
-
+.hidden {
+    display: none;
+}
 .footer {
     background-color: #3e2481 !important;
     color: #fff;

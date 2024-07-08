@@ -16,11 +16,13 @@ namespace PMS_WebUI.Areas.Admin.Controllers
     {
         private readonly IProjectAppUserService projectAppUserService;
         private readonly IToastNotification toastNotification;
+        private readonly ITaskService taskService;
 
-        public ProjectUserController(IProjectAppUserService projectAppUserService, IToastNotification toastNotification)
+        public ProjectUserController(IProjectAppUserService projectAppUserService, IToastNotification toastNotification,ITaskService taskService)
         {
             this.projectAppUserService = projectAppUserService;
             this.toastNotification = toastNotification;
+            this.taskService = taskService;
         }
         public IActionResult Index()
         {
@@ -49,8 +51,14 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             
         }
 
-        public IActionResult Delete(Guid projectId, Guid appUserId)
+        public async Task<IActionResult> Delete(Guid projectId, Guid appUserId)
         {
+            var anyTasks = await taskService.AnyTasksByUserIdAndProjectIdAsync(projectId, appUserId);
+            if (anyTasks)
+            {
+                toastNotification.AddErrorToastMessage("Bu Kullanıcının proje içerisinde henüz bitmemiş görevleri var.Lütfen önce onları silin!!");
+                return RedirectToAction("Index", "ProjectUser", new { Area = "Admin" });
+            }
             projectAppUserService.DeleteProjectAppUser(projectId, appUserId);
 
             toastNotification.AddWarningToastMessage(Messages.ProjectUser.Delete(), new ToastrOptions { Title = "Başarılı" });

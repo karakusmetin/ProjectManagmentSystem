@@ -14,6 +14,8 @@ namespace PMS.ServiceLayer.Services.Abstract
         Task<ProjectDetailDto> GetProjectWithNonDeletedWithUsersWithTasksAsync(Guid projectId);
         Task<ProjectWithManagerDto> GetProjectWithNonDeletedWithUsersWithTasksWithManagerAsync(Guid projectId);
         Task<Guid> CreateProjectAsync(ProjectAddDto projectAddDto, Document document);
+        Task<bool> AnyProjectWithProjectManagerId(Guid projectManagerId);
+        Task<bool> AnyProjectUserGuidAsync(Guid userId);
         Task<List<ProjectDto>> GetAllProjectWithManagerIdAsync();
         Task<List<ProjectDto>> GetAllDeletedProjectWithManagerIdAsync();
         Task<ProjectDto> GetProjectWithNonDeletedAsync(Guid projectId);

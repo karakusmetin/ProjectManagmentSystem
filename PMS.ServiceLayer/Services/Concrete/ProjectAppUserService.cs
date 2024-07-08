@@ -22,7 +22,11 @@ namespace PMS.ServiceLayer.Services.Concrete
             this.dbContext = dbContext;
             this.mapper = mapper;
         }
-
+        public  bool CheckUserInProjectAsync(Guid projectId,Guid appUserId)
+        {
+            var isAny = dbContext.ProjectAppUsers.Any(x => x.ProjectId == projectId && x.AppUserId == appUserId);
+            return isAny;
+        }
         public List<ProjectAppUserDto> GetAllListProjectAppUserNonDeletedAsync()
         {
             var projectAppUser =  dbContext.ProjectAppUsers.Include(x=>x.AppUser).Include(x => x.Project);

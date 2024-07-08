@@ -9,6 +9,7 @@
     <h1 class="my-4">Proje Yönetim Sistemi</h1>
     <form asp-controller="Project" asp-action="Update" method="post" enctype="multipart/form-data">
         <div class="container">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" value="@Model.Id" />
             <input type="hidden" asp-for="ProjectManagerId" value="@Model.ProjectManagerId" />
             <div class="row">
@@ -89,8 +90,8 @@
                 <div class="task-card card">
                     <div class="card-body @(task.Priority == PriorityLevel.High ? "priority-high" : task.Priority == PriorityLevel.Medium ? "priority-medium" : "priority-low")">
                         <h5 class="card-title">@task.TaskName</h5>
-                        <p class="card-text">@task.Description</p>
                         <p class="card-text">Öncelik: @task.Priority</p>
+                        <p class="card-text">Durum: @(task.UpdateStatus == TaskUpdateStatus.Completed ? "Tamamlandı" : task.UpdateStatus == TaskUpdateStatus.ToDo ? "Henüz Başlanmadı" : task.UpdateStatus == TaskUpdateStatus.InProgress ? "Üzerinde Çalışıyor" : "Süresi Doldu" )</p>
                         <p class="card-text">Görev Sonu: @task.EndDate</p>
                         <p class="card-text">Sorumlu: @task.AppUser.Email</p>
                     </div>

@@ -19,14 +19,16 @@ namespace PMS.ServiceLayer.Services.Concrete
     public class ProjectService : IProjectService
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly IProjectManagerService projectManagerService;
         private readonly IMapper mapper;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IDocumentService documentService;
         private readonly ClaimsPrincipal _user;
 
-        public ProjectService(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor, IDocumentService documentService)
+        public ProjectService(IUnitOfWork unitOfWork,IProjectManagerService projectManagerService, IMapper mapper, IHttpContextAccessor httpContextAccessor, IDocumentService documentService)
         {
             this.unitOfWork = unitOfWork;
+            this.projectManagerService = projectManagerService;
             this.mapper = mapper;
             this.httpContextAccessor = httpContextAccessor;
             this.documentService = documentService;
@@ -99,6 +101,13 @@ namespace PMS.ServiceLayer.Services.Concrete
 
 
             return map;
+        }
+
+        public async Task<bool> AnyProjectWithProjectManagerId(Guid projectManagerId)
+        {
+            var projectManager = await projectManagerService.GetProjectManagerAsync(projectManagerId);
+            var anyProject = await unitOfWork.GetRepository<Project>().AnyAsync(x=>x.ProjectManagerId == projectManager.Id);
+            return anyProject;
         }
         public async Task<List<ProjectDto>> GetAllProjectWithManagerIdAsync()
         {
@@ -199,7 +208,7 @@ namespace PMS.ServiceLayer.Services.Concrete
 
         public async Task<List<ProjectDto>> GetAllDeletedProjectAsync()
         {
-            var projects = await unitOfWork.GetRepository<Project>().GetAllAsync(x => x.IsActive == false);
+            var projects = await unitOfWork.GetRepository<Project>().GetAllWithIncludesAsync(x => x.Where(x => x.IsActive == false), x => x.Include(x => x.ProjectManager).ThenInclude(x => x.AppUser));
             var map = mapper.Map<List<ProjectDto>>(projects);
 
             return map;
@@ -218,6 +227,20 @@ namespace PMS.ServiceLayer.Services.Concrete
             await unitOfWork.SaveAsnyc();
 
             return project.ProjectName;
+        }
+
+        public async Task<bool> AnyProjectUserGuidAsync(Guid userId)
+        {
+            var anyUserManager = await unitOfWork.GetRepository<ProjectManager>().AnyAsync(x => x.AppUserId == userId);
+            if (anyUserManager)
+            {
+                var userManager = await unitOfWork.GetRepository<ProjectManager>().GetAsync(x => x.AppUserId == userId);
+                var userInProject = await unitOfWork.GetRepository<Project>().AnyAsync(x => x.ProjectManagerId == userManager.Id);
+                return userInProject;
+            }
+            else
+                return false;
+            
         }
     }
 }

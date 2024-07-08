@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Paneli - Proje Yönetim Sistemi</title>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -21,9 +22,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="UserTask" asp-action="Index">Projelerim</a>
-                </li>
+                @if (User.IsInRole("ProjectManager"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="ProjectManager" asp-controller="Home" asp-action="Index">Projelerim</a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("Superadmin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Admin" asp-controller="Home" asp-action="Index">AdminPanel</a>
+                    </li>
+                }
+                @if (User.IsInRole("User"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="UserTask" asp-action="Index">Projelerim</a>
+                    </li>
+                }
             </ul>
         </div>
         @await Component.InvokeAsync("DashboardHeader")

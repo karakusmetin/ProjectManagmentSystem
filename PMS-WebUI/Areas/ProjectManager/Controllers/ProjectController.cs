@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Hosting;
 using NToastNotify;
 using PMS.EntityLayer.Concrete;
@@ -75,7 +76,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
         {
 
             var map = mapper.Map<Project>(projectAddDto);
-            var document = new Document { };
+            var document = new PMS_EntityLayer.Concrete.Document { };
 
             if (projectAddDto.File != null && projectAddDto.File.Length > 0)
             {
@@ -113,7 +114,7 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
             else
             {
                 result.AddToModelState(this.ModelState);
-                return View();
+                return View(projectAddDto);
             }
 
         }
@@ -133,7 +134,8 @@ namespace PMS_WebUI.Areas.ProjectManager.Controllers
             else
             {
                 result.AddToModelState(this.ModelState);
-                return RedirectToAction("Detail", "Project", new { Area = "ProjectManager", projectId = projectUpdateDto.Id });
+                var project = await projectService.GetProjectWithNonDeletedWithUsersWithTasksAsync(projectUpdateDto.Id);
+                return View("Detail", project);
             }
 
         }

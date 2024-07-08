@@ -14,6 +14,7 @@ namespace PMS_EntityLayer.DTOs.Tasks
         public DateTime EndDate { get; set; }
         public PriorityLevel Priority { get; set; }
         public TaskUpdateStatus UpdateStatus { get; set; }
+        
         public Guid ProjectId { get; set; }
 
         public Guid AppUserId { get; set; }

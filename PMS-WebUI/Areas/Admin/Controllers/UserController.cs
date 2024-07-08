@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using NToastNotify;
 using PMS.ServiceLayer.Extensions;
 using PMS.ServiceLayer.Services.Abstract;
+using PMS.ServiceLayer.Services.Concrete;
 using PMS_EntityLayer.Concrete;
+using PMS_EntityLayer.DTOs.Tasks;
 using PMS_EntityLayer.DTOs.Users;
 using PMS_WebUI.ResultMessages;
 using System;
@@ -16,6 +18,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Threading.Tasks;
+using static PMS_WebUI.ResultMessages.Messages;
 
 namespace PMS_WebUI.Areas.Admin.Controllers
 {
@@ -24,6 +27,7 @@ namespace PMS_WebUI.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly IProjectManagerService projectManagerService;
+        private readonly IProjectService projectService;
         private readonly UserManager<AppUser> userManager;
         private readonly RoleManager<AppRole> roleManager;
         private readonly IMapper mapper;
@@ -31,10 +35,12 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         private readonly IValidator<AppUser> validator;
         private readonly IImageService ımageService;
         private readonly SignInManager<AppUser> signInManager;
+        private readonly ITaskService taskService;
 
-        public UserController(IProjectManagerService projectManagerService,UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IMapper mapper, IToastNotification toastNotification,IValidator<AppUser> validator,IImageService ımageService, SignInManager<AppUser> signInManager)
+        public UserController(IProjectManagerService projectManagerService,IProjectService projectService,UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IMapper mapper, IToastNotification toastNotification,IValidator<AppUser> validator,IImageService ımageService, SignInManager<AppUser> signInManager,ITaskService taskService)
         {
             this.projectManagerService = projectManagerService;
+            this.projectService = projectService;
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.mapper = mapper;
@@ -42,6 +48,7 @@ namespace PMS_WebUI.Areas.Admin.Controllers
             this.validator = validator;
             this.ımageService = ımageService;
             this.signInManager = signInManager;
+            this.taskService = taskService;
         }
         public async Task<IActionResult> Index()
         {
@@ -81,7 +88,14 @@ namespace PMS_WebUI.Areas.Admin.Controllers
                 var result = await userManager.CreateAsync(map, string.IsNullOrEmpty(userAddDto.Password) ? "" : userAddDto.Password);
                 if (result.Succeeded)
                 {
+                    var user = await userManager.FindByEmailAsync(userAddDto.Email.ToString());
                     var findRole = await roleManager.FindByIdAsync(userAddDto.RoleId.ToString());
+                    
+                    if (findRole.Name == "ProjectManager")
+                    {
+                        await projectManagerService.CerateProjectManagerAsync(user.Id);
+                    }
+                    
                     await userManager.AddToRoleAsync(map, findRole.ToString());
                     toastNotification.AddSuccessToastMessage(Messages.User.Add(userAddDto.Email), new ToastrOptions { Title = "Başarılı" });
                     return RedirectToAction("Index", "User", new { Area = "Admin" });
@@ -122,19 +136,53 @@ namespace PMS_WebUI.Areas.Admin.Controllers
                     var validation = await validator.ValidateAsync(map);
                     if(validation.IsValid)
                     {
+                        var findCurrentRole = await roleManager.FindByIdAsync(userUpdateDto.RoleId.ToString());
+                        if (findCurrentRole != null && userRole == findCurrentRole.Name)
+                        {
+                            user.FirstName = userUpdateDto.FirstName;
+                            user.LastName = userUpdateDto.LastName;
+                            user.Email = userUpdateDto.Email;
+                            user.PhoneNumber = userUpdateDto.PhoneNumber;
+                            
+                            var firstResult = await userManager.UpdateAsync(user);
+                            if (firstResult.Succeeded)
+                            {
+                                toastNotification.AddSuccessToastMessage(Messages.User.Update(userUpdateDto.Email), new ToastrOptions { Title = "Başarılı" });
+                                return RedirectToAction("Index", "User", new { Area = "Admin" });
+                            }
+                            else
+                            {
+                                firstResult.AddToIdentityModelState(this.ModelState);
+                                validation.AddToModelState(this.ModelState);
+                                return View(new UserUpdateDto { Roles = roles });
+                            }
+                        }
+                        if (userRole == "ProjectManager")
+                        {
+                            var anyManagerProjects = await projectService.AnyProjectWithProjectManagerId(userUpdateDto.Id);
+                            if (anyManagerProjects)
+                            {
+                                toastNotification.AddErrorToastMessage("Bu proje Yöneticisinin bağlı olduğu projeler var.Lütfen önce onları düzenleyin");
+                                return View(new UserUpdateDto { Roles = roles });
+                            }
+                            await projectManagerService.DeleteProjectManagerAsync(user.Id);
+                        }
+                        
                         user.UserName = userUpdateDto.Email;
                         user.SecurityStamp = Guid.NewGuid().ToString();
+                        
+                        user.FirstName = userUpdateDto.FirstName;
+                        user.LastName = userUpdateDto.LastName;
+                        user.Email = userUpdateDto.Email;
+                        user.PhoneNumber = userUpdateDto.PhoneNumber;
+
                         var result = await userManager.UpdateAsync(user);
                         if (result.Succeeded)
                         {
                             await userManager.RemoveFromRoleAsync(user, userRole);
                             var findRole = await roleManager.FindByIdAsync(userUpdateDto.RoleId.ToString());
                             await userManager.AddToRoleAsync(user, findRole.Name);
-                            
-                            if(userRole == "ProjectManager")
-                            {
-                                await projectManagerService.DeleteProjectManagerAsync(user.Id);
-                            }
+                           
                             if(findRole.Name == "ProjectManager")
                             {
                                 await projectManagerService.CerateProjectManagerAsync(user.Id);
@@ -163,9 +211,22 @@ namespace PMS_WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(Guid userId)
         {
             var user = await userManager.FindByIdAsync(userId.ToString());
-            
+
+            var userInProject = await projectService.AnyProjectUserGuidAsync(userId);
+            var userInTask = await taskService.GetTaskByUserGuidAsync(userId);
+            if (userInTask)
+            {
+                toastNotification.AddErrorToastMessage("Bu kullanıcı belirli bir göreve atanmış lütfen önce o görevi düzenleyin!!!");
+                return RedirectToAction("Index", "User", new { Area = "Admin" });
+            }
+            if (userInProject)
+            {
+                toastNotification.AddErrorToastMessage("Bu kullanıcı belirli bir projeye yönetici olarak atanmış lütfen önce o projeyi düzenleyin!!!");
+                return RedirectToAction("Index", "User", new { Area = "Admin" });
+            }
+
             var result = await userManager.DeleteAsync(user);
-            
+
             if (result.Succeeded)
             {
                 toastNotification.AddSuccessToastMessage(Messages.User.Delete(user.Email), new ToastrOptions { Title = "Başarılı" });
@@ -179,75 +240,6 @@ namespace PMS_WebUI.Areas.Admin.Controllers
                 }
                 return NotFound();
             }
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Profile()
-        {
-            var user = await userManager.GetUserAsync(HttpContext.User);
-            user = await userManager.Users.Include(u => u.Image).FirstOrDefaultAsync(u => u.Id == user.Id);
-            var map = mapper.Map<UserProfileDto>(user);
-
-            return View(map);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Profile(UserProfileDto userProfileDto, IFormFile upload)
-        {
-            var user = await userManager.GetUserAsync(HttpContext.User);
-            user = await userManager.Users
-                .Include(u => u.Image)
-                .FirstOrDefaultAsync(u => u.Id == user.Id);
-            var map = mapper.Map<UserProfileDto>(user);
-
-            if (ModelState.IsValid)
-            {
-                var isVerified = await userManager.CheckPasswordAsync(user, userProfileDto.CurrentPassword);
-                if (isVerified)
-                {
-                    if (upload != null && upload.Length > 0)
-                    {
-
-                        using (var memoryStream = new MemoryStream())
-                        {
-                            await upload.CopyToAsync(memoryStream);
-                            user.Image.ImageData = memoryStream.ToArray();
-                            userProfileDto.ImageData = memoryStream.ToArray();
-                        }
-                        user.ImageId = await ımageService.CreateImageAsync(userProfileDto.ImageData, upload.FileName);
-                        if (user.Image.FileName != "images/testimage1")
-                            await ımageService.DeleteImageAsync(user.Image.Id);
-                    }
-
-                    if (userProfileDto.NewPassword != null)
-                    {
-                        var result = await userManager.ChangePasswordAsync(user, userProfileDto.CurrentPassword, userProfileDto.NewPassword);
-                        if (result.Succeeded)
-                        {
-                            await userManager.UpdateSecurityStampAsync(user);
-                            await signInManager.SignOutAsync();
-                            await signInManager.PasswordSignInAsync(user, userProfileDto.NewPassword, true, false);
-                        }
-                        else
-                        {
-                            result.AddToIdentityModelState(ModelState);
-                            return View(map);
-                        }
-                    }
-
-                    user.FirstName = userProfileDto.FirstName;
-                    user.LastName = userProfileDto.LastName;
-                    user.PhoneNumber = userProfileDto.PhoneNumber;
-
-                    await userManager.UpdateAsync(user);
-                    toastNotification.AddSuccessToastMessage("Bilgileriniz başarı ile değiştirilmiştir");
-                    return View(map);
-                }
-                else
-                {
-                    toastNotification.AddErrorToastMessage("Güncellenirken bir hata oluştu");
-                }
-            }
-            return View(map);
         }
     }
 }

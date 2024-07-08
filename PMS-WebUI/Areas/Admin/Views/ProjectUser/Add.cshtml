@@ -15,13 +15,13 @@
                     <form asp-controller="ProjectUser" asp-action="Add" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="mb-3">
-                                <label asp-for="ProjectId" for="projectName">Proje Adı:</label>
+                                <label asp-for="ProjectId" class="form-label" for="projectName">Proje Adı:</label>
                                 <input asp-for="ProjectId" type="text" id="projectName" name="projectName" value="" autocomplete="off">
                                 <input asp-for="ProjectId" type="hidden" id="hiddenProjectId" name="ProjectId">
                                 <div id="projectAutocompleteSuggestions" class="autocomplete-suggestions"></div>
                             </div>
                             <div class="mb-3">
-                                <label asp-for="AppUserId" for="appUserEmail">Preje Atanan Kişinin Email Adresi:</label>
+                                <label asp-for="AppUserId" class="form-label" for="appUserEmail">Preje Atanan Kişinin Email Adresi:</label>
                                 <input asp-for="AppUserId" type="text" id="appUserEmail" name="appUserEmail" value="" autocomplete="off">
                                 <input asp-for="AppUserId" type="hidden" id="hiddenAppUserId" name="AppUserId">
                                 <div id="userAutocompleteSuggestions" class="autocomplete-suggestions"></div>

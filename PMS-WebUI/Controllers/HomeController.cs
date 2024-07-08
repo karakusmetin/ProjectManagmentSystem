@@ -33,6 +33,9 @@ namespace PMS_WebUI.Controllers
 
                 else if (HttpContext.User.IsInRole("ProjectManager"))
                     return RedirectToAction("Index", "Home", new { Area = "ProjectManager" });
+               
+				else if (HttpContext.User.IsInRole("Superadmin"))
+                    return RedirectToAction("Index", "Home", new { Area = "Admin" });
 
                 else
                     return RedirectToAction("Index", "UserTask");

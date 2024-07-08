@@ -24,7 +24,7 @@ namespace PMS_WebUI.Controllers
         private readonly IToastNotification toastNotification;
         private readonly IValidator<AppUser> validator;
 
-        public AuthController(RoleManager<AppRole> roleManager,UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IToastNotification toastNotification, IValidator<AppUser> validator, IMapper mapper)
+        public AuthController(RoleManager<AppRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IToastNotification toastNotification, IValidator<AppUser> validator, IMapper mapper)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
@@ -66,13 +66,13 @@ namespace PMS_WebUI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır");
+                    TempData["ErrorMessage"] = "E-posta adresiniz veya şifreniz yanlıştır";
                     return RedirectToAction("Index", "Home");
                 }
             }
             else
             {
-                ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır");
+                TempData["ErrorMessage"] = "E-posta adresiniz veya şifreniz yanlıştır";
                 return RedirectToAction("Index", "Home");
             }
 
@@ -83,7 +83,7 @@ namespace PMS_WebUI.Controllers
         {
             if (userRegisterDto.Password != userRegisterDto.ConfirmPassword)
             {
-                ModelState.AddModelError("", "Passwords do not match");
+                ModelState.AddModelError("", "Şifreler Eşleşmiyor");
                 return View(userRegisterDto);
             }
 
@@ -105,8 +105,8 @@ namespace PMS_WebUI.Controllers
                 {
                     var findRole = await roleManager.FindByIdAsync(Guid.Parse("492F344E-4BA6-485B-A3F1-73219B3E61C9").ToString());
                     await userManager.AddToRoleAsync(map, findRole.ToString());
-                    toastNotification.AddSuccessToastMessage(Messages.User.Add(userRegisterDto.Email), new ToastrOptions { Title = "Başarılı" });
-                    return RedirectToAction("Index", "Home");
+                    TempData["SuccessMessage"] = Messages.User.Add(userRegisterDto.Email);
+                    return RedirectToAction("Login", "Auth", new { Area = "Admin" });
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace PMS_WebUI.Controllers
                     }
                 }
             };
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
     }

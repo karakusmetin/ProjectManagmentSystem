@@ -21,28 +21,26 @@
                     <thead>
                         <tr>
                             <th>Görev İsmi</th>
-                            <th>Görev Tanımı</th>
+                            <th>Görev Sahibi</th>
                             <th>Başlangıç Tarihi</th>
                             <th>Bitiş Tarihi</th>
                             <th>Öncelik</th>
                             <th>Oluşturan</th>
-                            <th>Güncellenme Tarihi</th>
-                            <th>Görev Sahibi</th>
                             <th>İlerleme Durumu</th>
+                            <th>Durumu</th>
                             <th>İşlemler</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Görev İsmi</th>
-                            <th>Görev Tanımı</th>
+                            <th>Görev Sahibi</th>
                             <th>Başlangıç Tarihi</th>
                             <th>Bitiş Tarihi</th>
                             <th>Öncelik</th>
                             <th>Oluşturan</th>
-                            <th>Güncellenme Tarihi</th>
-                            <th>Görev Sahibi</th>
                             <th>İlerleme Durumu</th>
+                            <th>Durumu</th>
                             <th>İşlemler</th>
                         </tr>
                     </tfoot>
@@ -51,13 +49,31 @@
                         {
                             <tr name="@task.Id">
                                 <td>@task.TaskName</td>
-                                <td>@task.Description</td>
+                                <td>@task.AppUser.Email</td>
                                 <td>@task.StartDate</td>
                                 <td>@task.EndDate</td>
                                 <td>@task.Priority</td>
                                 <td>@task.InsertedBy</td>
-                                <td>-</td>
-                                <td>@task.AppUser.Email</td>
+                                @{
+                                    Func<TaskUpdateStatus, string> getTurkishTaskUpdateStatus = status =>
+                                    {
+                                        switch (status)
+                                        {
+                                            case TaskUpdateStatus.ToDo:
+                                                return "Yapılacak";
+                                            case TaskUpdateStatus.InProgress:
+                                                return "Devam Ediyor";
+                                            case TaskUpdateStatus.Completed:
+                                                return "Tamamlandı";
+                                            case TaskUpdateStatus.Expired:
+                                                return "Süresi Doldu";
+                                            default:
+                                                return status.ToString();
+                                        }
+                                    };
+                                }
+
+                                <td>@getTurkishTaskUpdateStatus(task.UpdateStatus)</td>
                                 <td>@(task.IsActive ? "Aktif" : "Aktif Değil")</td>
                                 <td>
                                     <a class="btn btn-primary btn-sm" data-id="@task.Id" asp-area="Admin" asp-controller="Task" asp-action="Update" asp-route-taskId="@task.Id"><i class="bx bxs-edit"></i></a>

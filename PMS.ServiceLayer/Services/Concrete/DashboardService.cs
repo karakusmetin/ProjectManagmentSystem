@@ -24,12 +24,12 @@ namespace PMS.ServiceLayer.Services.Concrete
         }
         public async Task<TotalNumbersDto> GetTotalNumbersAsync()
         {
-            var totalProjects = await unitOfWork.GetRepository<Project>().CountAsync(x => true);
-            var ongoingProjects = await unitOfWork.GetRepository<Project>().CountAsync(x => x.EndDate >= DateTime.Now);
+            var totalProjects = await unitOfWork.GetRepository<Project>().CountAsync(x => true && x.IsActive==true);
+            var ongoingProjects = await unitOfWork.GetRepository<Project>().CountAsync(x => x.EndDate >= DateTime.Now && x.IsActive == true);
             var completedProjects = await unitOfWork.GetRepository<Project>().CountAsync(x => x.EndDate <= DateTime.Now);
 
-            var totalTasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().CountAsync(x => true);
-            var ongoingTasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().CountAsync(x => x.EndDate >= DateTime.Now);
+            var totalTasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().CountAsync(x => true && x.IsActive == true);
+            var ongoingTasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().CountAsync(x => x.EndDate >= DateTime.Now && x.IsActive == true);
             var completedTasks = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().CountAsync(x => x.EndDate <= DateTime.Now);
 
             var totalUsers = userManager.Users.Count();

@@ -44,7 +44,7 @@ namespace PMS.ServiceLayer.Services.Concrete
             var task = new PMS_EntityLayer.Concrete.Task
             {
                 TaskName = taskAddDto.TaskName,
-                Description = taskAddDto.TaskDescription,
+                Description = taskAddDto.Description,
                 StartDate = taskAddDto.StartDate,
                 EndDate = taskAddDto.EndDate,
                 Priority = taskAddDto.Priority,
@@ -66,6 +66,14 @@ namespace PMS.ServiceLayer.Services.Concrete
             return map;
         }
 
+        public async Task<bool> GetTaskByUserGuidAsync(Guid userId)
+        {
+            var task = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().AnyAsync(x=>x.UserId ==userId);
+            
+            return task;
+        }
+
+
         public async Task<string> UpdateTaskAsync(TaskUpdateDto taskUpdateDto)
         {
             var userEmail = _user.GetLoggedInEmail();
@@ -75,6 +83,7 @@ namespace PMS.ServiceLayer.Services.Concrete
             task.UpdatedBy = userEmail;
 
             mapper.Map<TaskUpdateDto, PMS_EntityLayer.Concrete.Task>(taskUpdateDto, task);
+            task.UserId = taskUpdateDto.AppUserId;
 
             await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().UpdateAsnyc(task);
             await unitOfWork.SaveAsnyc();
@@ -140,6 +149,13 @@ namespace PMS.ServiceLayer.Services.Concrete
             }
             var map = mapper.Map<List<TaskDto>>(task);
             return map;
+        }
+
+        public async Task<bool> AnyTasksByUserIdAndProjectIdAsync(Guid projectId, Guid userId)
+        {
+            var task = await unitOfWork.GetRepository<PMS_EntityLayer.Concrete.Task>().AnyAsync(x => x.UserId == userId && x.ProjectId == projectId && x.IsActive ==true);
+
+            return task;
         }
 
         public async Task<string> UndoDeleteTaskAsync(Guid id)
