@@ -1,7 +1,8 @@
 ![Preoje managment system (3)](https://github.com/karakusmetin/DiscordYoutubeBot/assets/106442941/be593da0-6577-438a-9b9c-61813b05f9e7)
 
 Bu proje yönetim sistemi, projelerinizi etkin bir şekilde planlamanıza, takip etmenize ve yönetmenize yardımcı olmak için tasarlanmıştır. Kullanıcı dostu arayüzü ve güçlü özellikleri sayesinde, projelerinizin her aşamasında tam kontrol sahibi olabilirsiniz.
-
+# Site Adresi
+Projeyi [buradan](https://projectmanagementsystem.runasp.net)  ziyaret edin.
 ## Kullanılan Teknolojiler
 - ![.NET](https://img.shields.io/badge/Asp.Net%20Core-8A2BE2)
 - ![HTML](https://img.shields.io/badge/HTML-e34c26?style=flat&logo=html5&logoColor=white)
